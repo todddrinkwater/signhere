@@ -20,8 +20,8 @@ function submitWord (e, dispatch) {
   }
 }
 
-const provideDispactch = connect()
-const connectedAddWord = provideCorrectProps(AddWord)
+const provideDispatch = connect()
+const connectedAddWord = provideDispatch(AddWord)
 
 export default connectedAddWord
 
