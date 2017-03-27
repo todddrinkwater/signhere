@@ -1,13 +1,15 @@
 import React from 'react'
 
-import AddWord from './AddWord'
+import AddWord from '../containers/AddWord'
 import WordsContainer from '../containers/WordsContainer'
 
-const App = () => (
-  <div className='app-container'>
-    <WordsContainer />
-    <AddWord />
-  </div>
-)
+function App (props) {
+  return (
+    <div className='app-container'>
+      <WordsContainer />
+      <AddWord />
+    </div>
+  )
+}
 
 export default App
