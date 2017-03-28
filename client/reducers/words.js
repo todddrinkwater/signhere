@@ -5,7 +5,7 @@ const words = (state = [], action) => {
       newState.push({
         id: action.id,
         word: action.word
-      }
+      })
 
       return newState 
 
