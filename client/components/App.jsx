@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AddWord from '../containers/AddWord'
-import WordsContainer from '../containers/Words'
+import Words from '../containers/Words'
 
 function App (props) {
   return (
