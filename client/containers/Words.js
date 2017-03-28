@@ -13,7 +13,7 @@ function Words (props) {
     </div>
   )
 }
-const Words = ({words}) => 
+
 
 const mapStateToProps = (state) => {
   return {
