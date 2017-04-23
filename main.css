@@ -10,6 +10,11 @@ body {
   -ms-user-select: none;
 }
 
+.contract {
+  width: 90%;
+  margin: auto;
+}
+
 .m-signature-pad {
   position: relative;
   font-size: 10px;
@@ -19,6 +24,7 @@ body {
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
   border-radius: 4px;
+  margin: auto;
 }
 
 .m-signature-pad:before, .m-signature-pad:after {
@@ -78,7 +84,7 @@ body {
     height: auto;
     min-width: 100px;
     min-height: 100px;
-    margin: 5%;
+    margin: auto;
   }
   #github {
     display: none;
@@ -87,7 +93,7 @@ body {
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .m-signature-pad {
-    margin: 10%;
+    margin: auto;
   }
 }
 
@@ -97,6 +103,7 @@ body {
     right: 0;
     top: 0;
     bottom: 32px;
+    margin: auto
   }
   .m-signature-pad--footer {
     left: 20px;
