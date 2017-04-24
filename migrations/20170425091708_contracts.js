@@ -5,9 +5,10 @@ exports.up = function(knex, Promise) {
     table.string('contract_header')
     table.string('contract_desc')
     table.string('signature_url')
-    table.string('date_signed')
+    table.dateTime('date_signed')
     table.boolean('isSigned')
-};
+  })
+  };
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('contracts')
