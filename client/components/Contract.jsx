@@ -17,13 +17,13 @@ class Contract extends React.Component {
            canvas.getContext("2d").scale(ratio, ratio);
        }
 
-    function clear(){
+    this.clearSignature = function clear(){
       console.log('hit');
       signaturePad.clear()
     }
   }
 
-  render () {
+  render (props) {
     return (
       <div className="contract">
         <h1>Contract</h1>
@@ -32,7 +32,7 @@ class Contract extends React.Component {
           <div className="m-signature-pad--body">
             <canvas></canvas>
           </div>
-          <button>Clear</button>
+          <button onClick={() => this.clearSignature()}>Clear</button>
         </div>
       </div>
     )
