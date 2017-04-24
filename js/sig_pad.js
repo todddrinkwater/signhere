@@ -11,3 +11,8 @@ var wrapper1 = document.getElementById("signature-pad"),
        canvas.height = canvas.offsetHeight * ratio;
        canvas.getContext("2d").scale(ratio, ratio);
    }
+
+function clear(){
+  console.log('hit');
+  document.signaturePad.clear()
+}
