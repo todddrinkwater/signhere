@@ -23,7 +23,7 @@ class Contract extends React.Component {
     }
   }
 
-  render (props) {
+  render () {
     return (
       <div className="contract">
         <h1>Contract</h1>
