@@ -1,4 +1,4 @@
-  {
+{
   "name": "signhere",
   "version": "1.0.0",
   "description": "An easy way to sign and store contracts",
@@ -35,7 +35,9 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "signature_pad": "^2.1.0"
+    "knex": "^0.12.9",
+    "signature_pad": "^2.1.0",
+    "sqlite3": "^3.1.8"
   },
   "homepage": "https://github.com/todddrinkwater/signhere#readme",
   "repository": {
