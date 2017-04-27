@@ -11,35 +11,18 @@ body {
 
 
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color: #111;
-}
 
 /* --- Signature Pad --- */
 
 .contract {
   width: 90%;
-  margin: auto;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .m-signature-pad {
@@ -178,10 +161,54 @@ li a:hover {
     padding-bottom: 0.5em;
 }
 
+
+.navBar ul {
+    list-style-type: none;
+    margin: 0;
+    background-color: #333;
+}
+
+.navBar li {
+    float: left;
+}
+
+.navBar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0.5em;
+    text-decoration: none;
+}
+
+.navBar li a:hover {
+    color: #ff0358;
+}
+
+
 /* --- App Container --- */
 
 .app-container {
   padding-top: 2.5em;
 }
 
-/* --- Contract Card ---*/
+/* --- Contract Card --- */
+
+/* --- Login --- */
+
+.login {
+  padding-top: 30px;
+}
+
+/* --- User Profile --- */
+
+.userProfile {
+  width: 90%;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

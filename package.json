@@ -36,6 +36,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "knex": "^0.12.9",
+    "react-router-dom": "^4.1.1",
     "signature_pad": "^2.1.0",
     "sqlite3": "^3.1.8",
     "superagent": "^3.5.2"
