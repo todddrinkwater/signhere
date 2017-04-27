@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import loggedInUser from '../actions/index'
-
+import { loggedInUser } from '../actions/index'
 class Login extends React.Component {
 
   render () {
@@ -22,7 +21,7 @@ function LogInUser(e){
   var userLogin = {
     id: e.target.elements.id.value
   }
-  dispatch(loggedInUser(userLogin))
+  loggedInUser(userLogin)
 }
 
 export default Login
