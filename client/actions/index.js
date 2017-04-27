@@ -1,6 +1,14 @@
 var request = require('superagent')
 
+export const getUserDetails = loggedInUserDetails => {
+  return {
+    type: 'LOGGED_IN_USER',
+    loggedInUserDetails
+  }
+}
+
 export const loggedInUser = (user, dispatch) => {
+  e.preventDefault(e)
   console.log(dispatch)
   request
   .get('/user/' + user.id)
@@ -11,8 +19,8 @@ export const loggedInUser = (user, dispatch) => {
       console.error('loggedInUser ' + err.message)
       return
     }
-    dispatch(loggedInUser(userInfo[0]))
-    console.log("return");
+    dispatch(getUserDetails(userInfo[0]))
+    console.log("return")
     })
 
 }

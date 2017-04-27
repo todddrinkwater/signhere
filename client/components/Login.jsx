@@ -27,12 +27,10 @@ function LogInUser(e, dispatch){
   var userLogin = {
     id: e.target.elements.id.value
   }
-  console.log()
   loggedInUser(userLogin, dispatch)
 }
 
 function mapStateToProps(state){
-  console.log(state, "state")
   return {
     dispatch: state.dispatch
 }
