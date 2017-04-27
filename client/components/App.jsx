@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  HashRouter as Router,
+  Route
+} from 'react-router-dom'
 
 import NavBar from './NavBar'
 import Contract from './Contract'
@@ -9,9 +13,13 @@ function App (props) {
   return (
     <div className='app-container'>
       <NavBar />
-      <Contract />
-      <Login />
-      <UserProfile />
+      <Router>
+        <div>
+          <Route exact path='/' component={Login} />
+          <Route path='/signcontract' component={Contract} />
+          <Route path='/userprofile' component={UserProfile} />
+        </div>
+      </Router>
     </div>
   )
 }

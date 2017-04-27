@@ -5,14 +5,14 @@ import { loggedInUser } from '../actions/index'
 class Login extends React.Component {
   constructor (props) {
     super(props)
-
+    console.log(props)
   }
 
-
   render () {
+    console.log(this.props)
     return (
       <div className="login">
-        <form onSubmit={ (e) => {LogInUser(e, props.dispatch)} }>
+        <form onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
           ID: <input type="text" name="id" />
           <input type='submit' value='Log In' />
         </form>

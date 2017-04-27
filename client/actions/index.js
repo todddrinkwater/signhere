@@ -8,7 +8,6 @@ export const getUserDetails = loggedInUserDetails => {
 }
 
 export const loggedInUser = (user, dispatch) => {
-  e.preventDefault(e)
   console.log(dispatch)
   request
   .get('/user/' + user.id)
