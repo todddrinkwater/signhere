@@ -10,10 +10,10 @@ class UserProfile extends React.Component {
     console.log(this.props.userDetails)
     return (
       <div className="userProfile">
-        <h1>Name:{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
+        <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
         <ul>
-          <li>Org:{this.props.userDetails.organisation}</li>
-          <li>Email:{this.props.userDetails.email}</li>
+          <li>Organisation: {this.props.userDetails.organisation}</li>
+          <li>Email: {this.props.userDetails.email}</li>
         </ul>
       </div>
     )

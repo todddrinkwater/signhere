@@ -16,7 +16,13 @@ body {
 
 .contract {
   width: 90%;
-  margin: auto;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .m-signature-pad {
@@ -159,8 +165,6 @@ body {
 .navBar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
     background-color: #333;
 }
 
@@ -172,13 +176,15 @@ body {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0;
+    margin: 0.5em;
     text-decoration: none;
 }
 
 .navBar li a:hover {
-    background-color: #111;
+    color: #ff0358;
 }
+
 
 /* --- App Container --- */
 
@@ -192,4 +198,17 @@ body {
 
 .login {
   padding-top: 30px;
+}
+
+/* --- User Profile --- */
+
+.userProfile {
+  width: 90%;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
