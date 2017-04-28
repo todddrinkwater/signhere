@@ -13,5 +13,15 @@ router.get('/profile/:id', function (req, res) {
   })
 })
 
+router.get('/contracts/:id', function (req, res) {
+  var id = req.params.id
+  db.getUserContracts(id).then((result) => {
+    res.send(result)
+  })
+  .catch((err) => {
+    res.status(500).send(err)
+  })
+})
+
 
 module.exports = router
