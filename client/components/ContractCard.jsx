@@ -9,7 +9,6 @@ class ContractCard extends React.Component {
 
   render () {
     const { contract_header, contract_desc } = this.props.contract
-    console.log(this.props);
     return (
       <div className="contractCard" onClick={(e) => this.props.dispatch(getContract(this.props.contract))}>
         <Router>

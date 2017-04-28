@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class Contract extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
   componentDidMount() {
     var wrapper1 = document.getElementById("signature-pad"),
@@ -27,8 +30,8 @@ class Contract extends React.Component {
   render () {
     return (
       <div className="contract">
-        <h1>Contract</h1>
-        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla quis lorem ut libero malesuada feugiat.</p>
+        <h1>{this.props.contractDetails.contract_header}</h1>
+        <p>{this.props.contractDetails.contract_desc}</p>
         <div id="signature-pad" className="m-signature-pad">
           <div className="m-signature-pad--body">
             <canvas></canvas>
@@ -42,9 +45,8 @@ class Contract extends React.Component {
 
 
 function mapStateToProps(state){
-  console.log(state)
   return {
-    
+    contractDetails: state.contract[0].singleContractDetails
   }
 }
 
