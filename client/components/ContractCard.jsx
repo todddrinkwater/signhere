@@ -1,18 +1,36 @@
 import React from 'react'
+import { HashRouter as Router, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { getContract } from '../actions/index'
 
 class ContractCard extends React.Component {
 
+
   render () {
-    console.log(this.props)
+    const { contract_header, contract_desc } = this.props.contract
+    console.log(this.props);
     return (
-      <div className="contractCard">
-        <h1>{this.props.contract_header}</h1>
-        <p>{this.props.contract_desc}</p>
-        <button>View</button>
+      <div className="contractCard" onClick={(e) => this.props.dispatch(getContract(this.props.contract))}>
+        <Router>
+          <Link to="/contracttosign">
+            <div>
+              <h1>{contract_header}</h1>
+              <p>{contract_desc}</p>
+              <button>View</button>
+            </div>
+          </Link>
+        </Router>
       </div>
     )
   }
 }
 
+function mapStateToProps(state){
+  return {
+    dispatch: state.dispatch
+  }
+}
 
-export default ContractCard
+
+export default connect(mapStateToProps)(ContractCard)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class Contract extends React.Component {
 
@@ -40,6 +41,11 @@ class Contract extends React.Component {
 }
 
 
+function mapStateToProps(state){
+  console.log(state)
+  return {
+    
+  }
+}
 
-
-export default Contract
+export default connect(mapStateToProps)(Contract)

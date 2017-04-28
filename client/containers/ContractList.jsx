@@ -8,14 +8,13 @@ class ContractList extends React.Component {
     super(props)
   }
 
-
   render () {
     return (
       <div className="contractList">
 
         {this.props.contracts.map( (contract) => {
           return (
-            <ContractCard key={contract.id} {...contract} />
+            <ContractCard key={contract.id} contract={contract} />
           )
         })
         }
@@ -26,6 +25,7 @@ class ContractList extends React.Component {
 }
 
 function mapStateToProps(state){
+  console.log(state);
   return {
     contracts: state.contracts[0].contractDetails
   }

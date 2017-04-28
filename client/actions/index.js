@@ -17,8 +17,14 @@ export const loggedInUser = (user, dispatch) => {
       return
     }
     dispatch(getUserDetails(userInfo[0]))
-    console.log("return")
     })
+}
+
+export const getContract = singleContractDetails => {
+  return {
+    type: 'GET_SINGLE_CONTRACT',
+    singleContractDetails
+  }
 }
 
 export const getContracts = contractDetails => {
@@ -38,6 +44,5 @@ export const getUserContracts = (user, dispatch) => {
       return
     }
     dispatch(getContracts(userInfo))
-    console.log("return")
     })
 }

@@ -10,7 +10,7 @@ class NavBar extends React.Component {
         <ul className="nav-ul">
           <li><a href="#" className="menu-button">x</a></li>
           <li><Link to='/'>SignHere - Home</Link></li>
-          <li><Link to='/signcontract'>Contract</Link></li>
+          <li><Link to='/myContracts'>Contract</Link></li>
           <li><Link to='/userprofile'>Profile</Link></li>
         </ul>
         </Router>

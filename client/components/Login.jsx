@@ -21,7 +21,6 @@ class Login extends React.Component {
   }
 }
 
-
 function LogInUser(e, dispatch){
   e.preventDefault(e)
   var userLogin = {
@@ -34,7 +33,7 @@ function LogInUser(e, dispatch){
 function mapStateToProps(state){
   return {
     dispatch: state.dispatch
-}
+  }
 }
 
 export default connect(mapStateToProps)(Login)
