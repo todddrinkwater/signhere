@@ -16,7 +16,6 @@ class ContractCard extends React.Component {
             <div>
               <h1>{contract_header}</h1>
               <p>{contract_desc}</p>
-              <button>View</button>
             </div>
           </Link>
         </Router>
