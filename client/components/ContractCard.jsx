@@ -8,7 +8,7 @@ class ContractCard extends React.Component {
       <div className="contractCard">
         <h1>{this.props.contract_header}</h1>
         <p>{this.props.contract_desc}</p>
-          <button>View</button>
+        <button>View</button>
       </div>
     )
   }
