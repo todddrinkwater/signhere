@@ -15,7 +15,7 @@ class ContractList extends React.Component {
 
         {this.props.contracts.map( (contract) => {
           return (
-            <ContractCard {...contract} />
+            <ContractCard key={contract.id} {...contract} />
           )
         })
         }
