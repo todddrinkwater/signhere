@@ -12,7 +12,6 @@ export const loggedInUser = (user, dispatch) => {
   .get('/user/profile/' + user.id)
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
-    console.log(userInfo[0], "+ res")
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
@@ -23,17 +22,23 @@ export const loggedInUser = (user, dispatch) => {
 
 }
 
+export const getContracts = contractDetails => {
+  return {
+    type: 'GET_USER_CONTRACTS',
+    contractDetails
+  }
+}
+
 export const getUserContracts = (user, dispatch) => {
   request
-  .get('/user/profile/' + user.id)
+  .get('/user/contracts/' + user.id)
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
-    console.log(userInfo[0], "+ res")
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
     }
-    dispatch(getUserDetails(userInfo[0]))
+    dispatch(getContracts(userInfo))
     console.log("return")
     })
 

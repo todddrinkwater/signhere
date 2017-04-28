@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { loggedInUser } from '../actions/index'
+import { getUserContracts } from '../actions/index'
+
 class Login extends React.Component {
   constructor (props) {
     super(props)
@@ -28,6 +30,7 @@ function LogInUser(e, dispatch){
     id: e.target.elements.id.value
   }
   loggedInUser(userLogin, dispatch)
+  getUserContracts(userLogin, dispatch)
 }
 
 function mapStateToProps(state){
