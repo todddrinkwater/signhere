@@ -3,10 +3,11 @@ import React from 'react'
 class ContractCard extends React.Component {
 
   render () {
+    console.log(this.props)
     return (
       <div className="contractCard">
-        <h1>Contract Card</h1>
-        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+        <h1>{this.props.contract_header}</h1>
+        <p>{this.props.contract_desc}</p>
           <button>View</button>
       </div>
     )

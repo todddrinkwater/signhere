@@ -19,7 +19,6 @@ export const loggedInUser = (user, dispatch) => {
     dispatch(getUserDetails(userInfo[0]))
     console.log("return")
     })
-
 }
 
 export const getContracts = contractDetails => {
@@ -41,5 +40,4 @@ export const getUserContracts = (user, dispatch) => {
     dispatch(getContracts(userInfo))
     console.log("return")
     })
-
 }

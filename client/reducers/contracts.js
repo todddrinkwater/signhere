@@ -1,10 +1,10 @@
-const user = (state = [], action) => {
+const contracts = (state = [], action) => {
   switch (action.type) {
-    case 'LOGGED_IN_USER':
+    case 'GET_USER_CONTRACTS':
       const newState = [
         ...state,
         {
-          loggedInUserDetails: action.loggedInUserDetails,
+          contractDetails: action.contractDetails,
         }
       ]
       return newState
@@ -14,4 +14,4 @@ const user = (state = [], action) => {
   }
 }
 
-export default user
+export default contracts

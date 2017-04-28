@@ -1,18 +1,34 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import ContractCard from '../components/ContractCard'
 
 class ContractList extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
 
   render () {
     return (
       <div className="contractList">
-      
-        <h1>Contract Card</h1>
-        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-          <button>View</button>
+
+        {this.props.contracts.map( (contract) => {
+          return (
+            <ContractCard {...contract} />
+          )
+        })
+        }
+
       </div>
-    )
+      )
   }
 }
 
+function mapStateToProps(state){
+  return {
+    contracts: state.contracts[0].contractDetails
+  }
+}
 
-export default ContractList
+export default connect(mapStateToProps)(ContractList)
