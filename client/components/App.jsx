@@ -5,9 +5,10 @@ import {
 } from 'react-router-dom'
 
 import NavBar from './NavBar'
-import Contract from './Contract'
+import ContractList from '../containers/ContractList'
 import Login from './Login'
 import UserProfile from './UserProfile'
+import Contract from './Contract'
 
 function App (props) {
   return (
@@ -16,7 +17,8 @@ function App (props) {
       <Router>
         <div>
           <Route exact path='/' component={Login} />
-          <Route path='/signcontract' component={Contract} />
+          <Route path='/myContracts' component={ContractList} />
+          <Route path='/contracttosign' component={Contract} />
           <Route path='/userprofile' component={UserProfile} />
         </div>
       </Router>

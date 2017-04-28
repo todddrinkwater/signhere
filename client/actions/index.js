@@ -8,18 +8,41 @@ export const getUserDetails = loggedInUserDetails => {
 }
 
 export const loggedInUser = (user, dispatch) => {
-  console.log(dispatch)
   request
-  .get('/user/' + user.id)
+  .get('/user/profile/' + user.id)
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
-    console.log(userInfo[0], "+ res")
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
     }
     dispatch(getUserDetails(userInfo[0]))
-    console.log("return")
     })
+}
 
+export const getContract = singleContractDetails => {
+  return {
+    type: 'GET_SINGLE_CONTRACT',
+    singleContractDetails
+  }
+}
+
+export const getContracts = contractDetails => {
+  return {
+    type: 'GET_USER_CONTRACTS',
+    contractDetails
+  }
+}
+
+export const getUserContracts = (user, dispatch) => {
+  request
+  .get('/user/contracts/' + user.id)
+  .end((err, res) => {
+    var userInfo = JSON.parse(res.text)
+    if (err) {
+      console.error('loggedInUser ' + err.message)
+      return
+    }
+    dispatch(getContracts(userInfo))
+    })
 }
