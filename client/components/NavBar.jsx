@@ -8,8 +8,8 @@ class NavBar extends React.Component {
       <div className="navBar">
       <Router>
         <ul className="nav-ul">
-          <li><a href="#" className="menu-button">x</a></li>
-          <li><Link to='/'>SignHere - Home</Link></li>
+          <li className="menu-button"><Link to='/'>X</Link></li>
+          <li className="nav-logo"><Link to='/'>SignHere - Home</Link></li>
           <li><Link to='/myContracts'>Contract</Link></li>
           <li><Link to='/userprofile'>Profile</Link></li>
         </ul>
