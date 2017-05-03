@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-react-redux",
-  "version": "0.1.0",
-  "description": "React Redux using express",
+  "name": "signhere",
+  "version": "1.0.0",
+  "description": "An easy way to sign and store contracts",
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
@@ -34,6 +34,19 @@
   },
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "knex": "^0.12.9",
+    "react-router-dom": "^4.1.1",
+    "signature_pad": "^2.1.0",
+    "sqlite3": "^3.1.8",
+    "superagent": "^3.5.2"
+  },
+  "homepage": "https://github.com/todddrinkwater/signhere#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/todddrinkwater/signhere.git"
+  },
+  "bugs": {
+    "url": "https://github.com/todddrinkwater/signhere/issues"
   }
 }
