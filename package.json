@@ -7,7 +7,7 @@
     "start": "node server",
     "dev": "nodemon --watch server server/index & webpack --watch",
     "watch": "nodemon -e js,jsx -x npm test",
-    "postinstall": "knex migrate:latest && npm run build"
+    "postinstall": "knex migrate:latest"
   },
   "keywords": [
     "react",
