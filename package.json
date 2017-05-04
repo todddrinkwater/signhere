@@ -4,7 +4,8 @@
   "description": "An easy way to sign and store contracts",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon --watch server server/index & webpack --watch",
+    "start": "node server/index",
+    "dev": "node --watch server server/index & webpack --watch",
     "watch": "nodemon -e js,jsx -x npm test",
     "postinstall": "knex migrate:latest"
   },
@@ -21,7 +22,8 @@
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack": "^1.13.1"
   },
   "babel": {
     "presets": [
@@ -44,7 +46,6 @@
     "signature_pad": "^2.1.0",
     "sqlite3": "^3.1.8",
     "superagent": "^3.5.2",
-    "webpack": "^1.13.1"
   },
   "homepage": "https://github.com/todddrinkwater/signhere#readme",
   "repository": {
