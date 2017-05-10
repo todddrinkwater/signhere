@@ -29873,6 +29873,11 @@
 	        'div',
 	        { className: 'login' },
 	        _react2.default.createElement(
+	          'div',
+	          { className: 'logo' },
+	          'signhere'
+	        ),
+	        _react2.default.createElement(
 	          'form',
 	          { className: 'loginForm', onSubmit: function onSubmit(e) {
 	              LogInUser(e, _this2.props.dispatch);

@@ -12,6 +12,7 @@ class Login extends React.Component {
   render () {
     return (
       <div className="login">
+      <div className="logo">signhere</div>
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
           ID:<br/><input type="text" name="id" /><br />
           <input type='submit' value='Log In' />
