@@ -23,8 +23,6 @@ test('test that we can get the correct response object from the /profile route',
   .expect(200)
   .end(function(err, res) {
     if (err) throw err
-    console.log(res.body)
-
     t.equal(Object.keys(res.body).length, Object.keys(expected).length, 'res.body has the correct keys within the object')
     t.end()
   })

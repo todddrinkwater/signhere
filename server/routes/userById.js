@@ -9,11 +9,8 @@ router.get('/', (req, res) => {
 
 router.get('/profile/:id', function (req, res) {
   var id = req.params.id
-  console.log(typeof id);
-  console.log({id});
   db.getUserById(id)
   .then((result) => {
-    console.log({result});
     res.send(result)
   })
   .catch((err) => {

@@ -4,7 +4,6 @@ var knex = require('knex')(config)
 
 
 function getUserById(id){
-  console.log("get user by ", id);
   return knex('users')
     .where('id', Number(id))
     .first()
