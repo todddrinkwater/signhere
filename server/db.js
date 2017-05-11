@@ -2,12 +2,18 @@ var environment = process.env.NODE_ENV || 'development'
 var config = require('../knexfile')[environment]
 var knex = require('knex')(config)
 
-module.exports = { getUserById, getUserContracts }
 
 function getUserById(id){
-  return knex('users').where('id', id)
+  console.log("get user by ", id);
+  return knex('users')
+    .where('id', Number(id))
+    .first()
+
 }
 
 function getUserContracts(id){
-  return knex('contracts').where('user_id', id)
+  return knex('contracts')
+  .where('user_id', id)
 }
+
+module.exports = { getUserById, getUserContracts }
