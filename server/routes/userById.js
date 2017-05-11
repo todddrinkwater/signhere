@@ -3,14 +3,21 @@ var router = express.Router()
 
 var db = require('../db')
 
+router.get('/', (req, res) => {
+  res.send({key: 'hello'})
+})
+
 router.get('/profile/:id', function (req, res) {
   var id = req.params.id
-  db.getUserById(id).then((result) => {
+  db.getUserById(id)
+  .then((result) => {
     res.send(result)
   })
   .catch((err) => {
+    // res.send({key: 'hello'})
     res.status(500).send(err)
   })
+  // res.send(`hello ${id}`)
 })
 
 router.get('/contracts/:id', function (req, res) {
