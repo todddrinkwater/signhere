@@ -16,7 +16,7 @@ export const loggedInUser = (user, dispatch) => {
       console.error('loggedInUser ' + err.message)
       return
     }
-    dispatch(getUserDetails(userInfo[0]))
+    dispatch(getUserDetails(userInfo))
     })
 }
 

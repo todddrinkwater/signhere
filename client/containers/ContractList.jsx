@@ -25,7 +25,6 @@ class ContractList extends React.Component {
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return {
     contracts: state.contracts[0].contractDetails
   }

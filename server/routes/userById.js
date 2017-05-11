@@ -14,10 +14,8 @@ router.get('/profile/:id', function (req, res) {
     res.send(result)
   })
   .catch((err) => {
-    // res.send({key: 'hello'})
     res.status(500).send(err)
   })
-  // res.send(`hello ${id}`)
 })
 
 router.get('/contracts/:id', function (req, res) {

@@ -5,9 +5,7 @@ class UserProfile extends React.Component {
   constructor (props) {
     super(props)
   }
-
   render () {
-    console.log(this.props.userDetails)
     return (
       <div className="userProfile">
         <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
