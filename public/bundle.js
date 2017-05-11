@@ -23788,10 +23788,6 @@
 	
 	var _redux = __webpack_require__(191);
 	
-	var _words = __webpack_require__(216);
-	
-	var _words2 = _interopRequireDefault(_words);
-	
 	var _user = __webpack_require__(217);
 	
 	var _user2 = _interopRequireDefault(_user);
@@ -23807,44 +23803,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = (0, _redux.combineReducers)({
-	  words: _words2.default,
 	  user: _user2.default,
 	  contracts: _contracts2.default,
 	  contract: _contract2.default
 	});
 
 /***/ }),
-/* 216 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	var words = function words() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	  var action = arguments[1];
-	
-	  switch (action.type) {
-	    case 'ADD_WORD':
-	      var newState = [].concat(_toConsumableArray(state), [{
-	        id: action.id,
-	        word: action.word
-	      }]);
-	      return newState;
-	
-	    default:
-	      return state;
-	  }
-	};
-	
-	exports.default = words;
-
-/***/ }),
+/* 216 */,
 /* 217 */
 /***/ (function(module, exports) {
 
@@ -27685,7 +27650,6 @@
 	}(_react2.default.Component);
 	
 	function mapStateToProps(state) {
-	  console.log(state);
 	  return {
 	    contracts: state.contracts[0].contractDetails
 	  };
@@ -27808,7 +27772,7 @@
 	      console.error('loggedInUser ' + err.message);
 	      return;
 	    }
-	    dispatch(getUserDetails(userInfo[0]));
+	    dispatch(getUserDetails(userInfo));
 	  });
 	};
 	
@@ -29950,7 +29914,6 @@
 	  _createClass(UserProfile, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.userDetails);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'userProfile' },
