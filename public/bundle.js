@@ -29850,6 +29850,11 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'note' },
+	          'WORK IN PROGRESS: To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.'
 	        )
 	      );
 	    }

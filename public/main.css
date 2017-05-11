@@ -242,6 +242,12 @@ body {
   padding-bottom: 2em;
 }
 
+.note {
+  padding: 0.5em;
+  width: 70%;
+  margin: auto;
+  background-color: #ffa3a3;
+}
 
 
 /* --- User Profile --- */
