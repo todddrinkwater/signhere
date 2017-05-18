@@ -187,7 +187,7 @@ body {
 /* --- App Container --- */
 
 .app-container {
-  padding-top: 2.5em;
+  padding-top: 4.5em;
   width: 90%;
   margin: auto;
 }
@@ -201,6 +201,10 @@ body {
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contractCard a {
+  text-decoration: none;
 }
 
 /* --- Login --- */
