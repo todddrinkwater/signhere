@@ -7,7 +7,6 @@ function getUserById(id){
   return knex('users')
     .where('id', Number(id))
     .first()
-
 }
 
 function getUserContracts(id){
@@ -15,4 +14,9 @@ function getUserContracts(id){
   .where('user_id', id)
 }
 
-module.exports = { getUserById, getUserContracts }
+function signContract (id, signatureUrl) {
+  return knex('contracts').where('id', id)
+  .update({signature_url: signatureUrl}).into('contracts')
+}
+
+module.exports = { getUserById, getUserContracts, signContract }

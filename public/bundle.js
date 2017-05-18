@@ -29977,6 +29977,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _api = __webpack_require__(271);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30012,9 +30014,26 @@
 	      }
 	
 	      this.clearSignature = function clear() {
-	        console.log('hit');
 	        signaturePad.clear();
 	      };
+	
+	      this.saveSignature = function save() {
+	        var dataUrl = signaturePad.toDataURL(); // save image as PNG
+	        window.open(dataUrl, "toDataURL() image"); // Checkpoint - opens a new window to check that png is working
+	        var contractId = this.props.contractDetails.id;
+	        var signatureData = {
+	          signature_url: dataUrl
+	        };
+	        (0, _api.updateUserContract)(testCallback, contractId, signatureData);
+	      };
+	
+	      function testCallback(err, status) {
+	        if (err) {
+	          console.log(err);
+	        } else {
+	          console.log(status);
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -30048,6 +30067,13 @@
 	                return _this2.clearSignature();
 	              } },
 	            'Clear'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.saveSignature();
+	              } },
+	            'Save'
 	          )
 	        )
 	      );
@@ -30064,6 +30090,26 @@
 	}
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contract);
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var request = __webpack_require__(260);
+	
+	var updateUserContract = function updateUserContract(callback, id, contractData) {
+	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
+	  });
+	};
+	
+	module.exports = { updateUserContract: updateUserContract };
 
 /***/ })
 /******/ ]);

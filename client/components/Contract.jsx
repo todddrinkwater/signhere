@@ -1,5 +1,8 @@
+
 import React from 'react'
 import { connect } from 'react-redux'
+
+import { updateUserContract } from '../api'
 
 class Contract extends React.Component {
   constructor(props){
@@ -22,10 +25,31 @@ class Contract extends React.Component {
        }
 
     this.clearSignature = function clear(){
-      console.log('hit');
       signaturePad.clear()
     }
+
+
+    this.saveSignature = function save(){
+      var dataUrl = signaturePad.toDataURL() // save image as PNG
+      window.open(dataUrl, "toDataURL() image") // Checkpoint - opens a new window to check that png is working
+      var contractId = this.props.contractDetails.id
+      var signatureData = {
+        signature_url: dataUrl
+      }
+      updateUserContract(testCallback, contractId, signatureData)
   }
+
+  function testCallback (err, status) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(status)
+    }
+  }
+
+}
+
+
 
   render () {
     return (
@@ -37,6 +61,7 @@ class Contract extends React.Component {
             <canvas></canvas>
           </div>
           <button onClick={() => this.clearSignature()}>Clear</button>
+          <button onClick={() => this.saveSignature()}>Save</button>
         </div>
       </div>
     )
