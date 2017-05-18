@@ -27638,9 +27638,34 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'contractList' },
-	        this.props.contracts.map(function (contract) {
-	          return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
-	        })
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Unsigned Contracts:'
+	          ),
+	          this.props.contracts.map(function (contract) {
+	            if (contract.signature_url == '') {
+	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
+	            }
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Signed Contracts:'
+	          ),
+	          this.props.contracts.map(function (contract) {
+	            if (contract.signature_url != '') {
+	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
+	            }
+	          })
+	        )
 	      );
 	    }
 	  }]);
