@@ -51,21 +51,26 @@ class Contract extends React.Component {
 
 
 
-  render () {
+  render() {
     return (
+
       <div className="contract">
         <h1>{this.props.contractDetails.contract_header}</h1>
         <p>{this.props.contractDetails.contract_desc}</p>
-        <div id="signature-pad" className="m-signature-pad">
-          <div className="m-signature-pad--body">
-            <canvas></canvas>
-          </div>
-          <button onClick={() => this.clearSignature()}>Clear</button>
-          <button onClick={() => this.saveSignature()}>Save</button>
-        </div>
+        { this.props.contractDetails.signature_url == '' ?
+        (
+           <div id="signature-pad" className="m-signature-pad">
+             <div className="m-signature-pad--body">
+               <canvas></canvas>
+             </div>
+             <button onClick={() => this.clearSignature()}>Clear</button>
+             <button onClick={() => this.saveSignature()}>Save</button>
+           </div>
+         )
+         :
+         ( <img src={this.props.contractDetails.signature_url} /> )}
       </div>
-    )
-  }
+    )}
 }
 
 
