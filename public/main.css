@@ -208,6 +208,14 @@ body {
   color: #f9586c;
 }
 
+/* --- New Contract Form --- */
+
+#contractDetails {
+  width: 85%;
+  padding: 1em;
+  margin: auto;
+}
+
 /* --- Login --- */
 
 .login {
