@@ -30227,10 +30227,17 @@
 	          _react2.default.createElement(
 	            "label",
 	            null,
+	            "Contract Title: "
+	          ),
+	          _react2.default.createElement("input", { type: "text", name: "contract_header" }),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(
+	            "label",
+	            null,
 	            "Contract Details:"
 	          ),
 	          _react2.default.createElement("br", null),
-	          _react2.default.createElement("textarea", { id: "contractDetails", name: "contractDetails", cols: "1", rows: "50" }),
+	          _react2.default.createElement("textarea", { id: "contractDetails", name: "contract_desc", cols: "1", rows: "50" }),
 	          _react2.default.createElement("br", null),
 	          _react2.default.createElement("input", { type: "submit", value: "Submit" })
 	        )
@@ -30243,6 +30250,13 @@
 	
 	function submitNewContract(e) {
 	  e.preventDefault(e);
+	  var writeContractForm = {
+	    fName: e.target.elements.fName.value,
+	    lName: e.target.element.lName.value,
+	    email: e.target.elements.email.value,
+	    contract_header: e.target.elements.contract_header.value,
+	    contract_desc: e.target.elements.contract_desc.value
+	  };
 	  console.log(e.target.elements.contractDetails.value, "submitNewContract");
 	}
 	

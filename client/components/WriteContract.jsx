@@ -19,7 +19,8 @@ class WriteContract extends React.Component {
           <label>First Name: </label><input type="text" name="fName" /><br />
           <label>Last Name: </label><input type="text" name="lName" /><br />
           <label>Email Address: </label><input type="text" name="email" /><br />
-          <label>Contract Details:</label><br /><textarea id="contractDetails" name="contractDetails" cols="1" rows="50"></textarea><br />
+          <label>Contract Title: </label><input type="text" name="contract_header" /><br />
+          <label>Contract Details:</label><br /><textarea id="contractDetails" name="contract_desc" cols="1" rows="50"></textarea><br />
           <input type="submit" value="Submit" />
         </form>
       </div>
@@ -31,6 +32,13 @@ class WriteContract extends React.Component {
 
 function submitNewContract(e){
   e.preventDefault(e)
+  var writeContractForm = {
+    fName: e.target.elements.fName.value,
+    lName: e.target.element.lName.value,
+    email: e.target.elements.email.value,
+    contract_header: e.target.elements.contract_header.value,
+    contract_desc: e.target.elements.contract_desc.value
+  }
   console.log(e.target.elements.contractDetails.value, "submitNewContract")
 }
 

@@ -19,4 +19,23 @@ function signContract (id, signatureUrl) {
   .update({signature_url: signatureUrl}).into('contracts')
 }
 
-module.exports = { getUserById, getUserContracts, signContract }
+// function newContract (id, contractDetails) {
+//   knex('users')
+//   .join('contracts', 'users.id', '=', 'contracts.user_id')
+//   .select('users.id', 'users.fName', 'users.lName', 'users.email', 'contracts.contract_header', 'contracts.contract_desc')
+//   .where('email', email)
+//   .insert({
+//     fName: ,
+//     lName: ,
+//     email: ,
+//     contract_header: ,
+//     contract_desc:
+//   }).into('contracts')
+// }
+
+// knex('users')
+// .join('contracts', 'users.id', '=', 'contracts.user_id')
+// .select('users.id', 'users.fName', 'users.lName', 'users.email', 'contracts.contract_header', 'contracts.contract_desc')
+
+
+module.exports = { getUserById, getUserContracts, signContract/*, newContract*/ }
