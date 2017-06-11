@@ -27839,6 +27839,25 @@
 	    dispatch(getContracts(userInfo));
 	  });
 	};
+	
+	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
+	  return {
+	    type: 'ADD_NEW_CONTRACT',
+	    newContractDetails: newContractDetails
+	  };
+	};
+	
+	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
+	  console.log(contractData);
+	  request.post('/user/contracts/new/' + id).send(contractData).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
+	    dispatch(addNewContract(contractData));
+	  });
+	};
 
 /***/ }),
 /* 260 */
@@ -30155,7 +30174,7 @@
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -30166,6 +30185,10 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30185,61 +30208,49 @@
 	  }
 	
 	  _createClass(WriteContract, [{
-	    key: "componentDidMount",
+	    key: 'componentDidMount',
 	    value: function componentDidMount() {}
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "WriteContract" },
+	        'div',
+	        { className: 'WriteContract' },
 	        _react2.default.createElement(
-	          "form",
-	          { method: "post", onSubmit: function onSubmit(e) {
-	              submitNewContract(e);
+	          'form',
+	          { method: 'post', onSubmit: function onSubmit(e) {
+	              submitNewContract(e, _this2.props.dispatch, _this2.props.userId);
 	            } },
 	          _react2.default.createElement(
-	            "h3",
+	            'h3',
 	            null,
-	            "Signee Details"
+	            'Signee Details'
 	          ),
 	          _react2.default.createElement(
-	            "label",
+	            'label',
 	            null,
-	            "First Name: "
+	            'Signee Address: '
 	          ),
-	          _react2.default.createElement("input", { type: "text", name: "fName" }),
-	          _react2.default.createElement("br", null),
+	          _react2.default.createElement('input', { type: 'text', name: 'signee_id' }),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
-	            "label",
+	            'label',
 	            null,
-	            "Last Name: "
+	            'Contract Title: '
 	          ),
-	          _react2.default.createElement("input", { type: "text", name: "lName" }),
-	          _react2.default.createElement("br", null),
+	          _react2.default.createElement('input', { type: 'text', name: 'contract_header' }),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
-	            "label",
+	            'label',
 	            null,
-	            "Email Address: "
+	            'Contract Details:'
 	          ),
-	          _react2.default.createElement("input", { type: "text", name: "email" }),
-	          _react2.default.createElement("br", null),
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            "Contract Title: "
-	          ),
-	          _react2.default.createElement("input", { type: "text", name: "contract_header" }),
-	          _react2.default.createElement("br", null),
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            "Contract Details:"
-	          ),
-	          _react2.default.createElement("br", null),
-	          _react2.default.createElement("textarea", { id: "contractDetails", name: "contract_desc", cols: "1", rows: "50" }),
-	          _react2.default.createElement("br", null),
-	          _react2.default.createElement("input", { type: "submit", value: "Submit" })
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('textarea', { id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
 	        )
 	      );
 	    }
@@ -30248,19 +30259,33 @@
 	  return WriteContract;
 	}(_react2.default.Component);
 	
-	function submitNewContract(e) {
+	function submitNewContract(e, dispatch, userId) {
 	  e.preventDefault(e);
 	  var writeContractForm = {
-	    fName: e.target.elements.fName.value,
-	    lName: e.target.element.lName.value,
-	    email: e.target.elements.email.value,
+	    signee_id: e.target.elements.signee_id.value,
 	    contract_header: e.target.elements.contract_header.value,
 	    contract_desc: e.target.elements.contract_desc.value
 	  };
-	  console.log(e.target.elements.contractDetails.value, "submitNewContract");
+	  (0, _index.writeNewContract)(writeContractForm, dispatch, userId, testCallback);
 	}
 	
-	exports.default = WriteContract;
+	function testCallback(err, status) {
+	  if (err) {
+	    console.log(err);
+	  } else {
+	    console.log(status);
+	  }
+	}
+	
+	function mapStateToProps(state) {
+	  console.log(state, "state");
+	  return {
+	    userId: state.user[0].loggedInUserDetails.id,
+	    dispatch: state.dispatch
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WriteContract);
 
 /***/ })
 /******/ ]);

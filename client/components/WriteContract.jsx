@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { writeNewContract } from '../actions/index'
 
 class WriteContract extends React.Component {
   constructor(props){
@@ -10,37 +13,44 @@ class WriteContract extends React.Component {
   }
 
 
-
   render() {
     return (
       <div className="WriteContract">
-        <form method="post" onSubmit={ (e) => { submitNewContract(e) } } >
+        <form method="post" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId) } } >
         <h3>Signee Details</h3>
-          <label>First Name: </label><input type="text" name="fName" /><br />
-          <label>Last Name: </label><input type="text" name="lName" /><br />
-          <label>Email Address: </label><input type="text" name="email" /><br />
+          <label>Signee Address: </label><input type="text" name="signee_id" /><br />
           <label>Contract Title: </label><input type="text" name="contract_header" /><br />
           <label>Contract Details:</label><br /><textarea id="contractDetails" name="contract_desc" cols="1" rows="50"></textarea><br />
           <input type="submit" value="Submit" />
         </form>
       </div>
     )}
-
-
-
 }
 
-function submitNewContract(e){
+function submitNewContract(e, dispatch, userId){
   e.preventDefault(e)
   var writeContractForm = {
-    fName: e.target.elements.fName.value,
-    lName: e.target.element.lName.value,
-    email: e.target.elements.email.value,
+    signee_id: e.target.elements.signee_id.value,
     contract_header: e.target.elements.contract_header.value,
     contract_desc: e.target.elements.contract_desc.value
   }
-  console.log(e.target.elements.contractDetails.value, "submitNewContract")
+  writeNewContract(writeContractForm, dispatch, userId, testCallback)
 }
 
+function testCallback (err, status) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(status)
+  }
+}
 
-export default WriteContract
+function mapStateToProps(state){
+  console.log(state, "state")
+    return {
+      userId: state.user[0].loggedInUserDetails.id,
+      dispatch: state.dispatch
+    }
+}
+
+export default connect(mapStateToProps)(WriteContract)

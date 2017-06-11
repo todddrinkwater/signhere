@@ -11,7 +11,7 @@ function getUserById(id){
 
 function getUserContracts(id){
   return knex('contracts')
-  .where('user_id', id)
+  .where('signee_id', id)
 }
 
 function signContract (id, signatureUrl) {
@@ -19,23 +19,20 @@ function signContract (id, signatureUrl) {
   .update({signature_url: signatureUrl}).into('contracts')
 }
 
-// function newContract (id, contractDetails) {
-//   knex('users')
-//   .join('contracts', 'users.id', '=', 'contracts.user_id')
-//   .select('users.id', 'users.fName', 'users.lName', 'users.email', 'contracts.contract_header', 'contracts.contract_desc')
-//   .where('email', email)
-//   .insert({
-//     fName: ,
-//     lName: ,
-//     email: ,
-//     contract_header: ,
-//     contract_desc:
-//   }).into('contracts')
-// }
-
-// knex('users')
-// .join('contracts', 'users.id', '=', 'contracts.user_id')
-// .select('users.id', 'users.fName', 'users.lName', 'users.email', 'contracts.contract_header', 'contracts.contract_desc')
+// Issue: I want to insert a new contract and persons details into a new contract which doesn't yet have a  contract record.
+// Contract could take on users existing id and match it with their record?
+// This means the user must already be signed up with the website
+function newContract (id, contractDetails) {
+  console.log(contractDetails, "details")
+  return knex('contracts')
+  .select('id', 'owner_id', 'signee_id', 'contract_header', 'contract_desc')
+  .insert({
+    owner_id: id,
+    signee_id: contractDetails.signee_id,
+    contract_header: contractDetails.contract_header,
+    contract_desc:contractDetails.contract_desc
+  }).into('contracts')
+}
 
 
-module.exports = { getUserById, getUserContracts, signContract/*, newContract*/ }
+module.exports = { getUserById, getUserContracts, signContract, newContract }
