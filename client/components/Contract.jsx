@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { connect } from 'react-redux'
 
@@ -75,6 +74,7 @@ class Contract extends React.Component {
 
 
 function mapStateToProps(state){
+  console.log(state)
   return {
     contractDetails: state.contract[0].singleContractDetails
   }

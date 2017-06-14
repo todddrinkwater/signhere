@@ -23877,18 +23877,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var contract = function contract() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
 	  switch (action.type) {
 	    case 'GET_SINGLE_CONTRACT':
-	      var newState = [].concat(_toConsumableArray(state), [{
+	      var newState = [{
 	        singleContractDetails: action.singleContractDetails
-	      }]);
+	      }];
 	      return newState;
 	
 	    default:
@@ -27675,7 +27672,6 @@
 	            'Signed Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
-	            console.log(contract);
 	            if (contract.signature_url != '' && contract.signature_url != null) {
 	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
 	            }
@@ -30143,6 +30139,7 @@
 	}(_react2.default.Component);
 	
 	function mapStateToProps(state) {
+	  console.log(state);
 	  return {
 	    contractDetails: state.contract[0].singleContractDetails
 	  };
