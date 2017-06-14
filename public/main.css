@@ -187,7 +187,7 @@ body {
 /* --- App Container --- */
 
 .app-container {
-  padding-top: 2.5em;
+  padding-top: 4.5em;
   width: 90%;
   margin: auto;
 }
@@ -201,6 +201,19 @@ body {
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contractCard a {
+  text-decoration: none;
+  color: #f9586c;
+}
+
+/* --- New Contract Form --- */
+
+#contractDetails {
+  width: 85%;
+  padding: 1em;
+  margin: auto;
 }
 
 /* --- Login --- */
@@ -239,9 +252,15 @@ body {
   font-family: 'Pacifico', cursive;
   font-size: 5em;
   text-align: center;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
+.note {
+  padding: 0.5em;
+  width: 70%;
+  margin: auto;
+  background-color: #ffa3a3;
+}
 
 
 /* --- User Profile --- */

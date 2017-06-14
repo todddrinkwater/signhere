@@ -46,3 +46,25 @@ export const getUserContracts = (user, dispatch) => {
     dispatch(getContracts(userInfo))
     })
 }
+
+export const addNewContract = newContractDetails => {
+  return {
+    type: 'ADD_NEW_CONTRACT',
+    newContractDetails
+  }
+}
+
+export const writeNewContract = (contractData, dispatch, id, callback) => {
+  console.log(contractData)
+  request
+    .post('/user/contracts/new/' + id)
+    .send(contractData)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null, "Status: 200")
+      }
+      dispatch(addNewContract(contractData))
+    })
+  }

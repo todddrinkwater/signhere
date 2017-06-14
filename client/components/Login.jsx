@@ -17,6 +17,10 @@ class Login extends React.Component {
           ID:<br/><input type="text" name="id" /><br />
           <input type='submit' value='Log In' />
         </form>
+        <div className="note">
+            WORK IN PROGRESS:
+            To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.
+        </div>
       </div>
     )
   }

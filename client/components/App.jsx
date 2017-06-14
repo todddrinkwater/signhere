@@ -9,6 +9,7 @@ import ContractList from '../containers/ContractList'
 import Login from './Login'
 import UserProfile from './UserProfile'
 import Contract from './Contract'
+import WriteContract from './WriteContract'
 
 function App (props) {
   return (
@@ -20,6 +21,8 @@ function App (props) {
           <Route path='/myContracts' component={ContractList} />
           <Route path='/contracttosign' component={Contract} />
           <Route path='/userprofile' component={UserProfile} />
+          <Route path='/newContract' component={WriteContract} />
+
         </div>
       </Router>
     </div>
