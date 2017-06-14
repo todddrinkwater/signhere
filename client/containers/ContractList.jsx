@@ -14,7 +14,7 @@ class ContractList extends React.Component {
         <div>
         <h1>Unsigned Contracts:</h1>
           {this.props.contracts.map( (contract) => {
-            if (contract.signature_url == ''){
+            if ( (contract.signature_url == '') || (contract.signature_url == null)){
               return (
                 <ContractCard key={contract.id} contract={contract} />
               )
@@ -26,7 +26,7 @@ class ContractList extends React.Component {
         <h1>Signed Contracts:</h1>
           {this.props.contracts.map( (contract) => {
             console.log(contract)
-            if (contract.signature_url != ''){
+            if (contract.signature_url != '' && contract.signature_url != null){
               return (
                 <ContractCard key={contract.id} contract={contract} />
               )

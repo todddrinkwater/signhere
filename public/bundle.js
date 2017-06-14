@@ -27661,7 +27661,7 @@
 	            'Unsigned Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
-	            if (contract.signature_url == '') {
+	            if (contract.signature_url == '' || contract.signature_url == null) {
 	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
 	            }
 	          })
@@ -27676,7 +27676,7 @@
 	          ),
 	          this.props.contracts.map(function (contract) {
 	            console.log(contract);
-	            if (contract.signature_url != '') {
+	            if (contract.signature_url != '' && contract.signature_url != null) {
 	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
 	            }
 	          })
@@ -30112,7 +30112,7 @@
 	          null,
 	          this.props.contractDetails.contract_desc
 	        ),
-	        this.props.contractDetails.signature_url == '' ? _react2.default.createElement(
+	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
 	          'div',
 	          { id: 'signature-pad', className: 'm-signature-pad' },
 	          _react2.default.createElement(
