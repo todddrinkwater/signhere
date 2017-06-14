@@ -40,7 +40,7 @@ class ContractList extends React.Component {
 
 function mapStateToProps(state){
   return {
-    contracts: state.contracts[0].contractDetails
+    contracts: state.contracts
   }
 }
 

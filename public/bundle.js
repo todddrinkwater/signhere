@@ -23856,10 +23856,11 @@
 	
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
-	      var newState = [].concat(_toConsumableArray(state), [{
-	        contractDetails: action.contractDetails
-	      }]);
-	      return newState;
+	      return action.contractDetails;
+	
+	    case 'ADD_NEW_CONTRACT':
+	      console.log(action);
+	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
 	
 	    default:
 	      return state;
@@ -27686,7 +27687,7 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    contracts: state.contracts[0].contractDetails
+	    contracts: state.contracts
 	  };
 	}
 	
