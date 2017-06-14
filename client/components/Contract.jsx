@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { connect } from 'react-redux'
 
@@ -31,7 +30,6 @@ class Contract extends React.Component {
 
     this.saveSignature = function save(){
       var dataUrl = signaturePad.toDataURL() // save image as PNG
-      window.open(dataUrl, "toDataURL() image") // Checkpoint - opens a new window to check that png is working
       var contractId = this.props.contractDetails.id
       var signatureData = {
         signature_url: dataUrl
@@ -57,7 +55,7 @@ class Contract extends React.Component {
       <div className="contract">
         <h1>{this.props.contractDetails.contract_header}</h1>
         <p>{this.props.contractDetails.contract_desc}</p>
-        { this.props.contractDetails.signature_url == '' ?
+        { this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null  ?
         (
            <div id="signature-pad" className="m-signature-pad">
              <div className="m-signature-pad--body">
@@ -75,6 +73,7 @@ class Contract extends React.Component {
 
 
 function mapStateToProps(state){
+  console.log(state)
   return {
     contractDetails: state.contract[0].singleContractDetails
   }

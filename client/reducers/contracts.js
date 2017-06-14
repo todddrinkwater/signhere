@@ -1,13 +1,14 @@
 const contracts = (state = [], action) => {
   switch (action.type) {
     case 'GET_USER_CONTRACTS':
-      const newState = [
+        return action.contractDetails
+
+    case 'ADD_NEW_CONTRACT':
+      console.log(action)
+      return [
         ...state,
-        {
-          contractDetails: action.contractDetails,
-        }
+         Object.assign({}, action.newContractDetails)
       ]
-      return newState
 
     default:
       return state

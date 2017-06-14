@@ -22,7 +22,6 @@ function App (props) {
           <Route path='/contracttosign' component={Contract} />
           <Route path='/userprofile' component={UserProfile} />
           <Route path='/newContract' component={WriteContract} />
-
         </div>
       </Router>
     </div>

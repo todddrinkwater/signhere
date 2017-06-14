@@ -23856,10 +23856,11 @@
 	
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
-	      var newState = [].concat(_toConsumableArray(state), [{
-	        contractDetails: action.contractDetails
-	      }]);
-	      return newState;
+	      return action.contractDetails;
+	
+	    case 'ADD_NEW_CONTRACT':
+	      console.log(action);
+	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
 	
 	    default:
 	      return state;
@@ -23877,18 +23878,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var contract = function contract() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
 	  switch (action.type) {
 	    case 'GET_SINGLE_CONTRACT':
-	      var newState = [].concat(_toConsumableArray(state), [{
+	      var newState = [{
 	        singleContractDetails: action.singleContractDetails
-	      }]);
+	      }];
 	      return newState;
 	
 	    default:
@@ -27661,7 +27659,7 @@
 	            'Unsigned Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
-	            if (contract.signature_url == '') {
+	            if (contract.signature_url == '' || contract.signature_url == null) {
 	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
 	            }
 	          })
@@ -27675,8 +27673,7 @@
 	            'Signed Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
-	            console.log(contract);
-	            if (contract.signature_url != '') {
+	            if (contract.signature_url != '' && contract.signature_url != null) {
 	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
 	            }
 	          })
@@ -27690,7 +27687,7 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    contracts: state.contracts[0].contractDetails
+	    contracts: state.contracts
 	  };
 	}
 	
@@ -30078,7 +30075,6 @@
 	
 	      this.saveSignature = function save() {
 	        var dataUrl = signaturePad.toDataURL(); // save image as PNG
-	        window.open(dataUrl, "toDataURL() image"); // Checkpoint - opens a new window to check that png is working
 	        var contractId = this.props.contractDetails.id;
 	        var signatureData = {
 	          signature_url: dataUrl
@@ -30112,7 +30108,7 @@
 	          null,
 	          this.props.contractDetails.contract_desc
 	        ),
-	        this.props.contractDetails.signature_url == '' ? _react2.default.createElement(
+	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
 	          'div',
 	          { id: 'signature-pad', className: 'm-signature-pad' },
 	          _react2.default.createElement(
@@ -30143,6 +30139,7 @@
 	}(_react2.default.Component);
 	
 	function mapStateToProps(state) {
+	  console.log(state);
 	  return {
 	    contractDetails: state.contract[0].singleContractDetails
 	  };
@@ -30278,7 +30275,6 @@
 	}
 	
 	function mapStateToProps(state) {
-	  console.log(state, "state");
 	  return {
 	    userId: state.user[0].loggedInUserDetails.id,
 	    dispatch: state.dispatch

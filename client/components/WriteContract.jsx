@@ -46,7 +46,6 @@ function testCallback (err, status) {
 }
 
 function mapStateToProps(state){
-  console.log(state, "state")
     return {
       userId: state.user[0].loggedInUserDetails.id,
       dispatch: state.dispatch
