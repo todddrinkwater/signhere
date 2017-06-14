@@ -32,7 +32,7 @@ router.put('/contracts/:id', function (req, res) {
   var id = req.params.id
   var signatureUrl = req.body.signature_url
   db.signContract(id, signatureUrl).then((result) => {
-    res.sendStatus(status)
+    res.send(result)
   })
   .catch((err) => {
     res.status(500).send(err)

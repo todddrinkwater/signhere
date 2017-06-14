@@ -19,9 +19,6 @@ function signContract (id, signatureUrl) {
   .update({signature_url: signatureUrl}).into('contracts')
 }
 
-// Issue: I want to insert a new contract and persons details into a new contract which doesn't yet have a  contract record.
-// Contract could take on users existing id and match it with their record?
-// This means the user must already be signed up with the website
 function newContract (id, contractDetails) {
   console.log(contractDetails, "details")
   return knex('contracts')

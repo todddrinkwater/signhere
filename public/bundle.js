@@ -30075,7 +30075,6 @@
 	
 	      this.saveSignature = function save() {
 	        var dataUrl = signaturePad.toDataURL(); // save image as PNG
-	        window.open(dataUrl, "toDataURL() image"); // Checkpoint - opens a new window to check that png is working
 	        var contractId = this.props.contractDetails.id;
 	        var signatureData = {
 	          signature_url: dataUrl
