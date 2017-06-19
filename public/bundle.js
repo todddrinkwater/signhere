@@ -30093,7 +30093,7 @@
 	        signaturePad.clear();
 	      };
 	
-	      this.saveSignature = function save(userId) {
+	      this.saveSignature = function save() {
 	        var dataUrl = signaturePad.toDataURL();
 	        var contractId = this.props.contractDetails.id;
 	        var signatureData = {
@@ -30248,16 +30248,18 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Signee Address: '
+	            'Signee ID: '
 	          ),
-	          _react2.default.createElement('input', { type: 'text', name: 'signee_id' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'writeContract-id', type: 'text', name: 'signee_id' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Contract Title: '
 	          ),
-	          _react2.default.createElement('input', { type: 'text', name: 'contract_header' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'writeContract-title', type: 'text', name: 'contract_header' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'label',
@@ -30265,9 +30267,9 @@
 	            'Contract Details:'
 	          ),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('textarea', { id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
+	          _react2.default.createElement('textarea', { className: 'writeContract-details', id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+	          _react2.default.createElement('input', { type: 'submit', className: 'writeContract-submit', value: 'Submit' })
 	        )
 	      );
 	    }

@@ -196,6 +196,7 @@ body {
 
 .contractCard {
   padding: 1em;
+  border-radius: 5px;
   background-size: cover;
   background-repeat: no-repeat;
   box-sizing: border-box;
@@ -208,13 +209,6 @@ body {
   color: #f9586c;
 }
 
-/* --- New Contract Form --- */
-
-#contractDetails {
-  width: 85%;
-  padding: 1em;
-  margin: auto;
-}
 
 /* --- Login --- */
 
@@ -238,7 +232,7 @@ body {
   width: 90%;
   padding: 12px 20px;
   margin: 5%;
-  border: 1px solid #ccc;
+  border: 1px solid #00d4c0;;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -267,6 +261,7 @@ body {
 
 .userProfile {
   width: 90%;
+  border-radius: 5px;
   margin: 1em auto 1em;
   padding: 1em;
   background-size: cover;
@@ -274,4 +269,48 @@ body {
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* --- Write New Contract Form --- */
+
+form {
+  margin: auto;
+}
+
+.writeContract-id {
+  width: 10em;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-title {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-details{
+  width: 80%;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-submit {
+  width: 80%;
+  color: white;
+  padding: 12px 20px;
+  margin: 1%;
+  background-color: #00d4c0;
+  border: 1px solid #00d4c0;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
