@@ -29,7 +29,7 @@ class Contract extends React.Component {
 
 
     this.saveSignature = function save(){
-      var dataUrl = signaturePad.toDataURL() // save image as PNG
+      var dataUrl = signaturePad.toDataURL()
       var contractId = this.props.contractDetails.id
       var signatureData = {
         signature_url: dataUrl
@@ -51,7 +51,6 @@ class Contract extends React.Component {
 
   render() {
     return (
-
       <div className="contract">
         <h1>{this.props.contractDetails.contract_header}</h1>
         <p>{this.props.contractDetails.contract_desc}</p>
@@ -62,7 +61,7 @@ class Contract extends React.Component {
                <canvas></canvas>
              </div>
              <button onClick={() => this.clearSignature()}>Clear</button>
-             <button onClick={() => this.saveSignature()}>Save</button>
+             <button onClick={() => this.saveSignature(this.props.id)}>Save</button>
            </div>
          )
          :
@@ -73,9 +72,10 @@ class Contract extends React.Component {
 
 
 function mapStateToProps(state){
-  console.log(state)
   return {
-    contractDetails: state.contract[0].singleContractDetails
+    contractDetails: state.contract[0].singleContractDetails,
+    id: state.user[0].loggedInUserDetails.id,
+    dispatch: state.dispatch
   }
 }
 

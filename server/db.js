@@ -16,11 +16,10 @@ function getUserContracts(id){
 
 function signContract (id, signatureUrl) {
   return knex('contracts').where('id', id)
-  .update({signature_url: signatureUrl}).into('contracts')
+  .update({ signature_url: signatureUrl }).into('contracts')
 }
 
 function newContract (id, contractDetails) {
-  console.log(contractDetails, "details")
   return knex('contracts')
   .select('id', 'owner_id', 'signee_id', 'contract_header', 'contract_desc')
   .insert({
