@@ -32,7 +32,7 @@ router.put('/contracts/:id', function (req, res) {
   var id = req.params.id
   var signatureUrl = req.body.signature_url
   db.signContract(id, signatureUrl).then((result) => {
-    res.send(result)
+    req.send("OK")
   })
   .catch((err) => {
     res.status(500).send(err)
@@ -42,7 +42,6 @@ router.put('/contracts/:id', function (req, res) {
 router.post('/contracts/new/:ownerId', function (req, res) {
   var ownerId = req.params.ownerId
   var contractDetails = req.body
-  console.log(ownerId, contractDetails);
   db.newContract(ownerId, contractDetails).then((result) => {
     res.send(result)
   })

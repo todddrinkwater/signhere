@@ -40,10 +40,33 @@ export const getUserContracts = (user, dispatch) => {
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
     if (err) {
-      console.error('loggedInUser ' + err.message)
+      console.error('getUserContracts ' + err.message)
       return
     }
     dispatch(getContracts(userInfo))
+    })
+}
+
+export const updateContract = contractData => {
+  return {
+    type: 'UPDATE_USER_CONTRACTS',
+    contractData
+  }
+}
+
+
+export const updateUserContract = (callback, id, contractData, dispatch) => {
+  request
+    .put('http://localhost:3000/user/contracts/' + id)
+    .set('Content-Type', 'application/json')
+    .send(contractData)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null, "Status: 200")
+      }
+      dispatch(updateContract(contractData))
     })
 }
 
