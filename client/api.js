@@ -1,14 +1,16 @@
-// const request = require('superagent')
-//
-// const getUserById = (callback, id) => {
-//   console.log(id, 'id');
-//   request
-//   .get('http://localhost:3000/user/' + id)
-//   .end(function (err, res) {
-//     if (err) {
-//       callback(err)
-//     } else {
-//       callback(null, res.body[0])
-//     }
-//   })
-// }
+const request = require('superagent')
+
+const updateUserContract = (callback, id, contractData) => {
+  request
+    .put('http://localhost:3000/user/contracts/' + id)
+    .set('Content-Type', 'application/json')
+    .send(contractData)
+    .end((err, res) => {
+      if (err) {
+        console.error('updateUserContract ' + err.message)
+        return
+       }
+    })
+}
+
+module.exports = { updateUserContract }

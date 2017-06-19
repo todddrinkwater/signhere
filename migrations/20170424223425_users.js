@@ -1,13 +1,13 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function (table) {
     table.increments('id')
     table.string('fName')
     table.string('lName')
-    table.string('organisation')
+    table.integer('phone')
     table.string('email')
-    table.integer('contract_id')
-    table.string('hash')
+    table.string('street_address')
+    table.string('suburb')
+    table.string('organisation')
 })
 };
 

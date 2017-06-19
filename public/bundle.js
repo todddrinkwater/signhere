@@ -23856,10 +23856,13 @@
 	
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
-	      var newState = [].concat(_toConsumableArray(state), [{
-	        contractDetails: action.contractDetails
-	      }]);
-	      return newState;
+	      return action.contractDetails;
+	
+	    case 'ADD_NEW_CONTRACT':
+	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
+	
+	    case 'UPDATE_USER_CONTRACTS':
+	      return action.contractData;
 	
 	    default:
 	      return state;
@@ -23877,18 +23880,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var contract = function contract() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
 	  switch (action.type) {
 	    case 'GET_SINGLE_CONTRACT':
-	      var newState = [].concat(_toConsumableArray(state), [{
+	      var newState = [{
 	        singleContractDetails: action.singleContractDetails
-	      }]);
+	      }];
 	      return newState;
 	
 	    default:
@@ -23934,6 +23934,10 @@
 	
 	var _Contract2 = _interopRequireDefault(_Contract);
 	
+	var _WriteContract = __webpack_require__(272);
+	
+	var _WriteContract2 = _interopRequireDefault(_WriteContract);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function App(props) {
@@ -23950,7 +23954,8 @@
 	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Login2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/myContracts', component: _ContractList2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/contracttosign', component: _Contract2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/userprofile', component: _UserProfile2.default })
+	        _react2.default.createElement(_reactRouterDom.Route, { path: '/userprofile', component: _UserProfile2.default }),
+	        _react2.default.createElement(_reactRouterDom.Route, { path: '/newContract', component: _WriteContract2.default })
 	      )
 	    )
 	  );
@@ -27570,7 +27575,16 @@
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/myContracts' },
-	                'Contract'
+	                'My Contracts'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouterDom.Link,
+	                { to: '/newContract' },
+	                'Create A Contract'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -27638,9 +27652,34 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'contractList' },
-	        this.props.contracts.map(function (contract) {
-	          return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
-	        })
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Unsigned Contracts:'
+	          ),
+	          this.props.contracts.map(function (contract) {
+	            if (contract.signature_url == '' || contract.signature_url == null) {
+	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
+	            }
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Signed Contracts:'
+	          ),
+	          this.props.contracts.map(function (contract) {
+	            if (contract.signature_url != '' && contract.signature_url != null) {
+	              return _react2.default.createElement(_ContractCard2.default, { key: contract.id, contract: contract });
+	            }
+	          })
+	        )
 	      );
 	    }
 	  }]);
@@ -27650,7 +27689,7 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    contracts: state.contracts[0].contractDetails
+	    contracts: state.contracts
 	  };
 	}
 	
@@ -27793,10 +27832,47 @@
 	  request.get('/user/contracts/' + user.id).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
-	      console.error('loggedInUser ' + err.message);
+	      console.error('getUserContracts ' + err.message);
 	      return;
 	    }
 	    dispatch(getContracts(userInfo));
+	  });
+	};
+	
+	var updateContract = exports.updateContract = function updateContract(contractData) {
+	  return {
+	    type: 'UPDATE_USER_CONTRACTS',
+	    contractData: contractData
+	  };
+	};
+	
+	var updateUserContract = exports.updateUserContract = function updateUserContract(callback, id, contractData, dispatch) {
+	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
+	    dispatch(updateContract(contractData));
+	  });
+	};
+	
+	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
+	  return {
+	    type: 'ADD_NEW_CONTRACT',
+	    newContractDetails: newContractDetails
+	  };
+	};
+	
+	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
+	  console.log(contractData);
+	  request.post('/user/contracts/new/' + id).send(contractData).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
+	    dispatch(addNewContract(contractData));
 	  });
 	};
 
@@ -29977,6 +30053,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _api = __webpack_require__(271);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30012,9 +30090,25 @@
 	      }
 	
 	      this.clearSignature = function clear() {
-	        console.log('hit');
 	        signaturePad.clear();
 	      };
+	
+	      this.saveSignature = function save() {
+	        var dataUrl = signaturePad.toDataURL();
+	        var contractId = this.props.contractDetails.id;
+	        var signatureData = {
+	          signature_url: dataUrl
+	        };
+	        (0, _api.updateUserContract)(testCallback, contractId, signatureData);
+	      };
+	
+	      function testCallback(err, status) {
+	        if (err) {
+	          console.log(err);
+	        } else {
+	          console.log(status);
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -30034,7 +30128,7 @@
 	          null,
 	          this.props.contractDetails.contract_desc
 	        ),
-	        _react2.default.createElement(
+	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
 	          'div',
 	          { id: 'signature-pad', className: 'm-signature-pad' },
 	          _react2.default.createElement(
@@ -30048,8 +30142,15 @@
 	                return _this2.clearSignature();
 	              } },
 	            'Clear'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return _this2.saveSignature(_this2.props.id);
+	              } },
+	            'Save'
 	          )
-	        )
+	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
 	      );
 	    }
 	  }]);
@@ -30059,11 +30160,150 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    contractDetails: state.contract[0].singleContractDetails
+	    contractDetails: state.contract[0].singleContractDetails,
+	    id: state.user[0].loggedInUserDetails.id,
+	    dispatch: state.dispatch
 	  };
 	}
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contract);
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var request = __webpack_require__(260);
+	
+	var updateUserContract = function updateUserContract(callback, id, contractData) {
+	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
+	    if (err) {
+	      console.error('updateUserContract ' + err.message);
+	      return;
+	    }
+	  });
+	};
+	
+	module.exports = { updateUserContract: updateUserContract };
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _index = __webpack_require__(259);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var WriteContract = function (_React$Component) {
+	  _inherits(WriteContract, _React$Component);
+	
+	  function WriteContract(props) {
+	    _classCallCheck(this, WriteContract);
+	
+	    return _possibleConstructorReturn(this, (WriteContract.__proto__ || Object.getPrototypeOf(WriteContract)).call(this, props));
+	  }
+	
+	  _createClass(WriteContract, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'WriteContract' },
+	        _react2.default.createElement(
+	          'form',
+	          { method: 'post', onSubmit: function onSubmit(e) {
+	              submitNewContract(e, _this2.props.dispatch, _this2.props.userId);
+	            } },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Signee Details'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Signee ID: '
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'writeContract-id', type: 'text', name: 'signee_id' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Contract Title: '
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'writeContract-title', type: 'text', name: 'contract_header' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Contract Details:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('textarea', { className: 'writeContract-details', id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'submit', className: 'writeContract-submit', value: 'Submit' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return WriteContract;
+	}(_react2.default.Component);
+	
+	function submitNewContract(e, dispatch, userId) {
+	  e.preventDefault(e);
+	  var writeContractForm = {
+	    signee_id: e.target.elements.signee_id.value,
+	    contract_header: e.target.elements.contract_header.value,
+	    contract_desc: e.target.elements.contract_desc.value
+	  };
+	  (0, _index.writeNewContract)(writeContractForm, dispatch, userId, testCallback);
+	}
+	
+	function testCallback(err, status) {
+	  if (err) {
+	    console.log(err);
+	  } else {
+	    console.log(status);
+	  }
+	}
+	
+	function mapStateToProps(state) {
+	  return {
+	    userId: state.user[0].loggedInUserDetails.id,
+	    dispatch: state.dispatch
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WriteContract);
 
 /***/ })
 /******/ ]);

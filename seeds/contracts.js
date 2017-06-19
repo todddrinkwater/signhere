@@ -1,13 +1,12 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('contracts').del()
     .then(function () {
       // Inserts seed entries
       return knex('contracts').insert([
-        {id: 1, user_id: 1, contract_header: 'Dishes', contract_desc: 'I will clean the dishes for a week.', signature_url: 'http://www.yogibedroom.com/wp-content/uploads/2013/05/jooe_k_signature.png', date_signed: '', isSigned: false},
-        {id: 2, user_id: 1, contract_header: 'Garbage', contract_desc: 'I will take out the garbage.', signature_url: 'http://www.mtel-kh.com/wp-content/uploads/2012/01/blue-signature.png', date_signed: '', isSigned: false},
-        {id: 3, user_id: 2, contract_header: 'Legend', contract_desc: 'I agree that Todd is an absolute legend.', signature_url: 'http://4.bp.blogspot.com/-PFN93k5bW6I/Ta_wbSg_r1I/AAAAAAAAABw/qPZlR2Kmqx8/s1600/signature.jpg', date_signed: '', isSigned: false}
+        {id: 1, owner_id: 1, signee_id: 2, contract_header: 'Rugby Coaching Position', contract_desc: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada. Pellentesque in ipsum id orci porta dapibus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Proin eget tortor risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Proin eget tortor risus.', signature_url: '', date_signed: '', isSigned: false},
+        {id: 2, owner_id: 1, signee_id: 2, contract_header: 'Arts Perfomance', contract_desc: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada. Pellentesque in ipsum id orci porta dapibus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Proin eget tortor risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Proin eget tortor risus.', signature_url: '', date_signed: '', isSigned: false},
+        {id: 3, owner_id: 2, signee_id: 1, contract_header: 'Field Trip', contract_desc: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada. Pellentesque in ipsum id orci porta dapibus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Proin eget tortor risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Proin eget tortor risus.', signature_url: '', date_signed: '', isSigned: false}
       ]);
     });
 };

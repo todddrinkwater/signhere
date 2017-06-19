@@ -11,14 +11,28 @@ class ContractList extends React.Component {
   render () {
     return (
       <div className="contractList">
-
-        {this.props.contracts.map( (contract) => {
-          return (
-            <ContractCard key={contract.id} contract={contract} />
-          )
-        })
-        }
-
+        <div>
+        <h1>Unsigned Contracts:</h1>
+          {this.props.contracts.map( (contract) => {
+            if ( (contract.signature_url == '') || (contract.signature_url == null) ){
+              return (
+                <ContractCard key={contract.id} contract={contract} />
+              )
+            }
+          })
+          }
+        </div>
+        <div>
+        <h1>Signed Contracts:</h1>
+          {this.props.contracts.map( (contract) => {
+            if (contract.signature_url != '' && contract.signature_url != null){
+              return (
+                <ContractCard key={contract.id} contract={contract} />
+              )
+            }
+          })
+          }
+        </div>
       </div>
       )
   }
@@ -26,7 +40,7 @@ class ContractList extends React.Component {
 
 function mapStateToProps(state){
   return {
-    contracts: state.contracts[0].contractDetails
+    contracts: state.contracts
   }
 }
 
