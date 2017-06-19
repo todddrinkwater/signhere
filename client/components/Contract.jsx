@@ -28,7 +28,7 @@ class Contract extends React.Component {
     }
 
 
-    this.saveSignature = function save(userId){
+    this.saveSignature = function save(){
       var dataUrl = signaturePad.toDataURL()
       var contractId = this.props.contractDetails.id
       var signatureData = {
