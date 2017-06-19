@@ -5,12 +5,11 @@ const updateUserContract = (callback, id, contractData) => {
     .put('http://localhost:3000/user/contracts/' + id)
     .set('Content-Type', 'application/json')
     .send(contractData)
-    .end(function (err, res) {
+    .end((err, res) => {
       if (err) {
-        callback(err)
-      } else {
-        callback(null, "Status: 200")
-      }
+        console.error('updateUserContract ' + err.message)
+        return
+       }
     })
 }
 

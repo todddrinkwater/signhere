@@ -23859,8 +23859,10 @@
 	      return action.contractDetails;
 	
 	    case 'ADD_NEW_CONTRACT':
-	      console.log(action);
 	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
+	
+	    case 'UPDATE_USER_CONTRACTS':
+	      return action.contractData;
 	
 	    default:
 	      return state;
@@ -27830,10 +27832,28 @@
 	  request.get('/user/contracts/' + user.id).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
-	      console.error('loggedInUser ' + err.message);
+	      console.error('getUserContracts ' + err.message);
 	      return;
 	    }
 	    dispatch(getContracts(userInfo));
+	  });
+	};
+	
+	var updateContract = exports.updateContract = function updateContract(contractData) {
+	  return {
+	    type: 'UPDATE_USER_CONTRACTS',
+	    contractData: contractData
+	  };
+	};
+	
+	var updateUserContract = exports.updateUserContract = function updateUserContract(callback, id, contractData, dispatch) {
+	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
+	    dispatch(updateContract(contractData));
 	  });
 	};
 	
@@ -30073,8 +30093,8 @@
 	        signaturePad.clear();
 	      };
 	
-	      this.saveSignature = function save() {
-	        var dataUrl = signaturePad.toDataURL(); // save image as PNG
+	      this.saveSignature = function save(userId) {
+	        var dataUrl = signaturePad.toDataURL();
 	        var contractId = this.props.contractDetails.id;
 	        var signatureData = {
 	          signature_url: dataUrl
@@ -30126,7 +30146,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { onClick: function onClick() {
-	                return _this2.saveSignature();
+	                return _this2.saveSignature(_this2.props.id);
 	              } },
 	            'Save'
 	          )
@@ -30139,9 +30159,10 @@
 	}(_react2.default.Component);
 	
 	function mapStateToProps(state) {
-	  console.log(state);
 	  return {
-	    contractDetails: state.contract[0].singleContractDetails
+	    contractDetails: state.contract[0].singleContractDetails,
+	    id: state.user[0].loggedInUserDetails.id,
+	    dispatch: state.dispatch
 	  };
 	}
 	
@@ -30158,9 +30179,8 @@
 	var updateUserContract = function updateUserContract(callback, id, contractData) {
 	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
 	    if (err) {
-	      callback(err);
-	    } else {
-	      callback(null, "Status: 200");
+	      console.error('updateUserContract ' + err.message);
+	      return;
 	    }
 	  });
 	};
