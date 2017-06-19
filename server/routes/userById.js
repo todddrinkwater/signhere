@@ -28,5 +28,27 @@ router.get('/contracts/:id', function (req, res) {
   })
 })
 
+router.put('/contracts/:id', function (req, res) {
+  var id = req.params.id
+  var signatureUrl = req.body.signature_url
+  db.signContract(id, signatureUrl).then((result) => {
+    req.send("OK")
+  })
+  .catch((err) => {
+    res.status(500).send(err)
+  })
+})
+
+router.post('/contracts/new/:ownerId', function (req, res) {
+  var ownerId = req.params.ownerId
+  var contractDetails = req.body
+  db.newContract(ownerId, contractDetails).then((result) => {
+    res.send(result)
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send(err)
+  })
+})
 
 module.exports = router
