@@ -27553,24 +27553,6 @@
 	            { className: 'nav-ul' },
 	            _react2.default.createElement(
 	              'li',
-	              { className: 'menu-button' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/' },
-	                'X'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-logo' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/' },
-	                'SignHere - Home'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
 	              null,
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
@@ -27594,6 +27576,15 @@
 	                _reactRouterDom.Link,
 	                { to: '/userprofile' },
 	                'Profile'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'nav-login' },
+	              _react2.default.createElement(
+	                _reactRouterDom.Link,
+	                { to: '/' },
+	                'Login'
 	              )
 	            )
 	          )

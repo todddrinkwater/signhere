@@ -132,6 +132,7 @@ body {
 
 /* --- Nav Bar --- */
 
+
 .menu-button {
   font-family: 'Covered By Your Grace', cursive;
 }
@@ -140,20 +141,15 @@ body {
   font-family: 'Copse', serif;
 }
 
-.nav-contact {
-  font-family: 'Copse', serif;
-  font-size: 1.5em;
-  margin: 0 auto;
-}
 
 .nav-ul {
   position: fixed;
     top: 0;
-    left: 0;
+    margin: auto;
     z-index: 9999;
-    width: 100%;
+    width: 85%;
     height: 3em;
-    padding-bottom: 0.5em;
+    padding-bottom: 2.2em;
     font-size: 1em;
 }
 
@@ -161,17 +157,26 @@ body {
 .navBar ul {
     list-style-type: none;
     margin: 0;
-    background-color: #333;
+    background-color: none;
+    border-bottom: 1px solid black;
 }
 
 .navBar li {
     float: left;
     margin: 0.7em;
+    font-size: 1.5em;
+}
+
+.navBar .nav-login {
+  float: right;
+  border: 1px solid #00d4c0;
+  border-radius: 35px;
+  padding: 0 10px;
 }
 
 .navBar li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     vertical-align: center;
     padding: 0;
