@@ -17,7 +17,7 @@ class WriteContract extends React.Component {
     return (
       <div className="WriteContract">
         <form method="post" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId) } } >
-        <h3>Signee Details</h3>
+        <h3>Write a new contract</h3>
           <label>Signee ID: </label><br /><input className="writeContract-id" type="text" name="signee_id" /><br />
           <label>Contract Title: </label><br /><input className="writeContract-title" type="text" name="contract_header" /><br />
           <label>Contract Details:</label><br /><textarea className="writeContract-details" id="contractDetails" name="contract_desc" cols="1" rows="50"></textarea><br />

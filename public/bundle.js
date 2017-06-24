@@ -27553,7 +27553,7 @@
 	            { className: 'nav-ul' },
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: 'nav-left-button' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/myContracts' },
@@ -27562,7 +27562,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: 'nav-left-button' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/newContract' },
@@ -27571,7 +27571,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              null,
+	              { className: 'nav-left-button' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/userprofile' },
@@ -27648,7 +27648,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'h1',
-	            null,
+	            { className: 'contractList-title' },
 	            'Unsigned Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
@@ -27662,7 +27662,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'h1',
-	            null,
+	            { className: 'contractList-title' },
 	            'Signed Contracts:'
 	          ),
 	          this.props.contracts.map(function (contract) {
@@ -29912,11 +29912,19 @@
 	          { className: 'loginForm', onSubmit: function onSubmit(e) {
 	              LogInUser(e, _this2.props.dispatch);
 	            } },
-	          'ID:',
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'ID:'
+	          ),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
 	          _react2.default.createElement('br', null),
-	          'Password:',
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Password:'
+	          ),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'text', name: 'password' }),
 	          _react2.default.createElement('br', null),
@@ -30005,13 +30013,23 @@
 	          _react2.default.createElement(
 	            'li',
 	            null,
-	            'Organisation: ',
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Organisation:'
+	            ),
+	            ' ',
 	            this.props.userDetails.organisation
 	          ),
 	          _react2.default.createElement(
 	            'li',
 	            null,
-	            'Email: ',
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Email:'
+	            ),
+	            ' ',
 	            this.props.userDetails.email
 	          )
 	        )
@@ -30238,7 +30256,7 @@
 	          _react2.default.createElement(
 	            'h3',
 	            null,
-	            'Signee Details'
+	            'Write a new contract'
 	          ),
 	          _react2.default.createElement(
 	            'label',

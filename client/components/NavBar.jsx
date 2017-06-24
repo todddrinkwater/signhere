@@ -8,9 +8,9 @@ class NavBar extends React.Component {
       <div className="navBar">
       <Router>
         <ul className="nav-ul">
-          <li><Link to='/myContracts'>My Contracts</Link></li>
-          <li><Link to='/newContract'>Create A Contract</Link></li>
-          <li><Link to='/userprofile'>Profile</Link></li>
+          <li className="nav-left-button"><Link to='/myContracts'>My Contracts</Link></li>
+          <li className="nav-left-button"><Link to='/newContract'>Create A Contract</Link></li>
+          <li className="nav-left-button"><Link to='/userprofile'>Profile</Link></li>
           <li className="nav-login"><Link to='/'>Login</Link></li>
         </ul>
         </Router>
