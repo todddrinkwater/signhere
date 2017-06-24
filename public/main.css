@@ -7,6 +7,7 @@ body {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  background: #f3f3f3;
 }
 
 
@@ -157,7 +158,7 @@ body {
 .navBar ul {
     list-style-type: none;
     margin: 0;
-    background-color: none;
+    background-color: #f3f3f3;
     border-bottom: 1px solid black;
 }
 
@@ -207,39 +208,45 @@ body {
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
 }
 
 .contractCard a {
   text-decoration: none;
-  color: #f9586c;
 }
 
 
 /* --- Login --- */
 
 .login {
-  padding-top: 10em;
+  padding-top: 6em;
   margin: auto;
 }
 
 .login input[type=text] {
-  width: 90%;
+  width: 25%;
   padding: 12px 20px;
-  margin: 1% 5%;
-  border: 1px solid #ccc;
+  margin: 3% 5%;
+  /*border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: border-box;*/
+
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: #f3f3f3;
 }
+
 
 .login input[type=submit] {
   background-color: #00d4c0;
   color: white;
-  width: 90%;
+  width: 25%;
   padding: 12px 20px;
-  margin: 5%;
+  margin-bottom: 3%;
   border: 1px solid #00d4c0;;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 0.9em;
 }
 
 .loginForm {
@@ -247,11 +254,12 @@ body {
   text-align: center;
 }
 
+
 .logo {
   font-family: 'Pacifico', cursive;
-  font-size: 5em;
+  font-size: 7em;
   text-align: center;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
 
 .note {

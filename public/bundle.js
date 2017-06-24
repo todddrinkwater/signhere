@@ -29916,6 +29916,10 @@
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
 	          _react2.default.createElement('br', null),
+	          'Password:',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'text', name: 'password' }),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
 	        ),
 	        _react2.default.createElement(
