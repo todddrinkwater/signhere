@@ -10,8 +10,8 @@ class UserProfile extends React.Component {
       <div className="userProfile">
         <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
         <ul>
-          <li>Organisation: {this.props.userDetails.organisation}</li>
-          <li>Email: {this.props.userDetails.email}</li>
+          <li><strong>Organisation:</strong> {this.props.userDetails.organisation}</li>
+          <li><strong>Email:</strong> {this.props.userDetails.email}</li>
         </ul>
       </div>
     )
