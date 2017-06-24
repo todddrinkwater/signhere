@@ -12,7 +12,7 @@ class ContractList extends React.Component {
     return (
       <div className="contractList">
         <div>
-        <h1>Unsigned Contracts:</h1>
+        <h1 className="contractList-title">Unsigned Contracts:</h1>
           {this.props.contracts.map( (contract) => {
             if ( (contract.signature_url == '') || (contract.signature_url == null) ){
               return (
@@ -23,7 +23,7 @@ class ContractList extends React.Component {
           }
         </div>
         <div>
-        <h1>Signed Contracts:</h1>
+        <h1 className="contractList-title">Signed Contracts:</h1>
           {this.props.contracts.map( (contract) => {
             if (contract.signature_url != '' && contract.signature_url != null){
               return (

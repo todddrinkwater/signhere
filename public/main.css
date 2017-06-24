@@ -7,6 +7,7 @@ body {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  background: #f3f3f3;
 }
 
 
@@ -20,9 +21,15 @@ body {
   padding: 1em;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contract p {
+  margin: 2em 1px;
 }
 
 .m-signature-pad {
@@ -132,6 +139,7 @@ body {
 
 /* --- Nav Bar --- */
 
+
 .menu-button {
   font-family: 'Covered By Your Grace', cursive;
 }
@@ -140,20 +148,15 @@ body {
   font-family: 'Copse', serif;
 }
 
-.nav-contact {
-  font-family: 'Copse', serif;
-  font-size: 1.5em;
-  margin: 0 auto;
-}
 
 .nav-ul {
   position: fixed;
     top: 0;
-    left: 0;
+    margin: auto;
     z-index: 9999;
-    width: 100%;
+    width: 85%;
     height: 3em;
-    padding-bottom: 0.5em;
+    padding-bottom: 2.2em;
     font-size: 1em;
 }
 
@@ -161,17 +164,27 @@ body {
 .navBar ul {
     list-style-type: none;
     margin: 0;
-    background-color: #333;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid black;
 }
 
 .navBar li {
     float: left;
     margin: 0.7em;
+    font-size: 1.5em;
 }
+
+.navBar .nav-login {
+  float: right;
+  border: 1px solid #00d4c0;
+  border-radius: 35px;
+  padding: 0 10px;
+}
+
 
 .navBar li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     vertical-align: center;
     padding: 0;
@@ -179,9 +192,15 @@ body {
     text-decoration: none;
 }
 
-.navBar li a:hover {
+.nav-left-button a:hover {
     color: #ff0358;
 }
+
+.navBar .nav-login:hover {
+  border: 1px solid #454592;
+  color: black;
+}
+
 
 
 /* --- App Container --- */
@@ -202,39 +221,50 @@ body {
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
 }
 
 .contractCard a {
   text-decoration: none;
-  color: #f9586c;
 }
 
+/* -- Contract Page --*/
+
+.contractList .contractList-title {
+  margin-top: 1.5em;
+}
 
 /* --- Login --- */
 
 .login {
-  padding-top: 10em;
+  padding-top: 5em;
   margin: auto;
 }
 
 .login input[type=text] {
-  width: 90%;
+  width: 25%;
   padding: 12px 20px;
-  margin: 1% 5%;
-  border: 1px solid #ccc;
+  margin: 3% 5%;
+  /*border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: border-box;*/
+
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: #f3f3f3;
 }
+
 
 .login input[type=submit] {
   background-color: #00d4c0;
   color: white;
-  width: 90%;
+  width: 25%;
   padding: 12px 20px;
-  margin: 5%;
+  margin-bottom: 3%;
   border: 1px solid #00d4c0;;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 0.9em;
 }
 
 .loginForm {
@@ -242,11 +272,16 @@ body {
   text-align: center;
 }
 
+.loginForm label {
+  font-size: 1.3em;
+}
+
+
 .logo {
   font-family: 'Pacifico', cursive;
-  font-size: 5em;
+  font-size: 7em;
   text-align: center;
-  padding-bottom: 1em;
+  padding-bottom: 0.3em;
 }
 
 .note {
@@ -266,15 +301,30 @@ body {
   padding: 1em;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: white;
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.userProfile h3 {
+  margin-left: 1em;
+}
+
+.userProfile ul li {
+  list-style-type: none;
+  font-size: 1.4em;
+}
+
 /* --- Write New Contract Form --- */
 
-form {
-  margin: auto;
+
+.WriteContract {
+  padding-left: 10%;
+}
+
+.WriteContract h3 {
+  font-size: 2em;
 }
 
 .writeContract-id {
@@ -313,4 +363,5 @@ form {
   border: 1px solid #00d4c0;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 0.9em;
 }
