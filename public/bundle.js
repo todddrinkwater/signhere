@@ -27599,7 +27599,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'dropbtn' },
-	            _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
+	            _react2.default.createElement('i', { className: 'fa fa-bars fa-2x', 'aria-hidden': 'true' })
 	          ),
 	          _react2.default.createElement(
 	            'div',

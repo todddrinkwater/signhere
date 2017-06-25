@@ -18,7 +18,7 @@ class NavBar extends React.Component {
         </div>
 
           <div className="dropdown">
-            <div className="dropbtn"><i className="fa fa-bars" aria-hidden="true"></i></div>
+            <div className="dropbtn"><i className="fa fa-bars fa-2x" aria-hidden="true"></i></div>
             <div className="dropdown-content">
               <Router>
                 <div className="dropdown-content">
