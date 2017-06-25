@@ -1,0 +1,389 @@
+/** {
+  border: 1px solid black;
+}*/
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  background: #f3f3f3;
+}
+
+
+
+
+/* --- Signature Pad --- */
+
+.contract {
+  width: 90%;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contract p {
+  margin: 2em 1px;
+}
+
+.m-signature-pad {
+  position: relative;
+  font-size: 10px;
+  width: 40%;
+  height: 15em;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
+  border-radius: 4px;
+  margin: auto;
+}
+
+.m-signature-pad:before, .m-signature-pad:after {
+	position: absolute;
+    z-index: -1;
+    content: "";
+	width: 40%;
+	height: 10px;
+	left: 20px;
+	bottom: 10px;
+	background: transparent;
+	-webkit-transform: skew(-3deg) rotate(-3deg);
+	-moz-transform: skew(-3deg) rotate(-3deg);
+	-ms-transform: skew(-3deg) rotate(-3deg);
+	-o-transform: skew(-3deg) rotate(-3deg);
+	transform: skew(-3deg) rotate(-3deg);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.m-signature-pad:after {
+	left: auto;
+	right: 20px;
+	-webkit-transform: skew(3deg) rotate(3deg);
+	-moz-transform: skew(3deg) rotate(3deg);
+	-ms-transform: skew(3deg) rotate(3deg);
+	-o-transform: skew(3deg) rotate(3deg);
+	transform: skew(3deg) rotate(3deg);
+}
+
+.m-signature-pad--body {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  border: 1px solid #f4f4f4;
+}
+
+.m-signature-pad--body
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+  }
+
+@media screen and (max-width: 1024px) {
+  .m-signature-pad {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: auto;
+    min-width: 100px;
+    min-height: 100px;
+    margin: auto;
+  }
+  #github {
+    display: none;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+/* --- Signature Pad --- */
+  .m-signature-pad {
+    margin: auto;
+  }
+}
+
+@media screen and (max-height: 320px) {
+  /* --- Signature Pad --- */
+  .m-signature-pad--body {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 32px;
+    margin: auto
+  }
+  .m-signature-pad--footer {
+    left: 20px;
+    right: 20px;
+    bottom: 4px;
+    height: 28px;
+  }
+  .m-signature-pad--footer
+    .description {
+      font-size: 1em;
+      margin-top: 1em;
+    }
+}
+
+/* --- Nav Bar --- */
+
+.nav-ul {
+  display: none;
+}
+
+.dropbtn {
+    color: black;
+    padding: 16px;
+    font-size: 2.5em;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+
+.dropdown {
+    width: 100%;
+    margin: auto;
+    position:fixed;
+    top: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 2em;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    width: 100%;
+}
+
+.dropdown:hover .dropbtn {
+    color: #22869e;
+}
+
+.navBar .nav-login {
+  float: right;
+  border: 1px solid #00d4c0;
+  border-radius: 35px;
+  padding: 0 10px;
+}
+
+
+.navBar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    vertical-align: center;
+    padding: 0;
+    margin: 0.5em;
+    text-decoration: none;
+}
+
+.nav-left-button a:hover {
+    color: #ff0358;
+}
+
+.navBar .nav-login:hover {
+  border: 1px solid #454592;
+  color: black;
+}
+
+/* -- Mobile NavBar -- */
+
+
+
+
+
+/* --- App Container --- */
+
+.app-container {
+  width: 100%;
+  margin: auto;
+}
+
+/* --- Contract Card --- */
+
+.contractCard {
+  padding: 1em;
+  border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+}
+
+.contractCard a {
+  text-decoration: none;
+}
+
+/* -- Contract Page --*/
+
+.contractList .contractList-title {
+  margin-top: 1.5em;
+}
+
+/* --- Login --- */
+
+.login {
+  margin: auto;
+}
+
+.login input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 3% 5%;
+  /*border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;*/
+
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: #f3f3f3;
+}
+
+
+.login input[type=submit] {
+  background-color: #22869e;
+  color: white;
+  width: 50%;
+  padding: 22px 30px;
+  margin-top: 1em;
+  margin-bottom: 3%;
+  border: 1px solid #22869e;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1.9em;
+}
+
+.loginForm {
+  padding-top: 5em;
+  text-align: center;
+}
+
+.loginForm label {
+  font-size: 2.5em;
+}
+
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 10em;
+  text-align: center;
+  padding-bottom: 0.3em;
+  padding-top: 1.5em;
+}
+
+.note {
+  padding: 0.5em;
+  width: 70%;
+  margin: auto;
+  background-color: #ffa3a3;
+}
+
+
+/* --- User Profile --- */
+
+.userProfile {
+  width: 90%;
+  border-radius: 5px;
+  margin: 1em auto 1em;
+  padding: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.userProfile h3 {
+  margin-left: 1em;
+}
+
+.userProfile ul li {
+  list-style-type: none;
+  font-size: 1.4em;
+}
+
+/* --- Write New Contract Form --- */
+
+
+.WriteContract {
+  padding-left: 10%;
+}
+
+.WriteContract h3 {
+  font-size: 2em;
+}
+
+.writeContract-id {
+  width: 10em;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-title {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-details{
+  width: 80%;
+  padding: 12px 20px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.writeContract-submit {
+  width: 80%;
+  color: white;
+  padding: 12px 20px;
+  margin: 1%;
+  background-color: #00d4c0;
+  border: 1px solid #00d4c0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}

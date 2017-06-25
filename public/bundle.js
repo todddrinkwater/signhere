@@ -27544,47 +27544,87 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'navBar' },
+	        null,
 	        _react2.default.createElement(
-	          _reactRouterDom.HashRouter,
-	          null,
+	          'div',
+	          { className: 'navBar' },
 	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav-ul' },
+	            _reactRouterDom.HashRouter,
+	            null,
 	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
+	              'ul',
+	              { className: 'nav-ul' },
 	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/myContracts' },
-	                'My Contracts'
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/myContracts' },
+	                  'My Contracts'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/newContract' },
+	                  'Create A Contract'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/userprofile' },
+	                  'Profile'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-login' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/' },
+	                  'Login'
+	                )
 	              )
-	            ),
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'dropdown' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'dropbtn' },
+	            _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'dropdown-content' },
 	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
+	              _reactRouterDom.HashRouter,
+	              null,
 	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/newContract' },
-	                'Create A Contract'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/userprofile' },
-	                'Profile'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-login' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/' },
-	                'Login'
+	                'div',
+	                { className: 'dropdown-content' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/myContracts' },
+	                  'My Contracts'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/newContract' },
+	                  'Create a Contract'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/userprofile' },
+	                  'Profile'
+	                )
 	              )
 	            )
 	          )
