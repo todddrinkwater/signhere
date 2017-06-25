@@ -16,7 +16,7 @@ body {
 /* --- Signature Pad --- */
 
 .contract {
-  width: 90%;
+  width: 95%;
   margin: 1em auto 1em;
   padding: 1em;
   background-size: cover;
@@ -35,12 +35,8 @@ body {
 .m-signature-pad {
   position: relative;
   font-size: 10px;
-  width: 40%;
-  height: 15em;
-  border: 1px solid #e8e8e8;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
-  border-radius: 4px;
+  width: 100%;
+  height: 30em;
   margin: auto;
 }
 
@@ -71,24 +67,16 @@ body {
 	transform: skew(3deg) rotate(3deg);
 }
 
-.m-signature-pad--body {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 20px;
-  bottom: 20px;
-  border: 1px solid #f4f4f4;
-}
+
 
 .m-signature-pad--body
   canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: 100%;
+    height: 15em;
     border-radius: 4px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    border: 1px solid black;
+    margin: 10px 0;
   }
 
 @media screen and (max-width: 1024px) {
@@ -97,15 +85,21 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 50%;
+    width: 95%;
     height: auto;
     min-width: 100px;
     min-height: 100px;
     margin: auto;
   }
-  #github {
-    display: none;
-  }
+}
+
+.signature-pad-btn {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #545454;
+  border-radius: 20px;
+  padding: 9px 10px;
+  font-size: 1.5em;
+  margin-left: 1em
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -329,21 +323,19 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.userProfile h3 {
+.userProfile h1 {
   margin-left: 1em;
+  font-size: 3em
 }
 
 .userProfile ul li {
   list-style-type: none;
-  font-size: 1.4em;
+  font-size: 2em;
 }
 
 /* --- Write New Contract Form --- */
 
 
-.WriteContract {
-  padding-left: 10%;
-}
 
 .WriteContract h3 {
   font-size: 2em;
@@ -359,31 +351,33 @@ body {
 }
 
 .writeContract-title {
-  width: 80%;
+  width: 100%;
   padding: 12px 20px;
   margin: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 1.6em;
 }
 
 .writeContract-details{
-  width: 80%;
+  width: 100%;
   padding: 12px 20px;
   margin: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 1.2em;
 }
 
 .writeContract-submit {
   width: 80%;
   color: white;
   padding: 12px 20px;
-  margin: 1%;
+  margin: 1% 10%;
   background-color: #00d4c0;
   border: 1px solid #00d4c0;
   border-radius: 4px;
   box-sizing: border-box;
-  font-size: 0.9em;
+  font-size: 1.5em;
 }

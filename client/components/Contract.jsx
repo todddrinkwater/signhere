@@ -60,8 +60,8 @@ class Contract extends React.Component {
              <div className="m-signature-pad--body">
                <canvas></canvas>
              </div>
-             <button onClick={() => this.clearSignature()}>Clear</button>
-             <button onClick={() => this.saveSignature(this.props.id)}>Save</button>
+             <button className="signature-pad-btn" onClick={() => this.clearSignature()}>Clear</button>
+             <button className="signature-pad-btn" onClick={() => this.saveSignature(this.props.id)}>Save</button>
            </div>
          )
          :

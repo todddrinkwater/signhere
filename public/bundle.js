@@ -30191,14 +30191,14 @@
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: function onClick() {
+	            { className: 'signature-pad-btn', onClick: function onClick() {
 	                return _this2.clearSignature();
 	              } },
 	            'Clear'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: function onClick() {
+	            { className: 'signature-pad-btn', onClick: function onClick() {
 	                return _this2.saveSignature(_this2.props.id);
 	              } },
 	            'Save'
