@@ -27624,6 +27624,11 @@
 	                  _reactRouterDom.Link,
 	                  { to: '/userprofile' },
 	                  'Profile'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/' },
+	                  'Login'
 	                )
 	              )
 	            )

@@ -25,6 +25,7 @@ class NavBar extends React.Component {
                   <Link to='/myContracts'>My Contracts</Link>
                   <Link to='/newContract'>Create a Contract</Link>
                   <Link to='/userprofile'>Profile</Link>
+                  <Link to='/'>Login</Link>
                 </div>
               </Router>
             </div>
