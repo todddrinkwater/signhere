@@ -54,31 +54,23 @@ export const updateContract = contractData => {
   }
 }
 
-
 export const updateUserContract = (callback, id, contractData, dispatch) => {
   request
     .put('http://localhost:3000/user/contracts/' + id)
     .set('Content-Type', 'application/json')
     .send(contractData)
-    .end(function (err, res) {
+    .end((err, res) => {
       if (err) {
-        callback(err)
-      } else {
-        callback(null, "Status: 200")
-      }
-      dispatch(updateContract(contractData))
+        console.error('updateUserContract ' + err.message)
+        return
+       }
+      getUserContracts(contractData, dispatch)
     })
 }
 
-export const addNewContract = newContractDetails => {
-  return {
-    type: 'ADD_NEW_CONTRACT',
-    newContractDetails
-  }
-}
+
 
 export const writeNewContract = (contractData, dispatch, id, callback) => {
-  console.log(contractData)
   request
     .post('/user/contracts/new/' + id)
     .send(contractData)
@@ -88,6 +80,6 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       } else {
         callback(null, "Status: 200")
       }
-      dispatch(addNewContract(contractData))
+      getUserContracts(contractData, dispatch)
     })
   }
