@@ -35,7 +35,6 @@ export const getContracts = contractDetails => {
 }
 
 export const getUserContracts = (user, dispatch) => {
-  console.log(user)
   request
   .get('/user/contracts/' + user.id)
   .end((err, res) => {
@@ -70,12 +69,6 @@ export const updateUserContract = (callback, id, contractData, dispatch) => {
 }
 
 
-export const addNewContract = newContractDetails => {
-  return {
-    type: 'ADD_NEW_CONTRACT',
-    newContractDetails
-  }
-}
 
 export const writeNewContract = (contractData, dispatch, id, callback) => {
   request

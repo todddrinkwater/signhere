@@ -7,7 +7,6 @@ import { updateUserContract } from '../actions/index'
 class Contract extends React.Component {
   constructor(props){
     super(props)
-    console.log(this.props)
   }
 
   componentDidMount() {
@@ -31,7 +30,6 @@ class Contract extends React.Component {
 
 
     this.saveSignature = function save(){
-      console.log("Save sig hit")
       var dataUrl = signaturePad.toDataURL()
       var contractId = this.props.contractDetails.id
       var userId = this.props.id

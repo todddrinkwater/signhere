@@ -23847,9 +23847,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var contracts = function contracts() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
@@ -23857,12 +23854,6 @@
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
 	      return action.contractDetails;
-	
-	    case 'ADD_NEW_CONTRACT':
-	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
-	
-	    case 'UPDATE_USER_CONTRACTS':
-	      return action.contractData;
 	
 	    default:
 	      return state;
@@ -27865,7 +27856,6 @@
 	};
 	
 	var getUserContracts = exports.getUserContracts = function getUserContracts(user, dispatch) {
-	  console.log(user);
 	  request.get('/user/contracts/' + user.id).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
@@ -27891,13 +27881,6 @@
 	    }
 	    getUserContracts(contractData, dispatch);
 	  });
-	};
-	
-	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
-	  return {
-	    type: 'ADD_NEW_CONTRACT',
-	    newContractDetails: newContractDetails
-	  };
 	};
 	
 	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
@@ -30133,10 +30116,7 @@
 	  function Contract(props) {
 	    _classCallCheck(this, Contract);
 	
-	    var _this = _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
-	
-	    console.log(_this.props);
-	    return _this;
+	    return _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
 	  }
 	
 	  _createClass(Contract, [{
@@ -30161,7 +30141,6 @@
 	      };
 	
 	      this.saveSignature = function save() {
-	        console.log("Save sig hit");
 	        var dataUrl = signaturePad.toDataURL();
 	        var contractId = this.props.contractDetails.id;
 	        var userId = this.props.id;
@@ -30265,6 +30244,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _reactRouterDom = __webpack_require__(220);
+	
 	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30329,7 +30310,11 @@
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('textarea', { className: 'writeContract-details', id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'submit', className: 'writeContract-submit', value: 'Submit' })
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'writeContract-submit', value: 'Submit' },
+	            'Submit'
+	          )
 	        )
 	      );
 	    }
