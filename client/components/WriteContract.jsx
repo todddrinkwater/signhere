@@ -30,6 +30,7 @@ class WriteContract extends React.Component {
 function submitNewContract(e, dispatch, userId){
   e.preventDefault(e)
   var writeContractForm = {
+    id: userId,
     signee_id: e.target.elements.signee_id.value,
     contract_header: e.target.elements.contract_header.value,
     contract_desc: e.target.elements.contract_desc.value

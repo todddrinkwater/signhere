@@ -23854,6 +23854,7 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
+	  console.log(action);
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
 	      return action.contractDetails;
@@ -27685,6 +27686,7 @@
 	  _createClass(ContractList, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'contractList' },
@@ -27865,6 +27867,7 @@
 	};
 	
 	var getUserContracts = exports.getUserContracts = function getUserContracts(user, dispatch) {
+	  console.log(user);
 	  request.get('/user/contracts/' + user.id).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
@@ -27901,14 +27904,15 @@
 	};
 	
 	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
-	  console.log(contractData);
+	  console.log(contractData.userId, "action user id");
 	  request.post('/user/contracts/new/' + id).send(contractData).end(function (err, res) {
 	    if (err) {
 	      callback(err);
 	    } else {
 	      callback(null, "Status: 200");
 	    }
-	    dispatch(addNewContract(contractData));
+	    //dispatch(addNewContract(contractData))
+	    getUserContracts(contractData, dispatch);
 	  });
 	};
 
@@ -30048,6 +30052,11 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
+	          'My Profile'
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
 	          this.props.userDetails.fName,
 	          ' ',
 	          this.props.userDetails.lName
@@ -30339,6 +30348,7 @@
 	function submitNewContract(e, dispatch, userId) {
 	  e.preventDefault(e);
 	  var writeContractForm = {
+	    id: userId,
 	    signee_id: e.target.elements.signee_id.value,
 	    contract_header: e.target.elements.contract_header.value,
 	    contract_desc: e.target.elements.contract_desc.value

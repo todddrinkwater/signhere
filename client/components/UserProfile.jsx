@@ -8,6 +8,7 @@ class UserProfile extends React.Component {
   render () {
     return (
       <div className="userProfile">
+        <h1>My Profile</h1>
         <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
         <ul>
           <li><strong>Organisation:</strong> {this.props.userDetails.organisation}</li>

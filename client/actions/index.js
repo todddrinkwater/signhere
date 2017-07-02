@@ -35,6 +35,7 @@ export const getContracts = contractDetails => {
 }
 
 export const getUserContracts = (user, dispatch) => {
+  console.log(user)
   request
   .get('/user/contracts/' + user.id)
   .end((err, res) => {
@@ -78,7 +79,7 @@ export const addNewContract = newContractDetails => {
 }
 
 export const writeNewContract = (contractData, dispatch, id, callback) => {
-  console.log(contractData)
+  console.log(contractData.userId, "action user id")
   request
     .post('/user/contracts/new/' + id)
     .send(contractData)
@@ -88,6 +89,7 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       } else {
         callback(null, "Status: 200")
       }
-      dispatch(addNewContract(contractData))
+      //dispatch(addNewContract(contractData))
+      getUserContracts(contractData, dispatch)
     })
   }

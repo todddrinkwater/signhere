@@ -9,6 +9,7 @@ class ContractList extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <div className="contractList">
         <div>
