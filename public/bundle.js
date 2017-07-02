@@ -27893,22 +27893,6 @@
 	  });
 	};
 	
-	// export const updateUserContract = (callback, id, contractData, dispatch) => {
-	//   console.log(contractData)
-	//   request
-	//     .put('http://localhost:3000/user/contracts/' + id)
-	//     .set('Content-Type', 'application/json')
-	//     .send(contractData)
-	//     .end(function (err, res) {
-	//       if (err) {
-	//         callback(err)
-	//       } else {
-	//         callback(null, "Status: 200")
-	//       }
-	//       getUserContracts(contractData, dispatch)
-	//     })
-	// }
-	
 	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
 	  return {
 	    type: 'ADD_NEW_CONTRACT',
@@ -30131,6 +30115,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _reactRouterDom = __webpack_require__(220);
+	
 	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30229,11 +30215,19 @@
 	            'Clear'
 	          ),
 	          _react2.default.createElement(
-	            'button',
-	            { className: 'signature-pad-btn', onClick: function onClick() {
-	                return _this2.saveSignature(_this2.props.id);
-	              } },
-	            'Save'
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/myContracts' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'signature-pad-btn', onClick: function onClick() {
+	                    return _this2.saveSignature(_this2.props.id);
+	                  } },
+	                'Save'
+	              )
+	            )
 	          )
 	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
 	      );

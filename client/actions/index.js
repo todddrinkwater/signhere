@@ -69,21 +69,6 @@ export const updateUserContract = (callback, id, contractData, dispatch) => {
     })
 }
 
-// export const updateUserContract = (callback, id, contractData, dispatch) => {
-//   console.log(contractData)
-//   request
-//     .put('http://localhost:3000/user/contracts/' + id)
-//     .set('Content-Type', 'application/json')
-//     .send(contractData)
-//     .end(function (err, res) {
-//       if (err) {
-//         callback(err)
-//       } else {
-//         callback(null, "Status: 200")
-//       }
-//       getUserContracts(contractData, dispatch)
-//     })
-// }
 
 export const addNewContract = newContractDetails => {
   return {

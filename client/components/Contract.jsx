@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
 import { updateUserContract } from '../actions/index'
 
@@ -65,8 +66,11 @@ class Contract extends React.Component {
              <div className="m-signature-pad--body">
                <canvas></canvas>
              </div>
+
              <button className="signature-pad-btn" onClick={() => this.clearSignature()}>Clear</button>
-             <button className="signature-pad-btn" onClick={() => this.saveSignature(this.props.id)}>Save</button>
+             <Router>
+              <Link to='/myContracts'><button className="signature-pad-btn" onClick={() => this.saveSignature(this.props.id)}>Save</button></Link>
+             </Router>
            </div>
          )
          :
