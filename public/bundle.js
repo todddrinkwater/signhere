@@ -23854,7 +23854,6 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
-	  console.log(action);
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
 	      return action.contractDetails;
@@ -23935,7 +23934,7 @@
 	
 	var _Contract2 = _interopRequireDefault(_Contract);
 	
-	var _WriteContract = __webpack_require__(272);
+	var _WriteContract = __webpack_require__(271);
 	
 	var _WriteContract2 = _interopRequireDefault(_WriteContract);
 	
@@ -27686,7 +27685,6 @@
 	  _createClass(ContractList, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'contractList' },
@@ -27888,13 +27886,28 @@
 	var updateUserContract = exports.updateUserContract = function updateUserContract(callback, id, contractData, dispatch) {
 	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
 	    if (err) {
-	      callback(err);
-	    } else {
-	      callback(null, "Status: 200");
+	      console.error('updateUserContract ' + err.message);
+	      return;
 	    }
-	    dispatch(updateContract(contractData));
+	    getUserContracts(contractData, dispatch);
 	  });
 	};
+	
+	// export const updateUserContract = (callback, id, contractData, dispatch) => {
+	//   console.log(contractData)
+	//   request
+	//     .put('http://localhost:3000/user/contracts/' + id)
+	//     .set('Content-Type', 'application/json')
+	//     .send(contractData)
+	//     .end(function (err, res) {
+	//       if (err) {
+	//         callback(err)
+	//       } else {
+	//         callback(null, "Status: 200")
+	//       }
+	//       getUserContracts(contractData, dispatch)
+	//     })
+	// }
 	
 	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
 	  return {
@@ -27904,14 +27917,12 @@
 	};
 	
 	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
-	  console.log(contractData.userId, "action user id");
 	  request.post('/user/contracts/new/' + id).send(contractData).end(function (err, res) {
 	    if (err) {
 	      callback(err);
 	    } else {
 	      callback(null, "Status: 200");
 	    }
-	    //dispatch(addNewContract(contractData))
 	    getUserContracts(contractData, dispatch);
 	  });
 	};
@@ -30120,7 +30131,7 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
-	var _api = __webpack_require__(271);
+	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30136,7 +30147,10 @@
 	  function Contract(props) {
 	    _classCallCheck(this, Contract);
 	
-	    return _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
+	
+	    console.log(_this.props);
+	    return _this;
 	  }
 	
 	  _createClass(Contract, [{
@@ -30161,12 +30175,16 @@
 	      };
 	
 	      this.saveSignature = function save() {
+	        console.log("Save sig hit");
 	        var dataUrl = signaturePad.toDataURL();
 	        var contractId = this.props.contractDetails.id;
+	        var userId = this.props.id;
+	        var dispatch = this.props.dispatch;
 	        var signatureData = {
-	          signature_url: dataUrl
+	          signature_url: dataUrl,
+	          id: userId
 	        };
-	        (0, _api.updateUserContract)(testCallback, contractId, signatureData);
+	        (0, _index.updateUserContract)(testCallback, contractId, signatureData, dispatch);
 	      };
 	
 	      function testCallback(err, status) {
@@ -30237,25 +30255,6 @@
 
 /***/ }),
 /* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var request = __webpack_require__(260);
-	
-	var updateUserContract = function updateUserContract(callback, id, contractData) {
-	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
-	    if (err) {
-	      console.error('updateUserContract ' + err.message);
-	      return;
-	    }
-	  });
-	};
-	
-	module.exports = { updateUserContract: updateUserContract };
-
-/***/ }),
-/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -1,5 +1,4 @@
 const contracts = (state = [], action) => {
-  console.log(action)
   switch (action.type) {
     case 'GET_USER_CONTRACTS':
         return action.contractDetails

@@ -55,21 +55,35 @@ export const updateContract = contractData => {
   }
 }
 
-
 export const updateUserContract = (callback, id, contractData, dispatch) => {
   request
     .put('http://localhost:3000/user/contracts/' + id)
     .set('Content-Type', 'application/json')
     .send(contractData)
-    .end(function (err, res) {
+    .end((err, res) => {
       if (err) {
-        callback(err)
-      } else {
-        callback(null, "Status: 200")
-      }
-      dispatch(updateContract(contractData))
+        console.error('updateUserContract ' + err.message)
+        return
+       }
+      getUserContracts(contractData, dispatch)
     })
 }
+
+// export const updateUserContract = (callback, id, contractData, dispatch) => {
+//   console.log(contractData)
+//   request
+//     .put('http://localhost:3000/user/contracts/' + id)
+//     .set('Content-Type', 'application/json')
+//     .send(contractData)
+//     .end(function (err, res) {
+//       if (err) {
+//         callback(err)
+//       } else {
+//         callback(null, "Status: 200")
+//       }
+//       getUserContracts(contractData, dispatch)
+//     })
+// }
 
 export const addNewContract = newContractDetails => {
   return {
@@ -79,7 +93,6 @@ export const addNewContract = newContractDetails => {
 }
 
 export const writeNewContract = (contractData, dispatch, id, callback) => {
-  console.log(contractData.userId, "action user id")
   request
     .post('/user/contracts/new/' + id)
     .send(contractData)
@@ -89,7 +102,6 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       } else {
         callback(null, "Status: 200")
       }
-      //dispatch(addNewContract(contractData))
       getUserContracts(contractData, dispatch)
     })
   }

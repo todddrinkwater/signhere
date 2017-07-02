@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateUserContract } from '../api'
+import { updateUserContract } from '../actions/index'
 
 class Contract extends React.Component {
   constructor(props){
     super(props)
+    console.log(this.props)
   }
 
   componentDidMount() {
@@ -29,12 +30,16 @@ class Contract extends React.Component {
 
 
     this.saveSignature = function save(){
+      console.log("Save sig hit")
       var dataUrl = signaturePad.toDataURL()
       var contractId = this.props.contractDetails.id
+      var userId = this.props.id
+      var dispatch = this.props.dispatch
       var signatureData = {
-        signature_url: dataUrl
+        signature_url: dataUrl,
+        id: userId
       }
-      updateUserContract(testCallback, contractId, signatureData)
+      updateUserContract(testCallback, contractId, signatureData, dispatch)
   }
 
   function testCallback (err, status) {
