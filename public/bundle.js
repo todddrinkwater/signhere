@@ -23847,9 +23847,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var contracts = function contracts() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
@@ -23857,12 +23854,6 @@
 	  switch (action.type) {
 	    case 'GET_USER_CONTRACTS':
 	      return action.contractDetails;
-	
-	    case 'ADD_NEW_CONTRACT':
-	      return [].concat(_toConsumableArray(state), [Object.assign({}, action.newContractDetails)]);
-	
-	    case 'UPDATE_USER_CONTRACTS':
-	      return action.contractData;
 	
 	    default:
 	      return state;
@@ -23934,7 +23925,7 @@
 	
 	var _Contract2 = _interopRequireDefault(_Contract);
 	
-	var _WriteContract = __webpack_require__(272);
+	var _WriteContract = __webpack_require__(271);
 	
 	var _WriteContract2 = _interopRequireDefault(_WriteContract);
 	
@@ -27544,47 +27535,92 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'navBar' },
+	        null,
 	        _react2.default.createElement(
-	          _reactRouterDom.HashRouter,
-	          null,
+	          'div',
+	          { className: 'navBar' },
 	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav-ul' },
+	            _reactRouterDom.HashRouter,
+	            null,
 	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
+	              'ul',
+	              { className: 'nav-ul' },
 	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/myContracts' },
-	                'My Contracts'
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/myContracts' },
+	                  'My Contracts'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/newContract' },
+	                  'Create A Contract'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-left-button' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/userprofile' },
+	                  'Profile'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-login' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/' },
+	                  'Login'
+	                )
 	              )
-	            ),
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'dropdown' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'dropbtn' },
+	            _react2.default.createElement('i', { className: 'fa fa-bars fa-2x', 'aria-hidden': 'true' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'dropdown-content' },
 	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
+	              _reactRouterDom.HashRouter,
+	              null,
 	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/newContract' },
-	                'Create A Contract'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-left-button' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/userprofile' },
-	                'Profile'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'nav-login' },
-	              _react2.default.createElement(
-	                _reactRouterDom.Link,
-	                { to: '/' },
-	                'Login'
+	                'div',
+	                { className: 'dropdown-content' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/myContracts' },
+	                  'My Contracts'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/newContract' },
+	                  'Create a Contract'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/userprofile' },
+	                  'Profile'
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/' },
+	                  'Login'
+	                )
 	              )
 	            )
 	          )
@@ -27840,30 +27876,21 @@
 	var updateUserContract = exports.updateUserContract = function updateUserContract(callback, id, contractData, dispatch) {
 	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
 	    if (err) {
-	      callback(err);
-	    } else {
-	      callback(null, "Status: 200");
+	      console.error('updateUserContract ' + err.message);
+	      return;
 	    }
-	    dispatch(updateContract(contractData));
+	    getUserContracts(contractData, dispatch);
 	  });
 	};
 	
-	var addNewContract = exports.addNewContract = function addNewContract(newContractDetails) {
-	  return {
-	    type: 'ADD_NEW_CONTRACT',
-	    newContractDetails: newContractDetails
-	  };
-	};
-	
 	var writeNewContract = exports.writeNewContract = function writeNewContract(contractData, dispatch, id, callback) {
-	  console.log(contractData);
 	  request.post('/user/contracts/new/' + id).send(contractData).end(function (err, res) {
 	    if (err) {
 	      callback(err);
 	    } else {
 	      callback(null, "Status: 200");
 	    }
-	    dispatch(addNewContract(contractData));
+	    getUserContracts(contractData, dispatch);
 	  });
 	};
 
@@ -30003,6 +30030,11 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
+	          'My Profile'
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
 	          this.props.userDetails.fName,
 	          ' ',
 	          this.props.userDetails.lName
@@ -30066,7 +30098,9 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
-	var _api = __webpack_require__(271);
+	var _reactRouterDom = __webpack_require__(220);
+	
+	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30109,10 +30143,13 @@
 	      this.saveSignature = function save() {
 	        var dataUrl = signaturePad.toDataURL();
 	        var contractId = this.props.contractDetails.id;
+	        var userId = this.props.id;
+	        var dispatch = this.props.dispatch;
 	        var signatureData = {
-	          signature_url: dataUrl
+	          signature_url: dataUrl,
+	          id: userId
 	        };
-	        (0, _api.updateUserContract)(testCallback, contractId, signatureData);
+	        (0, _index.updateUserContract)(testCallback, contractId, signatureData, dispatch);
 	      };
 	
 	      function testCallback(err, status) {
@@ -30151,17 +30188,25 @@
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: function onClick() {
+	            { className: 'signature-pad-btn', onClick: function onClick() {
 	                return _this2.clearSignature();
 	              } },
 	            'Clear'
 	          ),
 	          _react2.default.createElement(
-	            'button',
-	            { onClick: function onClick() {
-	                return _this2.saveSignature(_this2.props.id);
-	              } },
-	            'Save'
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/myContracts' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'signature-pad-btn', onClick: function onClick() {
+	                    return _this2.saveSignature(_this2.props.id);
+	                  } },
+	                'Save'
+	              )
+	            )
 	          )
 	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
 	      );
@@ -30187,25 +30232,6 @@
 
 	'use strict';
 	
-	var request = __webpack_require__(260);
-	
-	var updateUserContract = function updateUserContract(callback, id, contractData) {
-	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
-	    if (err) {
-	      console.error('updateUserContract ' + err.message);
-	      return;
-	    }
-	  });
-	};
-	
-	module.exports = { updateUserContract: updateUserContract };
-
-/***/ }),
-/* 272 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -30217,6 +30243,8 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _reactRedux = __webpack_require__(182);
+	
+	var _reactRouterDom = __webpack_require__(220);
 	
 	var _index = __webpack_require__(259);
 	
@@ -30282,7 +30310,11 @@
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('textarea', { className: 'writeContract-details', id: 'contractDetails', name: 'contract_desc', cols: '1', rows: '50' }),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'submit', className: 'writeContract-submit', value: 'Submit' })
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'writeContract-submit', value: 'Submit' },
+	            'Submit'
+	          )
 	        )
 	      );
 	    }
@@ -30294,6 +30326,7 @@
 	function submitNewContract(e, dispatch, userId) {
 	  e.preventDefault(e);
 	  var writeContractForm = {
+	    id: userId,
 	    signee_id: e.target.elements.signee_id.value,
 	    contract_header: e.target.elements.contract_header.value,
 	    contract_desc: e.target.elements.contract_desc.value

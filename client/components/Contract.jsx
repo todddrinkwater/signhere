@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
-import { updateUserContract } from '../api'
+import { updateUserContract } from '../actions/index'
 
 class Contract extends React.Component {
   constructor(props){
@@ -31,10 +32,13 @@ class Contract extends React.Component {
     this.saveSignature = function save(){
       var dataUrl = signaturePad.toDataURL()
       var contractId = this.props.contractDetails.id
+      var userId = this.props.id
+      var dispatch = this.props.dispatch
       var signatureData = {
-        signature_url: dataUrl
+        signature_url: dataUrl,
+        id: userId
       }
-      updateUserContract(testCallback, contractId, signatureData)
+      updateUserContract(testCallback, contractId, signatureData, dispatch)
   }
 
   function testCallback (err, status) {
@@ -60,8 +64,11 @@ class Contract extends React.Component {
              <div className="m-signature-pad--body">
                <canvas></canvas>
              </div>
-             <button onClick={() => this.clearSignature()}>Clear</button>
-             <button onClick={() => this.saveSignature(this.props.id)}>Save</button>
+
+             <button className="signature-pad-btn" onClick={() => this.clearSignature()}>Clear</button>
+             <Router>
+              <Link to='/myContracts'><button className="signature-pad-btn" onClick={() => this.saveSignature(this.props.id)}>Save</button></Link>
+             </Router>
            </div>
          )
          :

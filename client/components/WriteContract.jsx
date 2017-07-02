@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
 import { writeNewContract } from '../actions/index'
 
@@ -21,7 +22,7 @@ class WriteContract extends React.Component {
           <label>Signee ID: </label><br /><input className="writeContract-id" type="text" name="signee_id" /><br />
           <label>Contract Title: </label><br /><input className="writeContract-title" type="text" name="contract_header" /><br />
           <label>Contract Details:</label><br /><textarea className="writeContract-details" id="contractDetails" name="contract_desc" cols="1" rows="50"></textarea><br />
-          <input type="submit" className="writeContract-submit" value="Submit" />
+              <button type="submit" className="writeContract-submit" value="Submit">Submit</button>
         </form>
       </div>
     )}
@@ -30,6 +31,7 @@ class WriteContract extends React.Component {
 function submitNewContract(e, dispatch, userId){
   e.preventDefault(e)
   var writeContractForm = {
+    id: userId,
     signee_id: e.target.elements.signee_id.value,
     contract_header: e.target.elements.contract_header.value,
     contract_desc: e.target.elements.contract_desc.value

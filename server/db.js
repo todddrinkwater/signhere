@@ -16,6 +16,7 @@ function getUserContracts(id){
 
 function signContract (id, signatureUrl) {
   return knex('contracts').where('id', id)
+  .returning('id')
   .update({ signature_url: signatureUrl })
 }
 
