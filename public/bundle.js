@@ -27874,7 +27874,7 @@
 	};
 	
 	var updateUserContract = exports.updateUserContract = function updateUserContract(callback, id, contractData, dispatch) {
-	  request.put('http://localhost:3000/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
+	  request.put('/user/contracts/' + id).set('Content-Type', 'application/json').send(contractData).end(function (err, res) {
 	    if (err) {
 	      console.error('updateUserContract ' + err.message);
 	      return;

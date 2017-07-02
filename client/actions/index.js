@@ -56,7 +56,7 @@ export const updateContract = contractData => {
 
 export const updateUserContract = (callback, id, contractData, dispatch) => {
   request
-    .put('http://localhost:3000/user/contracts/' + id)
+    .put('/user/contracts/' + id)
     .set('Content-Type', 'application/json')
     .send(contractData)
     .end((err, res) => {
