@@ -21,7 +21,6 @@ function signContract (id, signatureUrl) {
 
 function newContract (id, contractDetails) {
   return knex('contracts')
-  .select('owner_id', 'signee_id', 'contract_header', 'contract_desc')
   .insert({
     owner_id: id,
     signee_id: contractDetails.signee_id,
