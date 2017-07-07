@@ -353,6 +353,7 @@ body {
   padding-left: 10%;
 }
 
+
 .WriteContract h3 {
   font-size: 2em;
 }
@@ -386,12 +387,11 @@ body {
 
 .writeContract-submit {
   width: 80%;
-  color: white;
   padding: 12px 20px;
   margin: 1%;
-  background-color: #00d4c0;
-  border: 1px solid #00d4c0;
-  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #6a3fbf;
+  border-radius: 35px;
   box-sizing: border-box;
   font-size: 0.9em;
 }
