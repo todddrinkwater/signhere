@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.integer('signee_id')
     table.string('contract_header')
     table.text('contract_desc')
-    table.string('signature_url')
+    table.text('signature_url')
     table.string('date_signed')
     table.boolean('isSigned')
   })
