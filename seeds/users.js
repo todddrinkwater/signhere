@@ -4,8 +4,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {id: 1, fName: 'Todd', lName: 'Drinkwater', organisation: 'TDD', email: 'todddrinkwaternz@gmail.com'},
-          {id: 2, fName: 'Blair', lName: 'Drinkwater', organisation: 'BDD', email: 'blaird@gmail.com'}
+        {fName: 'Todd', lName: 'Drinkwater', organisation: 'TDD', email: 'todddrinkwaternz@gmail.com'},
+          {fName: 'Blair', lName: 'Drinkwater', organisation: 'BDD', email: 'blaird@gmail.com'}
       ]);
     });
 };
