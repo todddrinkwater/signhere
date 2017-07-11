@@ -83,3 +83,16 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       getUserContracts(contractData, dispatch)
     })
   }
+
+  export const addNewUser = (userRegistrationForm, callback) => {
+    request
+      .post('/register/newUser')
+      .send(userRegistrationForm)
+      .end(function (err, res) {
+        if (err) {
+          callback(err)
+        } else {
+          callback(null, "Status: 200")
+        }
+      })
+  }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
 import { loggedInUser } from '../actions/index'
 import { getUserContracts } from '../actions/index'
@@ -18,6 +19,11 @@ class Login extends React.Component {
             <label>Password:</label><br /><input type="text" name="password" /><br />
         <input type='submit' value='Log In' />
         </form>
+        <div className="newUserLink">
+          <Router>
+            <Link to="/userRegistration">New user? Sign up here!</Link>
+          </Router>
+        </div>
         <div className="note">
             WORK IN PROGRESS:
             To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.

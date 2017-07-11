@@ -23923,6 +23923,10 @@
 	
 	var _WriteContract2 = _interopRequireDefault(_WriteContract);
 	
+	var _UserRegistration = __webpack_require__(272);
+	
+	var _UserRegistration2 = _interopRequireDefault(_UserRegistration);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function App(props) {
@@ -23940,7 +23944,8 @@
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/myContracts', component: _ContractList2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/contracttosign', component: _Contract2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/userprofile', component: _UserProfile2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/newContract', component: _WriteContract2.default })
+	        _react2.default.createElement(_reactRouterDom.Route, { path: '/newContract', component: _WriteContract2.default }),
+	        _react2.default.createElement(_reactRouterDom.Route, { path: '/userRegistration', component: _UserRegistration2.default })
 	      )
 	    )
 	  );
@@ -27529,7 +27534,6 @@
 	  _createClass(NavBar, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props, "navbar");
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27900,6 +27904,16 @@
 	      callback(null, "Status: 200");
 	    }
 	    getUserContracts(contractData, dispatch);
+	  });
+	};
+	
+	var addNewUser = exports.addNewUser = function addNewUser(userRegistrationForm, callback) {
+	  request.post('/register/newUser').send(userRegistrationForm).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null, "Status: 200");
+	    }
 	  });
 	};
 
@@ -29911,6 +29925,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _reactRouterDom = __webpack_require__(220);
+	
 	var _index = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29965,6 +29981,19 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'password' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'newUserLink' },
+	          _react2.default.createElement(
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/userRegistration' },
+	              'New user? Sign up here!'
+	            )
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -30083,7 +30112,7 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    userDetails: state.user[0].loggedInUserDetails
+	    userDetails: state.user
 	  };
 	}
 	
@@ -30353,12 +30382,169 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    userId: state.user[0].loggedInUserDetails.id,
+	    userId: state.user.id,
 	    dispatch: state.dispatch
 	  };
 	}
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WriteContract);
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _reactRouterDom = __webpack_require__(220);
+	
+	var _index = __webpack_require__(259);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserRegistration = function (_React$Component) {
+	  _inherits(UserRegistration, _React$Component);
+	
+	  function UserRegistration(props) {
+	    _classCallCheck(this, UserRegistration);
+	
+	    return _possibleConstructorReturn(this, (UserRegistration.__proto__ || Object.getPrototypeOf(UserRegistration)).call(this, props));
+	  }
+	
+	  _createClass(UserRegistration, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'WriteContract' },
+	        _react2.default.createElement(
+	          'form',
+	          { method: 'post', onSubmit: function onSubmit(e) {
+	              registerNewUser(e);
+	            } },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'New User Registration'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'First Name:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'fName' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Last Name:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'lName' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Organisation:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'organisation' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Phone Number:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'phone' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Email:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'email' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Street Address:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'street' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Suburb:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'suburb' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'newUser-submit', value: 'Sign Me Up!', name: 'submit' },
+	            'Submit'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return UserRegistration;
+	}(_react2.default.Component);
+	
+	function registerNewUser(e) {
+	  e.preventDefault(e);
+	  var userRegistrationForm = {
+	    fName: e.target.elements.fName.value,
+	    lName: e.target.elements.lName.value,
+	    organisation: e.target.elements.organisation.value,
+	    phone: e.target.elements.phone.value,
+	    email: e.target.elements.email.value,
+	    street_address: e.target.elements.street.value,
+	    suburb: e.target.elements.suburb.value
+	  };
+	  (0, _index.addNewUser)(userRegistrationForm, testCallback);
+	}
+	
+	function testCallback(err, status) {
+	  if (err) {
+	    console.log(err);
+	  } else {
+	    console.log(status);
+	  }
+	}
+	
+	function mapStateToProps(state) {
+	  return {
+	    dispatch: state.dispatch
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserRegistration);
 
 /***/ })
 /******/ ]);

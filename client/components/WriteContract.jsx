@@ -49,7 +49,7 @@ function testCallback (err, status) {
 
 function mapStateToProps(state){
     return {
-      userId: state.user[0].loggedInUserDetails.id,
+      userId: state.user.id,
       dispatch: state.dispatch
     }
 }

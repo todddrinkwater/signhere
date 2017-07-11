@@ -10,6 +10,7 @@ import Login from './Login'
 import UserProfile from './UserProfile'
 import Contract from './Contract'
 import WriteContract from './WriteContract'
+import UserRegistration from './UserRegistration'
 
 function App (props) {
   return (
@@ -22,6 +23,7 @@ function App (props) {
           <Route path='/contracttosign' component={Contract} />
           <Route path='/userprofile' component={UserProfile} />
           <Route path='/newContract' component={WriteContract} />
+          <Route path='/userRegistration' component={UserRegistration} />
         </div>
       </Router>
     </div>

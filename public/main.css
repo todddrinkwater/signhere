@@ -318,6 +318,14 @@ body {
   padding-bottom: 0.3em;
 }
 
+.newUserLink {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 1em;
+}
+
+
 .note {
   padding: 0.5em;
   width: 70%;
