@@ -11,7 +11,7 @@ export const loggedInUser = (user, dispatch) => {
   request
   .get('/user/profile/' + user.id)
   .end((err, res) => {
-    var userInfo = JSON.parse(res.text)
+    var userInfo = res.body
     if (err) {
       console.error('loggedInUser ' + err.message)
       return

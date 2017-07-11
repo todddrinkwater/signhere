@@ -16,7 +16,7 @@ class Login extends React.Component {
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
             <label>ID:</label><br /><input type="text" name="id" /><br />
             <label>Password:</label><br /><input type="text" name="password" /><br />
-          <input type='submit' value='Log In' />
+        <input type='submit' value='Log In' />
         </form>
         <div className="note">
             WORK IN PROGRESS:

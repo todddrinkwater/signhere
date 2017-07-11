@@ -23817,19 +23817,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	var user = function user() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	  var action = arguments[1];
 	
 	  switch (action.type) {
 	    case 'LOGGED_IN_USER':
-	      var newState = [].concat(_toConsumableArray(state), [{
-	        loggedInUserDetails: action.loggedInUserDetails
-	      }]);
-	      return newState;
+	      return action.loggedInUserDetails;
 	
 	    default:
 	      return state;
@@ -27513,6 +27507,8 @@
 	
 	var _reactRouterDom = __webpack_require__(220);
 	
+	var _reactRedux = __webpack_require__(182);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27524,15 +27520,16 @@
 	var NavBar = function (_React$Component) {
 	  _inherits(NavBar, _React$Component);
 	
-	  function NavBar() {
+	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 	
-	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
 	  }
 	
 	  _createClass(NavBar, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props, "navbar");
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27572,7 +27569,7 @@
 	                  'Profile'
 	                )
 	              ),
-	              _react2.default.createElement(
+	              this.props.user == null ? _react2.default.createElement(
 	                'li',
 	                { className: 'nav-login' },
 	                _react2.default.createElement(
@@ -27580,6 +27577,12 @@
 	                  { to: '/' },
 	                  'Login'
 	                )
+	              ) : _react2.default.createElement(
+	                'li',
+	                { className: 'welcome-text' },
+	                'Hey ',
+	                this.props.user.fName,
+	                '!'
 	              )
 	            )
 	          )
@@ -27632,7 +27635,13 @@
 	  return NavBar;
 	}(_react2.default.Component);
 	
-	exports.default = NavBar;
+	function mapStateToProps(state) {
+	  return {
+	    user: state.user
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(NavBar);
 
 /***/ }),
 /* 257 */
@@ -27832,7 +27841,7 @@
 	
 	var loggedInUser = exports.loggedInUser = function loggedInUser(user, dispatch) {
 	  request.get('/user/profile/' + user.id).end(function (err, res) {
-	    var userInfo = JSON.parse(res.text);
+	    var userInfo = res.body;
 	    if (err) {
 	      console.error('loggedInUser ' + err.message);
 	      return;
@@ -30219,7 +30228,7 @@
 	function mapStateToProps(state) {
 	  return {
 	    contractDetails: state.contract[0].singleContractDetails,
-	    id: state.user[0].loggedInUserDetails.id,
+	    id: state.user.id,
 	    dispatch: state.dispatch
 	  };
 	}

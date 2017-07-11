@@ -1,13 +1,7 @@
-const user = (state = [], action) => {
+const user = (state = null, action) => {
   switch (action.type) {
     case 'LOGGED_IN_USER':
-      const newState = [
-        ...state,
-        {
-          loggedInUserDetails: action.loggedInUserDetails,
-        }
-      ]
-      return newState
+      return action.loggedInUserDetails
 
     default:
       return state

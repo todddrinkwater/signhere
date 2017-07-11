@@ -231,6 +231,10 @@ body {
   color: black;
 }
 
+.navBar .welcome-text {
+  float: right;
+  padding: 10px;
+}
 
 
 /* --- App Container --- */

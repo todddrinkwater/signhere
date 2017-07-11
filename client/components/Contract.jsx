@@ -51,8 +51,6 @@ class Contract extends React.Component {
 
 }
 
-
-
   render() {
     return (
       <div className="contract">
@@ -81,7 +79,7 @@ class Contract extends React.Component {
 function mapStateToProps(state){
   return {
     contractDetails: state.contract[0].singleContractDetails,
-    id: state.user[0].loggedInUserDetails.id,
+    id: state.user.id,
     dispatch: state.dispatch
   }
 }

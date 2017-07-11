@@ -11,7 +11,7 @@ router.get('/profile/:id', function (req, res) {
   var id = req.params.id
   db.getUserById(id)
   .then((result) => {
-    res.send(result)
+    res.json(result)
   })
   .catch((err) => {
     res.status(500).send(err)
