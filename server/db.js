@@ -29,5 +29,18 @@ function newContract (id, contractDetails) {
   })
 }
 
+function newUser(newUserDetails){
+  return knex('users')
+  .insert({
+    fName: newUserDetails.fName,
+    lName: newUserDetails.lName,
+    organisation: newUserDetails.organisation,
+    phone:newUserDetails.phone,
+    email: newUserDetails.email,
+    street_address: newUserDetails.street_address,
+    suburb: newUserDetails.suburb
+  })
+}
 
-module.exports = { getUserById, getUserContracts, signContract, newContract }
+
+module.exports = { getUserById, getUserContracts, signContract, newContract, newUser }

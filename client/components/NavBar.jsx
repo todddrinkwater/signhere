@@ -1,18 +1,28 @@
 import React from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class NavBar extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
   render () {
     return (
       <div>
+
         <div className="navBar">
         <Router>
           <ul className="nav-ul">
             <li className="nav-left-button"><Link to='/myContracts'>My Contracts</Link></li>
             <li className="nav-left-button"><Link to='/newContract'>Create A Contract</Link></li>
             <li className="nav-left-button"><Link to='/userprofile'>Profile</Link></li>
+            { this.props.user == null ? (
             <li className="nav-login"><Link to='/'>Login</Link></li>
+          ) :
+          (
+            <li className="welcome-text">Hey {this.props.user.fName}!</li>
+          ) }
           </ul>
           </Router>
         </div>
@@ -35,4 +45,10 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+function mapStateToProps(state){
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(NavBar)

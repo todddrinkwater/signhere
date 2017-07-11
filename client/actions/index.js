@@ -11,7 +11,7 @@ export const loggedInUser = (user, dispatch) => {
   request
   .get('/user/profile/' + user.id)
   .end((err, res) => {
-    var userInfo = JSON.parse(res.text)
+    var userInfo = res.body
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
@@ -82,4 +82,17 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       }
       getUserContracts(contractData, dispatch)
     })
+  }
+
+  export const addNewUser = (userRegistrationForm, callback) => {
+    request
+      .post('/register/newUser')
+      .send(userRegistrationForm)
+      .end(function (err, res) {
+        if (err) {
+          callback(err)
+        } else {
+          callback(null, "Status: 200")
+        }
+      })
   }

@@ -21,7 +21,7 @@ class UserProfile extends React.Component {
 
 function mapStateToProps(state){
   return {
-    userDetails: state.user[0].loggedInUserDetails
+    userDetails: state.user
   }
 }
 
