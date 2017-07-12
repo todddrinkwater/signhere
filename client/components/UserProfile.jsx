@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 class UserProfile extends React.Component {
   constructor (props) {
     super(props)
+    console.log(props);
   }
+
   render () {
     return (
       <div className="userProfile">
@@ -13,6 +15,9 @@ class UserProfile extends React.Component {
         <ul>
           <li><strong>Organisation:</strong> {this.props.userDetails.organisation}</li>
           <li><strong>Email:</strong> {this.props.userDetails.email}</li>
+          <li><strong>Phone:</strong> {this.props.userDetails.phone}</li>
+          <li><strong>Street Address:</strong> {this.props.userDetails.street_address}</li>
+          <li><strong>Suburb:</strong> {this.props.userDetails.suburb}</li>
         </ul>
       </div>
     )
