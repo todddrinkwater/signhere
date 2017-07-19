@@ -11,8 +11,11 @@ test('test basic get request', t => {
     })
 })
 
+
 test('test that we can get the correct response object from the /profile route', t => {
-  let expected = {'id': null, 'email': null, 'fname': null, 'lname': null, 'hash': null, 'organisation': null, 'contract_id': null}
+  let expected = {'id': 1, 'fName': 'Todd', 'lName': 'Drinkwater', 'organisation': 'Company', 'email': 'todd@drinkwater.com', 'street_address': '70 King St', 'suburb': 'Kelburn', 'phone': 027027027}
+  // place actual test data in here.
+
 
   request(app)
   .get('/user/profile/1')
@@ -21,6 +24,7 @@ test('test that we can get the correct response object from the /profile route',
   .end(function(err, res) {
     if (err) throw err
     t.equal(Object.keys(res.body).length, Object.keys(expected).length, 'res.body has the correct keys within the object')
+    t.deepEqual(Object.keys(res.body).sort(), Object.keys(expected).sort(), 'res.body has the same key names within the object')
     t.end()
   })
 
