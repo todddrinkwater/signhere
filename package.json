@@ -55,6 +55,7 @@
     "knex": "^0.12.9",
     "nodemon": "^1.11.0",
     "pg": "^6.1.5",
+    "prop-types": "^15.5.10",
     "react-dropzone": "^3.13.3",
     "react-router-dom": "^4.1.1",
     "signature_pad": "^2.1.0",

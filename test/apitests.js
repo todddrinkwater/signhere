@@ -59,7 +59,6 @@ test('test that we can post data to the database to create a new contract', t =>
 })
 
 test('test that post has inserted the correct data', t => {
-
   let expected = {
     id: 1,
     signee_id: 2,
@@ -86,5 +85,8 @@ test('test that post has inserted the correct data', t => {
       t.equal(typeof(expected.isSigned), typeof(newEntry.isSigned), 'contract isSigned value is correct type')
       t.end()
     })
-
 })
+
+// Next steps:
+  // Delete test entries from database after test has run.
+  // Check update user contract works
