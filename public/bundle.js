@@ -27543,6 +27543,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
 	var _reactRouterDom = __webpack_require__(220);
 	
 	var _reactRedux = __webpack_require__(182);
@@ -27672,6 +27676,10 @@
 	  return NavBar;
 	}(_react2.default.Component);
 	
+	NavBar.propTypes = {
+	  user: _propTypes2.default.object
+	};
+	
 	function mapStateToProps(state) {
 	  return {
 	    user: state.user
@@ -27695,6 +27703,10 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
 	var _reactRedux = __webpack_require__(182);
 	
@@ -27759,6 +27771,10 @@
 	
 	  return ContractList;
 	}(_react2.default.Component);
+	
+	ContractList.propTypes = {
+	  contracts: _propTypes2.default.array
+	};
 	
 	function mapStateToProps(state) {
 	  return {
@@ -30073,6 +30089,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
 	var _reactRedux = __webpack_require__(182);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30089,10 +30109,7 @@
 	  function UserProfile(props) {
 	    _classCallCheck(this, UserProfile);
 	
-	    var _this = _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
-	
-	    console.log(props);
-	    return _this;
+	    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
 	  }
 	
 	  _createClass(UserProfile, [{
@@ -30179,6 +30196,10 @@
 	  return UserProfile;
 	}(_react2.default.Component);
 	
+	UserProfile.propTypes = {
+	  userDetails: _propTypes2.default.object
+	};
+	
 	function mapStateToProps(state) {
 	  return {
 	    userDetails: state.user
@@ -30227,10 +30248,7 @@
 	  function Contract(props) {
 	    _classCallCheck(this, Contract);
 	
-	    var _this = _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
-	
-	    console.log(_this.props, "props contract");
-	    return _this;
+	    return _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
 	  }
 	
 	  _createClass(Contract, [{
@@ -30361,6 +30379,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
 	var _reactRedux = __webpack_require__(182);
 	
 	var _reactRouterDom = __webpack_require__(220);
@@ -30460,6 +30482,10 @@
 	    console.log(status);
 	  }
 	}
+	
+	WriteContract.propTypes = {
+	  userId: _propTypes2.default.number
+	};
 	
 	function mapStateToProps(state) {
 	  return {

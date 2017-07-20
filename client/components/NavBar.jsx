@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -44,6 +45,11 @@ class NavBar extends React.Component {
     )
   }
 }
+
+NavBar.propTypes = {
+  user: PropTypes.object,
+}
+
 
 function mapStateToProps(state){
   return {

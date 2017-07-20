@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class UserProfile extends React.Component {
   constructor (props) {
     super(props)
-    console.log(props);
   }
 
   render () {
@@ -22,6 +22,10 @@ class UserProfile extends React.Component {
       </div>
     )
   }
+}
+
+UserProfile.propTypes = {
+  userDetails: PropTypes.object
 }
 
 function mapStateToProps(state){
