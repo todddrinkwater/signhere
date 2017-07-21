@@ -27565,7 +27565,10 @@
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 	
-	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	
+	    console.log(_this.props);
+	    return _this;
 	  }
 	
 	  _createClass(NavBar, [{
@@ -27620,10 +27623,8 @@
 	                )
 	              ) : _react2.default.createElement(
 	                'li',
-	                { className: 'welcome-text' },
-	                'Hey ',
-	                this.props.user.fName,
-	                '!'
+	                { className: 'welcome-img' },
+	                _react2.default.createElement('img', { className: 'nav-profile-img', src: this.props.user.user_image_url })
 	              )
 	            )
 	          )

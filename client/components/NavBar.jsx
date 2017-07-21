@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 class NavBar extends React.Component {
   constructor(props){
     super(props)
+    console.log(this.props);
   }
 
   render () {
@@ -22,7 +23,7 @@ class NavBar extends React.Component {
             <li className="nav-login"><Link to='/'>Login</Link></li>
           ) :
           (
-            <li className="welcome-text">Hey {this.props.user.fName}!</li>
+            <li className="welcome-img"><img className="nav-profile-img" src={this.props.user.user_image_url} /></li>
           ) }
           </ul>
           </Router>

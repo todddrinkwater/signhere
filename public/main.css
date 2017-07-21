@@ -231,9 +231,14 @@ body {
   color: black;
 }
 
-.navBar .welcome-text {
+.navBar .welcome-img {
   float: right;
-  padding: 10px;
+}
+
+.nav-profile-img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 4px;
 }
 
 
