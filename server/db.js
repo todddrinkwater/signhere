@@ -38,7 +38,8 @@ function newUser(newUserDetails){
     phone:newUserDetails.phone,
     email: newUserDetails.email,
     street_address: newUserDetails.street_address,
-    suburb: newUserDetails.suburb
+    suburb: newUserDetails.suburb,
+    user_image_url: newUserDetails.user_image_url
   })
 }
 

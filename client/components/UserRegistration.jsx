@@ -6,8 +6,8 @@ import request from 'superagent'
 
 import { addNewUser } from '../actions/index'
 
-const CLOUDINARY_UPLOAD_PRESET = 'hvh4tgigo'
-const CLOUDINARY_UPLOAD_URL = 'https://res.cloudinary.com/hvh4tgigo/image/upload/'
+const CLOUDINARY_UPLOAD_PRESET = 'm7lw5icy'
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/upload'
 
 
 class UserRegistration extends React.Component {
@@ -60,6 +60,7 @@ class UserRegistration extends React.Component {
           <label>Email:</label><br /><input className="userRegField" type="text" name="email"></input><br />
           <label>Street Address:</label><br /><input className="userRegField" type="text" name="street"></input><br />
           <label>Suburb:</label><br /><input className="userRegField" type="text" name="suburb"></input><br />
+          <label>Profile Picture URL:</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
           <div className='imageButtonAndDisplay'>
               <Dropzone className='dropzone'
                 onDrop={this.onImageDrop.bind(this)}
@@ -94,7 +95,9 @@ function registerNewUser(e){
     phone: e.target.elements.phone.value,
     email: e.target.elements.email.value,
     street_address: e.target.elements.street.value,
-    suburb: e.target.elements.suburb.value
+    suburb: e.target.elements.suburb.value,
+    user_image_url: e.target.user_image_url.value
+
   }
   addNewUser(userRegistrationForm, testCallback)
 }

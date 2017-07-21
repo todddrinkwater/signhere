@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('street_address')
     table.string('suburb')
     table.string('organisation')
+    table.string('user_image_url')
 })
 };
 

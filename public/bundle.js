@@ -30534,8 +30534,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var CLOUDINARY_UPLOAD_PRESET = 'hvh4tgigo';
-	var CLOUDINARY_UPLOAD_URL = 'https://res.cloudinary.com/hvh4tgigo/image/upload/';
+	var CLOUDINARY_UPLOAD_PRESET = 'm7lw5icy';
+	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/upload';
 	
 	var UserRegistration = function (_React$Component) {
 	  _inherits(UserRegistration, _React$Component);
@@ -30653,6 +30653,13 @@
 	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'suburb' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Profile Picture URL:'
+	          ),
+	          _react2.default.createElement('input', { type: 'text', name: 'user_image_url', readOnly: 'readonly', value: this.state.uploadedFileCloudinaryUrl }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
 	            'div',
 	            { className: 'imageButtonAndDisplay' },
 	            _react2.default.createElement(
@@ -30699,7 +30706,9 @@
 	    phone: e.target.elements.phone.value,
 	    email: e.target.elements.email.value,
 	    street_address: e.target.elements.street.value,
-	    suburb: e.target.elements.suburb.value
+	    suburb: e.target.elements.suburb.value,
+	    user_image_url: e.target.user_image_url.value
+	
 	  };
 	  (0, _index.addNewUser)(userRegistrationForm, testCallback);
 	}
