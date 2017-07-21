@@ -213,6 +213,12 @@ body {
   color: black;
 }
 
+.newUserLink {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 1em;
+}
 
 
 /* --- App Container --- */
@@ -327,6 +333,13 @@ body {
 .userProfile ul li {
   list-style-type: none;
   font-size: 2em;
+}
+
+.userProfile-img {
+  border-radius: 25px;
+  max-width: 200px;
+  max-height: 200px;
+  margin-left: 1em;
 }
 
 /* --- Write New Contract Form --- */

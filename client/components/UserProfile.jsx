@@ -11,6 +11,7 @@ class UserProfile extends React.Component {
     return (
       <div className="userProfile">
         <h1>My Profile</h1>
+        <img className="userProfile-img" src={this.props.userDetails.user_image_url} />
         <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
         <ul>
           <li><strong>Organisation:</strong> {this.props.userDetails.organisation}</li>

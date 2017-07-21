@@ -30123,6 +30123,7 @@
 	          null,
 	          'My Profile'
 	        ),
+	        _react2.default.createElement('img', { className: 'userProfile-img', src: this.props.userDetails.user_image_url }),
 	        _react2.default.createElement(
 	          'h1',
 	          null,

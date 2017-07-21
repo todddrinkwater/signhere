@@ -359,6 +359,11 @@ body {
   font-size: 1.4em;
 }
 
+.userProfile-img {
+  border-radius: 25px;
+  max-width: 150px;
+  max-height: 150px;
+}
 /* --- Write New Contract Form --- */
 
 
