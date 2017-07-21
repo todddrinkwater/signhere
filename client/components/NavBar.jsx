@@ -37,7 +37,11 @@ class NavBar extends React.Component {
                   <Link to='/myContracts'>My Contracts</Link>
                   <Link to='/newContract'>Create a Contract</Link>
                   <Link to='/userprofile'>Profile</Link>
-                  <Link to='/'>Login</Link>
+                  { this.props.user == null ? (
+                    <Link to='/'>Login</Link>
+                  ) : (
+                    <p></p>
+                    ) }
                 </div>
               </Router>
             </div>

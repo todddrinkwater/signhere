@@ -27661,11 +27661,11 @@
 	                  { to: '/userprofile' },
 	                  'Profile'
 	                ),
-	                _react2.default.createElement(
+	                this.props.user == null ? _react2.default.createElement(
 	                  _reactRouterDom.Link,
 	                  { to: '/' },
 	                  'Login'
-	                )
+	                ) : _react2.default.createElement('p', null)
 	              )
 	            )
 	          )
