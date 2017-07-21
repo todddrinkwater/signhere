@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import ContractCard from '../components/ContractCard'
@@ -36,6 +37,10 @@ class ContractList extends React.Component {
       </div>
       )
   }
+}
+
+ContractList.propTypes = {
+  contracts: PropTypes.array
 }
 
 function mapStateToProps(state){

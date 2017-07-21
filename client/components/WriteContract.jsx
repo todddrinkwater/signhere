@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
 
@@ -7,7 +8,7 @@ import { writeNewContract } from '../actions/index'
 class WriteContract extends React.Component {
   constructor(props){
     super(props)
-  }
+   }
 
   componentDidMount() {
 
@@ -45,6 +46,10 @@ function testCallback (err, status) {
   } else {
     console.log(status)
   }
+}
+
+WriteContract.propTypes = {
+  userId: PropTypes.number
 }
 
 function mapStateToProps(state){

@@ -1,17 +1,52 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
+import Dropzone from 'react-dropzone'
+import request from 'superagent'
 
 import { addNewUser } from '../actions/index'
+
+const CLOUDINARY_UPLOAD_PRESET = 'm7lw5icy'
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/upload'
+
 
 class UserRegistration extends React.Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      uploadedFile: null,
+      uploadedFileCloudinaryUrl: ''
+    }
   }
 
-  componentDidMount() {
+  onImageDrop (files) {
+    this.setState({
+      uploadedFile: files[0]
+    })
 
+    this.handleImageUpload(files[0])
   }
+
+  handleImageUpload (file) {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file)
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err)
+      }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        })
+      }
+    })
+  }
+
 
   render() {
     return (
@@ -25,7 +60,27 @@ class UserRegistration extends React.Component {
           <label>Email:</label><br /><input className="userRegField" type="text" name="email"></input><br />
           <label>Street Address:</label><br /><input className="userRegField" type="text" name="street"></input><br />
           <label>Suburb:</label><br /><input className="userRegField" type="text" name="suburb"></input><br />
-              <button type="submit" className="newUser-submit" value="Sign Me Up!" name="submit">Submit</button>
+          <label>Profile Picture URL:</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
+          <div className='imageButtonAndDisplay'>
+              <Dropzone className='dropzone'
+                onDrop={this.onImageDrop.bind(this)}
+                multiple={false}
+                accept='image/*'>
+                <div className='uploadButton'>Drop an image or click to select a file to upload.</div>
+              </Dropzone>
+              <div className='imageContainer'>
+                {
+                      this.state.uploadedFileCloudinaryUrl === ''
+                        ? null
+                        : (
+                          <div>
+                            <img className='uploadImage' src={this.state.uploadedFileCloudinaryUrl} />
+                          </div>
+                        )
+                      }
+              </div>
+            </div>
+          <button type="submit" className="newUser-submit" value="Sign Me Up!" name="submit">Submit</button>
         </form>
       </div>
     )}
@@ -40,7 +95,9 @@ function registerNewUser(e){
     phone: e.target.elements.phone.value,
     email: e.target.elements.email.value,
     street_address: e.target.elements.street.value,
-    suburb: e.target.elements.suburb.value
+    suburb: e.target.elements.suburb.value,
+    user_image_url: e.target.user_image_url.value
+
   }
   addNewUser(userRegistrationForm, testCallback)
 }

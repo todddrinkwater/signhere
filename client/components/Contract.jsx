@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
 
@@ -75,6 +76,10 @@ class Contract extends React.Component {
     )}
 }
 
+Contract.propTypes = {
+  contractDetails: PropTypes.object,
+  id: PropTypes.number
+}
 
 function mapStateToProps(state){
   return {

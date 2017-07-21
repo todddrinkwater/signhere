@@ -1,10 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class NavBar extends React.Component {
   constructor(props){
     super(props)
+    console.log(this.props);
   }
 
   render () {
@@ -21,7 +23,7 @@ class NavBar extends React.Component {
             <li className="nav-login"><Link to='/'>Login</Link></li>
           ) :
           (
-            <li className="welcome-text">Hey {this.props.user.fName}!</li>
+            <li className="welcome-img"><img className="nav-profile-img" src={this.props.user.user_image_url} /></li>
           ) }
           </ul>
           </Router>
@@ -35,7 +37,11 @@ class NavBar extends React.Component {
                   <Link to='/myContracts'>My Contracts</Link>
                   <Link to='/newContract'>Create a Contract</Link>
                   <Link to='/userprofile'>Profile</Link>
-                  <Link to='/'>Login</Link>
+                  { this.props.user == null ? (
+                    <Link to='/'>Login</Link>
+                  ) : (
+                    <p></p>
+                    ) }
                 </div>
               </Router>
             </div>
@@ -44,6 +50,11 @@ class NavBar extends React.Component {
     )
   }
 }
+
+NavBar.propTypes = {
+  user: PropTypes.object,
+}
+
 
 function mapStateToProps(state){
   return {

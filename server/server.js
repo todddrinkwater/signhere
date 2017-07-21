@@ -9,7 +9,7 @@ var newUser = require('./routes/newUser')
 
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
-server.use(cors())
+server.use(cors({origin: '*'}))
 server.use('/user/', userById)
 server.use('/register/', newUser )
 

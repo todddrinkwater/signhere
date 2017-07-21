@@ -4,8 +4,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {fName: 'Todd', lName: 'Drinkwater', organisation: 'TDD', email: 'todddrinkwaternz@gmail.com'},
-          {fName: 'Blair', lName: 'Drinkwater', organisation: 'BDD', email: 'blaird@gmail.com'}
+        {fName: 'Todd', lName: 'Drinkwater', organisation: 'Company', email: 'todd@drinkwater.com', street_address: '70 King St', 'suburb': 'Kelburn', phone: 027027027, 'user_image_url': ''},
+          {fName: 'Blair', lName: 'Drinkwater', organisation: 'Catch22', email: 'blair@drinkwater.com', street_address: '70 Prince St', 'suburb': 'Ngunguru',  phone: 021021021, 'user_image_url': ''}
       ]);
     });
 };
