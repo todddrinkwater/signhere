@@ -23940,15 +23940,15 @@
 	
 	var _ContractList2 = _interopRequireDefault(_ContractList);
 	
-	var _Login = __webpack_require__(268);
+	var _Login = __webpack_require__(276);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _UserProfile = __webpack_require__(269);
+	var _UserProfile = __webpack_require__(277);
 	
 	var _UserProfile2 = _interopRequireDefault(_UserProfile);
 	
-	var _Contract = __webpack_require__(270);
+	var _Contract = __webpack_require__(278);
 	
 	var _Contract2 = _interopRequireDefault(_Contract);
 	
@@ -27815,6 +27815,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var Parser = __webpack_require__(268);
+	
 	var ContractCard = function (_React$Component) {
 	  _inherits(ContractCard, _React$Component);
 	
@@ -27855,7 +27857,7 @@
 	              _react2.default.createElement(
 	                'p',
 	                null,
-	                contract_desc
+	                Parser(contract_desc)
 	              )
 	            )
 	          )
@@ -29963,422 +29965,12 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(182);
-	
-	var _reactRouterDom = __webpack_require__(220);
-	
-	var _index = __webpack_require__(259);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Login = function (_React$Component) {
-	  _inherits(Login, _React$Component);
-	
-	  function Login(props) {
-	    _classCallCheck(this, Login);
-	
-	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-	  }
-	
-	  _createClass(Login, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'login' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'logo' },
-	          'signhere'
-	        ),
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'loginForm', onSubmit: function onSubmit(e) {
-	              LogInUser(e, _this2.props.dispatch);
-	            } },
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'ID:'
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            'Password:'
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'text', name: 'password' }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'newUserLink' },
-	          _react2.default.createElement(
-	            _reactRouterDom.HashRouter,
-	            null,
-	            _react2.default.createElement(
-	              _reactRouterDom.Link,
-	              { to: '/userRegistration' },
-	              'New user? Sign up here!'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'note' },
-	          'WORK IN PROGRESS: To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Login;
-	}(_react2.default.Component);
-	
-	function LogInUser(e, dispatch) {
-	  e.preventDefault(e);
-	  var userLogin = {
-	    id: e.target.elements.id.value
-	  };
-	  (0, _index.loggedInUser)(userLogin, dispatch);
-	  (0, _index.getUserContracts)(userLogin, dispatch);
-	}
-	
-	function mapStateToProps(state) {
-	  return {
-	    dispatch: state.dispatch
-	  };
-	}
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Login);
-
-/***/ }),
-/* 269 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(184);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _reactRedux = __webpack_require__(182);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var UserProfile = function (_React$Component) {
-	  _inherits(UserProfile, _React$Component);
-	
-	  function UserProfile(props) {
-	    _classCallCheck(this, UserProfile);
-	
-	    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
-	  }
-	
-	  _createClass(UserProfile, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'userProfile' },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'My Profile'
-	        ),
-	        _react2.default.createElement('img', { className: 'userProfile-img', src: this.props.userDetails.user_image_url }),
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.props.userDetails.fName,
-	          ' ',
-	          this.props.userDetails.lName
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Organisation:'
-	            ),
-	            ' ',
-	            this.props.userDetails.organisation
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Email:'
-	            ),
-	            ' ',
-	            this.props.userDetails.email
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Phone:'
-	            ),
-	            ' ',
-	            this.props.userDetails.phone
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Street Address:'
-	            ),
-	            ' ',
-	            this.props.userDetails.street_address
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Suburb:'
-	            ),
-	            ' ',
-	            this.props.userDetails.suburb
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return UserProfile;
-	}(_react2.default.Component);
-	
-	UserProfile.propTypes = {
-	  userDetails: _propTypes2.default.object
-	};
-	
-	function mapStateToProps(state) {
-	  return {
-	    userDetails: state.user
-	  };
-	}
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserProfile);
-
-/***/ }),
-/* 270 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(184);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _reactRedux = __webpack_require__(182);
-	
-	var _reactRouterDom = __webpack_require__(220);
-	
-	var _index = __webpack_require__(259);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Parser = __webpack_require__(271);
-	
-	var Contract = function (_React$Component) {
-	  _inherits(Contract, _React$Component);
-	
-	  function Contract(props) {
-	    _classCallCheck(this, Contract);
-	
-	    return _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
-	  }
-	
-	  _createClass(Contract, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var wrapper1 = document.getElementById("signature-pad"),
-	          canvas1 = wrapper1.querySelector("canvas"),
-	          signaturePad;
-	
-	      resizeCanvas(canvas1);
-	      signaturePad = new SignaturePad(canvas1);
-	
-	      function resizeCanvas(canvas) {
-	        var ratio = window.devicePixelRatio || 1;
-	        canvas.width = canvas.offsetWidth * ratio;
-	        canvas.height = canvas.offsetHeight * ratio;
-	        canvas.getContext("2d").scale(ratio, ratio);
-	      }
-	
-	      this.clearSignature = function clear() {
-	        signaturePad.clear();
-	      };
-	
-	      this.saveSignature = function save() {
-	        var dataUrl = signaturePad.toDataURL();
-	        var contractId = this.props.contractDetails.id;
-	        var userId = this.props.id;
-	        var dispatch = this.props.dispatch;
-	        var signatureData = {
-	          signature_url: dataUrl,
-	          id: userId
-	        };
-	        (0, _index.updateUserContract)(testCallback, contractId, signatureData, dispatch);
-	      };
-	
-	      function testCallback(err, status) {
-	        if (err) {
-	          console.log(err);
-	        } else {
-	          console.log(status);
-	        }
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'contract' },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.props.contractDetails.contract_header
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          Parser(this.props.contractDetails.contract_desc)
-	        ),
-	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
-	          'div',
-	          { id: 'signature-pad', className: 'm-signature-pad' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'm-signature-pad--body' },
-	            _react2.default.createElement('canvas', null)
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'signature-pad-btn', onClick: function onClick() {
-	                return _this2.clearSignature();
-	              } },
-	            'Clear'
-	          ),
-	          _react2.default.createElement(
-	            _reactRouterDom.HashRouter,
-	            null,
-	            _react2.default.createElement(
-	              _reactRouterDom.Link,
-	              { to: '/myContracts' },
-	              _react2.default.createElement(
-	                'button',
-	                { className: 'signature-pad-btn', onClick: function onClick() {
-	                    return _this2.saveSignature(_this2.props.id);
-	                  } },
-	                'Save'
-	              )
-	            )
-	          )
-	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
-	      );
-	    }
-	  }]);
-	
-	  return Contract;
-	}(_react2.default.Component);
-	
-	Contract.propTypes = {
-	  contractDetails: _propTypes2.default.object,
-	  id: _propTypes2.default.number
-	};
-	
-	function mapStateToProps(state) {
-	  return {
-	    contractDetails: state.contract[0].singleContractDetails,
-	    id: state.user.id,
-	    dispatch: state.dispatch
-	  };
-	}
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contract);
-
-/***/ }),
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	/**
 	 * Module dependencies.
 	 */
 	
-	var domToReact = __webpack_require__(272);
-	var htmlToDOM = __webpack_require__(276);
+	var domToReact = __webpack_require__(269);
+	var htmlToDOM = __webpack_require__(273);
 	
 	// decode HTML entities by default for `htmlparser2`
 	var domParserOptions = { decodeEntities: true };
@@ -30404,7 +29996,7 @@
 	module.exports = HTMLReactParser;
 
 /***/ }),
-/* 272 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30414,7 +30006,7 @@
 	 */
 	
 	var React = __webpack_require__(1);
-	var attributesToProps = __webpack_require__(273);
+	var attributesToProps = __webpack_require__(270);
 	
 	/**
 	 * Convert DOM nodes to React elements.
@@ -30508,7 +30100,7 @@
 	module.exports = domToReact;
 
 /***/ }),
-/* 273 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30517,8 +30109,8 @@
 	 * Module dependencies.
 	 */
 	
-	var utilities = __webpack_require__(274);
-	var propertyConfig = __webpack_require__(275);
+	var utilities = __webpack_require__(271);
+	var propertyConfig = __webpack_require__(272);
 	var config = propertyConfig.config;
 	var isCustomAttribute = propertyConfig.HTMLDOMPropertyConfig.isCustomAttribute;
 	
@@ -30614,7 +30206,7 @@
 	module.exports = attributesToProps;
 
 /***/ }),
-/* 274 */
+/* 271 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30695,7 +30287,7 @@
 	};
 
 /***/ }),
-/* 275 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30704,7 +30296,7 @@
 	 * Module dependencies.
 	 */
 	
-	var utilities = __webpack_require__(274);
+	var utilities = __webpack_require__(271);
 	
 	// HTML and SVG DOM Property Configs
 	var HTMLDOMPropertyConfig = __webpack_require__(82);
@@ -30761,7 +30353,7 @@
 	};
 
 /***/ }),
-/* 276 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30770,8 +30362,8 @@
 	 * Module dependencies.
 	 */
 	
-	var domparser = __webpack_require__(277);
-	var utilities = __webpack_require__(278);
+	var domparser = __webpack_require__(274);
+	var utilities = __webpack_require__(275);
 	var formatDOM = utilities.formatDOM;
 	
 	/**
@@ -30802,7 +30394,7 @@
 	};
 
 /***/ }),
-/* 277 */
+/* 274 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30974,7 +30566,7 @@
 	};
 
 /***/ }),
-/* 278 */
+/* 275 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -31099,6 +30691,416 @@
 	    formatAttributes: formatAttributes,
 	    formatDOM: formatDOM
 	};
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _reactRouterDom = __webpack_require__(220);
+	
+	var _index = __webpack_require__(259);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Login = function (_React$Component) {
+	  _inherits(Login, _React$Component);
+	
+	  function Login(props) {
+	    _classCallCheck(this, Login);
+	
+	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	  }
+	
+	  _createClass(Login, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'login' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'logo' },
+	          'signhere'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'loginForm', onSubmit: function onSubmit(e) {
+	              LogInUser(e, _this2.props.dispatch);
+	            } },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'ID:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Password:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'text', name: 'password' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'newUserLink' },
+	          _react2.default.createElement(
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/userRegistration' },
+	              'New user? Sign up here!'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'note' },
+	          'WORK IN PROGRESS: To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Login;
+	}(_react2.default.Component);
+	
+	function LogInUser(e, dispatch) {
+	  e.preventDefault(e);
+	  var userLogin = {
+	    id: e.target.elements.id.value
+	  };
+	  (0, _index.loggedInUser)(userLogin, dispatch);
+	  (0, _index.getUserContracts)(userLogin, dispatch);
+	}
+	
+	function mapStateToProps(state) {
+	  return {
+	    dispatch: state.dispatch
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Login);
+
+/***/ }),
+/* 277 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserProfile = function (_React$Component) {
+	  _inherits(UserProfile, _React$Component);
+	
+	  function UserProfile(props) {
+	    _classCallCheck(this, UserProfile);
+	
+	    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
+	  }
+	
+	  _createClass(UserProfile, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'userProfile' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'My Profile'
+	        ),
+	        _react2.default.createElement('img', { className: 'userProfile-img', src: this.props.userDetails.user_image_url }),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          this.props.userDetails.fName,
+	          ' ',
+	          this.props.userDetails.lName
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Organisation:'
+	            ),
+	            ' ',
+	            this.props.userDetails.organisation
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Email:'
+	            ),
+	            ' ',
+	            this.props.userDetails.email
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Phone:'
+	            ),
+	            ' ',
+	            this.props.userDetails.phone
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Street Address:'
+	            ),
+	            ' ',
+	            this.props.userDetails.street_address
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Suburb:'
+	            ),
+	            ' ',
+	            this.props.userDetails.suburb
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return UserProfile;
+	}(_react2.default.Component);
+	
+	UserProfile.propTypes = {
+	  userDetails: _propTypes2.default.object
+	};
+	
+	function mapStateToProps(state) {
+	  return {
+	    userDetails: state.user
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserProfile);
+
+/***/ }),
+/* 278 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _reactRouterDom = __webpack_require__(220);
+	
+	var _index = __webpack_require__(259);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Parser = __webpack_require__(268);
+	
+	var Contract = function (_React$Component) {
+	  _inherits(Contract, _React$Component);
+	
+	  function Contract(props) {
+	    _classCallCheck(this, Contract);
+	
+	    return _possibleConstructorReturn(this, (Contract.__proto__ || Object.getPrototypeOf(Contract)).call(this, props));
+	  }
+	
+	  _createClass(Contract, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var wrapper1 = document.getElementById("signature-pad"),
+	          canvas1 = wrapper1.querySelector("canvas"),
+	          signaturePad;
+	
+	      resizeCanvas(canvas1);
+	      signaturePad = new SignaturePad(canvas1);
+	
+	      function resizeCanvas(canvas) {
+	        var ratio = window.devicePixelRatio || 1;
+	        canvas.width = canvas.offsetWidth * ratio;
+	        canvas.height = canvas.offsetHeight * ratio;
+	        canvas.getContext("2d").scale(ratio, ratio);
+	      }
+	
+	      this.clearSignature = function clear() {
+	        signaturePad.clear();
+	      };
+	
+	      this.saveSignature = function save() {
+	        var dataUrl = signaturePad.toDataURL();
+	        var contractId = this.props.contractDetails.id;
+	        var userId = this.props.id;
+	        var dispatch = this.props.dispatch;
+	        var signatureData = {
+	          signature_url: dataUrl,
+	          id: userId
+	        };
+	        (0, _index.updateUserContract)(testCallback, contractId, signatureData, dispatch);
+	      };
+	
+	      function testCallback(err, status) {
+	        if (err) {
+	          console.log(err);
+	        } else {
+	          console.log(status);
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'contract' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          this.props.contractDetails.contract_header
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          Parser(this.props.contractDetails.contract_desc)
+	        ),
+	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
+	          'div',
+	          { id: 'signature-pad', className: 'm-signature-pad' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'm-signature-pad--body' },
+	            _react2.default.createElement('canvas', null)
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'signature-pad-btn', onClick: function onClick() {
+	                return _this2.clearSignature();
+	              } },
+	            'Clear'
+	          ),
+	          _react2.default.createElement(
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/myContracts' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'signature-pad-btn', onClick: function onClick() {
+	                    return _this2.saveSignature(_this2.props.id);
+	                  } },
+	                'Save'
+	              )
+	            )
+	          )
+	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
+	      );
+	    }
+	  }]);
+	
+	  return Contract;
+	}(_react2.default.Component);
+	
+	Contract.propTypes = {
+	  contractDetails: _propTypes2.default.object,
+	  id: _propTypes2.default.number
+	};
+	
+	function mapStateToProps(state) {
+	  return {
+	    contractDetails: state.contract[0].singleContractDetails,
+	    id: state.user.id,
+	    dispatch: state.dispatch
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Contract);
 
 /***/ }),
 /* 279 */
