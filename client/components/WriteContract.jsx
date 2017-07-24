@@ -2,40 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
+import ReactQuill from 'react-quill'
 
 import { writeNewContract } from '../actions/index'
 
 class WriteContract extends React.Component {
   constructor(props){
     super(props)
+    this.state = { text: '' }
+        this.handleChange = this.handleChange.bind(this)
    }
 
-  componentDidMount() {
-
-  }
+   handleChange(value) {
+      this.setState({ text: value })
+    }
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="WriteContract">
-        <form method="post" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId) } } >
+        <form method="post" className="newContractForm" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId, this.state) } } >
         <h3>Write a new contract</h3>
           <label>Signee ID: </label><br /><input className="writeContract-id" type="text" name="signee_id" /><br />
           <label>Contract Title: </label><br /><input className="writeContract-title" type="text" name="contract_header" /><br />
-          <label>Contract Details:</label><br /><textarea className="writeContract-details" id="contractDetails" name="contract_desc" cols="1" rows="50"></textarea><br />
-              <button type="submit" className="writeContract-submit" value="Submit">Submit</button>
+          <ReactQuill value={this.state.text}
+                  onChange={this.handleChange} />
+          <button type="submit" className="writeContract-submit" value="Submit">Submit</button>
         </form>
       </div>
     )}
 }
 
-function submitNewContract(e, dispatch, userId){
+function submitNewContract(e, dispatch, userId, state){
   e.preventDefault(e)
   var writeContractForm = {
     id: userId,
     signee_id: e.target.elements.signee_id.value,
     contract_header: e.target.elements.contract_header.value,
-    contract_desc: e.target.elements.contract_desc.value
+    contract_desc: state.text
   }
   writeNewContract(writeContractForm, dispatch, userId, testCallback)
 }

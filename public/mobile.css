@@ -10,9 +10,6 @@ body {
   background: #f3f3f3;
 }
 
-
-
-
 /* --- Signature Pad --- */
 
 .contract {
@@ -344,7 +341,9 @@ body {
 
 /* --- Write New Contract Form --- */
 
-
+.newContractForm {
+  height: 1200px;
+}
 
 .WriteContract h3 {
   font-size: 2em;
