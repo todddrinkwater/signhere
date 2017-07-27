@@ -19,7 +19,6 @@ class WriteContract extends React.Component {
 
 
   render() {
-    console.log(Toolbar, "toolbar");
     return (
       <div className="WriteContract">
         <form method="post" className="newContractForm" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId, this.state) } } >
