@@ -371,6 +371,9 @@ body {
 }
 /* --- Write New Contract Form --- */
 
+.newContractForm {
+  height: 1000px;
+}
 
 .WriteContract {
   padding-left: 10%;
@@ -417,4 +420,9 @@ body {
   border-radius: 35px;
   box-sizing: border-box;
   font-size: 0.9em;
+}
+
+/* Sh-Quill css mods*/
+.ql-editor .ql-blank {
+  height: 400px;
 }

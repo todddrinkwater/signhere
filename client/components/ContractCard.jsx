@@ -1,11 +1,11 @@
 import React from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+var Parser = require('html-react-parser')
 
 import { getContract } from '../actions/index'
 
 class ContractCard extends React.Component {
-
 
   render () {
     const { contract_header, contract_desc } = this.props.contract
@@ -15,7 +15,7 @@ class ContractCard extends React.Component {
           <Link to="/contracttosign">
             <div>
               <h1>{contract_header}</h1>
-              <p>{contract_desc}</p>
+              {Parser(contract_desc)}
             </div>
           </Link>
         </Router>
@@ -29,6 +29,5 @@ function mapStateToProps(state){
     dispatch: state.dispatch
   }
 }
-
 
 export default connect(mapStateToProps)(ContractCard)

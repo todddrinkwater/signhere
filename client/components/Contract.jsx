@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
+var Parser = require('html-react-parser')
 
 import { updateUserContract } from '../actions/index'
 
@@ -56,7 +57,7 @@ class Contract extends React.Component {
     return (
       <div className="contract">
         <h1>{this.props.contractDetails.contract_header}</h1>
-        <p>{this.props.contractDetails.contract_desc}</p>
+        {Parser(this.props.contractDetails.contract_desc)}
         { this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null  ?
         (
            <div id="signature-pad" className="m-signature-pad">
