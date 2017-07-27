@@ -7,7 +7,6 @@ import { getContract } from '../actions/index'
 
 class ContractCard extends React.Component {
 
-
   render () {
     const { contract_header, contract_desc } = this.props.contract
     return (
@@ -16,7 +15,7 @@ class ContractCard extends React.Component {
           <Link to="/contracttosign">
             <div>
               <h1>{contract_header}</h1>
-              <p>{Parser(contract_desc)}</p>
+              {Parser(contract_desc)}
             </div>
           </Link>
         </Router>
@@ -30,6 +29,5 @@ function mapStateToProps(state){
     dispatch: state.dispatch
   }
 }
-
 
 export default connect(mapStateToProps)(ContractCard)

@@ -57,7 +57,7 @@ class Contract extends React.Component {
     return (
       <div className="contract">
         <h1>{this.props.contractDetails.contract_header}</h1>
-        <p>{Parser(this.props.contractDetails.contract_desc)}</p>
+        {Parser(this.props.contractDetails.contract_desc)}
         { this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null  ?
         (
            <div id="signature-pad" className="m-signature-pad">

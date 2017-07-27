@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
-import ReactQuill from 'react-quill'
+import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill'
 
 import { writeNewContract } from '../actions/index'
 
@@ -19,7 +19,7 @@ class WriteContract extends React.Component {
 
 
   render() {
-    console.log(this.state);
+    console.log(Toolbar, "toolbar");
     return (
       <div className="WriteContract">
         <form method="post" className="newContractForm" onSubmit={ (e) => { submitNewContract(e,  this.props.dispatch, this.props.userId, this.state) } } >

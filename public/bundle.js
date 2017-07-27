@@ -27854,11 +27854,7 @@
 	                null,
 	                contract_header
 	              ),
-	              _react2.default.createElement(
-	                'p',
-	                null,
-	                Parser(contract_desc)
-	              )
+	              Parser(contract_desc)
 	            )
 	          )
 	        )
@@ -31044,11 +31040,7 @@
 	          null,
 	          this.props.contractDetails.contract_header
 	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          Parser(this.props.contractDetails.contract_desc)
-	        ),
+	        Parser(this.props.contractDetails.contract_desc),
 	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
 	          'div',
 	          { id: 'signature-pad', className: 'm-signature-pad' },
@@ -31163,7 +31155,7 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      console.log(this.state);
+	      console.log(_reactQuill.Toolbar, "toolbar");
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'WriteContract' },
@@ -50552,7 +50544,7 @@
 
 	/*
 	QuillToolbar is deprecated. Consider switching to the official Quill
-	toolbar format, or providing your own toolbar instead. 
+	toolbar format, or providing your own toolbar instead.
 	See https://quilljs.com/docs/modules/toolbar
 	*/
 	
@@ -50569,6 +50561,17 @@
 	});
 	
 	var defaultItems = [{ label: 'Formats', type: 'group', items: [{ label: 'Font', type: 'font', items: [{ label: 'Sans Serif', value: 'sans-serif', selected: true }, { label: 'Serif', value: 'serif' }, { label: 'Monospace', value: 'monospace' }] }, { label: 'Size', type: 'size', items: [{ label: 'Small', value: '10px' }, { label: 'Normal', value: '13px', selected: true }, { label: 'Large', value: '18px' }, { label: 'Huge', value: '32px' }] }, { label: 'Alignment', type: 'align', items: [{ label: '', value: '', selected: true }, { label: '', value: 'center' }, { label: '', value: 'right' }, { label: '', value: 'justify' }] }] }, { label: 'Text', type: 'group', items: [{ type: 'bold', label: 'Bold' }, { type: 'italic', label: 'Italic' }, { type: 'strike', label: 'Strike' }, { type: 'underline', label: 'Underline' }, { type: 'color', label: 'Color', items: defaultColors }, { type: 'background', label: 'Background color', items: defaultColors }, { type: 'link', label: 'Link' }] }, { label: 'Blocks', type: 'group', items: [{ type: 'list', value: 'bullet' }, { type: 'list', value: 'ordered' }] }, { label: 'Blocks', type: 'group', items: [{ type: 'image', label: 'Image' }] }];
+	
+	var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], // toggled buttons
+	['blockquote', 'code-block'], [{ 'header': 1 }, { 'header': 2 }], // custom button values
+	[{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'script': 'sub' }, { 'script': 'super' }], // superscript/subscript
+	[{ 'indent': '-1' }, { 'indent': '+1' }], // outdent/indent
+	[{ 'direction': 'rtl' }], // text direction
+	
+	[{ 'size': ['small', false, 'large', 'huge'] }], // custom dropdown
+	[{ 'header': [1, 2, 3, 4, 5, 6, false] }], [{ 'color': [] }, { 'background': [] }], // dropdown with defaults from theme
+	[{ 'font': [] }], [{ 'align': [] }], ['clean'] // remove formatting button
+	];
 	
 	var QuillToolbar = React.createClass({
 	
