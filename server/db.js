@@ -1,6 +1,7 @@
 var environment = process.env.NODE_ENV || 'development'
 var config = require('../knexfile')[environment]
 var knex = require('knex')(config)
+var bcrypt = require('bcrypt');
 
 
 function getUserById(id){
@@ -29,7 +30,7 @@ function newContract (id, contractDetails) {
   })
 }
 
-function newUser(newUserDetails){
+function newUser(newUserDetails, hash){
   return knex('users')
   .insert({
     fName: newUserDetails.fName,
@@ -39,7 +40,8 @@ function newUser(newUserDetails){
     email: newUserDetails.email,
     street_address: newUserDetails.street_address,
     suburb: newUserDetails.suburb,
-    user_image_url: newUserDetails.user_image_url
+    user_image_url: newUserDetails.user_image_url,
+    password: hash
   })
 }
 

@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.string('fName')
     table.string('lName')
     table.integer('phone')
+    table.string('password')
     table.string('email')
     table.string('street_address')
     table.string('suburb')

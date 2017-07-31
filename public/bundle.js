@@ -27565,10 +27565,7 @@
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 	
-	    var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
-	
-	    console.log(_this.props);
-	    return _this;
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
 	  }
 	
 	  _createClass(NavBar, [{
@@ -31155,7 +31152,6 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      console.log(_reactQuill.Toolbar, "toolbar");
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'WriteContract' },
@@ -50992,6 +50988,14 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
+	            'Password:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'password', name: 'password' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
 	            'Street Address:'
 	          ),
 	          _react2.default.createElement('br', null),
@@ -51060,8 +51064,8 @@
 	    email: e.target.elements.email.value,
 	    street_address: e.target.elements.street.value,
 	    suburb: e.target.elements.suburb.value,
-	    user_image_url: e.target.user_image_url.value
-	
+	    user_image_url: e.target.user_image_url.value,
+	    password: e.target.password.value
 	  };
 	  (0, _index.addNewUser)(userRegistrationForm, testCallback);
 	}

@@ -58,6 +58,7 @@ class UserRegistration extends React.Component {
           <label>Organisation:</label><br /><input className="userRegField" type="text" name="organisation"></input><br />
           <label>Phone Number:</label><br /><input className="userRegField" type="text" name="phone"></input><br />
           <label>Email:</label><br /><input className="userRegField" type="text" name="email"></input><br />
+          <label>Password:</label><br /><input className="userRegField" type="password" name="password"></input><br />
           <label>Street Address:</label><br /><input className="userRegField" type="text" name="street"></input><br />
           <label>Suburb:</label><br /><input className="userRegField" type="text" name="suburb"></input><br />
           <label>Profile Picture URL:</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
@@ -96,8 +97,8 @@ function registerNewUser(e){
     email: e.target.elements.email.value,
     street_address: e.target.elements.street.value,
     suburb: e.target.elements.suburb.value,
-    user_image_url: e.target.user_image_url.value
-
+    user_image_url: e.target.user_image_url.value,
+    password: e.target.password.value
   }
   addNewUser(userRegistrationForm, testCallback)
 }
