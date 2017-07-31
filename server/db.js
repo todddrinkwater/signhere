@@ -4,9 +4,9 @@ var knex = require('knex')(config)
 var bcrypt = require('bcrypt');
 
 
-function getUserById(id){
+function getUserByEmail(email){
   return knex('users')
-    .where('id', Number(id))
+    .where('email', email)
     .first()
 }
 
@@ -46,4 +46,4 @@ function newUser(newUserDetails, hash){
 }
 
 
-module.exports = { getUserById, getUserContracts, signContract, newContract, newUser }
+module.exports = { getUserByEmail, getUserContracts, signContract, newContract, newUser }

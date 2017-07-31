@@ -7,9 +7,10 @@ router.get('/', (req, res) => {
   res.send({key: 'hello'})
 })
 
-router.get('/profile/:id', function (req, res) {
-  var id = req.params.id
-  db.getUserById(id)
+router.get('/profile/:email', function (req, res) {
+  console.log(req.params)
+  var email = req.params.email
+  db.getUserByEmail(email)
   .then((result) => {
     res.json(result)
   })

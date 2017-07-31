@@ -27889,13 +27889,14 @@
 	};
 	
 	var loggedInUser = exports.loggedInUser = function loggedInUser(user, dispatch) {
-	  request.get('/user/profile/' + user.id).end(function (err, res) {
+	  request.get('/user/profile/' + user.email).end(function (err, res) {
 	    var userInfo = res.body;
 	    if (err) {
 	      console.error('loggedInUser ' + err.message);
 	      return;
 	    }
 	    dispatch(getUserDetails(userInfo));
+	    getUserContracts(userInfo.id, dispatch);
 	  });
 	};
 	
@@ -27913,8 +27914,8 @@
 	  };
 	};
 	
-	var getUserContracts = exports.getUserContracts = function getUserContracts(user, dispatch) {
-	  request.get('/user/contracts/' + user.id).end(function (err, res) {
+	var getUserContracts = exports.getUserContracts = function getUserContracts(userId, dispatch) {
+	  request.get('/user/contracts/' + userId).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
 	      console.error('getUserContracts ' + err.message);
@@ -30721,7 +30722,10 @@
 	  function Login(props) {
 	    _classCallCheck(this, Login);
 	
-	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	
+	    console.log(props);
+	    return _this;
 	  }
 	
 	  _createClass(Login, [{
@@ -30745,10 +30749,10 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'ID:'
+	            'Email:'
 	          ),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', { type: 'text', name: 'id' }),
+	          _react2.default.createElement('input', { type: 'text', name: 'email' }),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'label',
@@ -30785,18 +30789,21 @@
 	  return Login;
 	}(_react2.default.Component);
 	
-	function LogInUser(e, dispatch) {
+	function LogInUser(e, dispatch, userId) {
+	  console.log(userId);
 	  e.preventDefault(e);
 	  var userLogin = {
-	    id: e.target.elements.id.value
+	    email: e.target.elements.email.value,
+	    password: e.target.password.value
 	  };
 	  (0, _index.loggedInUser)(userLogin, dispatch);
-	  (0, _index.getUserContracts)(userLogin, dispatch);
 	}
 	
 	function mapStateToProps(state) {
+	  console.log(state);
 	  return {
-	    dispatch: state.dispatch
+	    dispatch: state.dispatch,
+	    user: state.user
 	  };
 	}
 	

@@ -9,7 +9,7 @@ export const getUserDetails = loggedInUserDetails => {
 
 export const loggedInUser = (user, dispatch) => {
   request
-  .get('/user/profile/' + user.id)
+  .get('/user/profile/' + user.email)
   .end((err, res) => {
     var userInfo = res.body
     if (err) {
@@ -17,6 +17,7 @@ export const loggedInUser = (user, dispatch) => {
       return
     }
     dispatch(getUserDetails(userInfo))
+    getUserContracts(userInfo.id, dispatch)
     })
 }
 
@@ -34,9 +35,9 @@ export const getContracts = contractDetails => {
   }
 }
 
-export const getUserContracts = (user, dispatch) => {
+export const getUserContracts = (userId, dispatch) => {
   request
-  .get('/user/contracts/' + user.id)
+  .get('/user/contracts/' + userId)
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
     if (err) {

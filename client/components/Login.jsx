@@ -8,6 +8,7 @@ import { getUserContracts } from '../actions/index'
 class Login extends React.Component {
   constructor (props) {
     super(props)
+    console.log(props)
   }
 
   render () {
@@ -15,7 +16,7 @@ class Login extends React.Component {
       <div className="login">
       <div className="logo">signhere</div>
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
-            <label>ID:</label><br /><input type="text" name="id" /><br />
+            <label>Email:</label><br /><input type="text" name="email" /><br />
             <label>Password:</label><br /><input type="text" name="password" /><br />
         <input type='submit' value='Log In' />
         </form>
@@ -33,18 +34,21 @@ class Login extends React.Component {
   }
 }
 
-function LogInUser(e, dispatch){
+function LogInUser(e, dispatch, userId){
+  console.log(userId)
   e.preventDefault(e)
   var userLogin = {
-    id: e.target.elements.id.value
+    email: e.target.elements.email.value,
+    password: e.target.password.value
   }
   loggedInUser(userLogin, dispatch)
-  getUserContracts(userLogin, dispatch)
 }
 
 function mapStateToProps(state){
+  console.log(state)
   return {
-    dispatch: state.dispatch
+    dispatch: state.dispatch,
+    user: state.user
   }
 }
 
