@@ -1,5 +1,5 @@
 var request = require('superagent')
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 
 export const getUserDetails = loggedInUserDetails => {
@@ -19,8 +19,14 @@ export const loggedInUser = (user, dispatch) => {
       console.error('loggedInUser ' + err.message)
       return
     }
-    dispatch(getUserDetails(userInfo))
-    getUserContracts(userInfo.id, dispatch)
+
+    bcrypt.compare(user.password, userInfo.password, function(err, res) {
+        if (res == false ) { alert("Incorrect password, please try again.") }
+        else {
+          dispatch(getUserDetails(userInfo))
+          getUserContracts(userInfo.id, dispatch)
+          }
+        })
   })
 }
 

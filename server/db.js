@@ -1,7 +1,6 @@
 var environment = process.env.NODE_ENV || 'development'
 var config = require('../knexfile')[environment]
 var knex = require('knex')(config)
-var bcrypt = require('bcrypt');
 
 
 function getUserByEmail(email){

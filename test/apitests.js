@@ -52,7 +52,6 @@ test('test that we can post data to the database to create a new contract', t =>
     .end(function(err, res) {
       if (err) throw err
       t.equal(res.status, 200, 'server responds with 200')
-      // console.log(res)
       t.end()
     })
 
