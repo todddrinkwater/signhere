@@ -1,4 +1,6 @@
 var request = require('superagent')
+var bcrypt = require('bcrypt');
+
 
 export const getUserDetails = loggedInUserDetails => {
   return {
@@ -12,13 +14,14 @@ export const loggedInUser = (user, dispatch) => {
   .get('/user/profile/' + user.email)
   .end((err, res) => {
     var userInfo = res.body
+
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
     }
     dispatch(getUserDetails(userInfo))
     getUserContracts(userInfo.id, dispatch)
-    })
+  })
 }
 
 export const getContract = singleContractDetails => {

@@ -16,7 +16,7 @@ class Login extends React.Component {
       <div className="logo">signhere</div>
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
             <label>Email:</label><br /><input type="text" name="email" /><br />
-            <label>Password:</label><br /><input type="text" name="password" /><br />
+            <label>Password:</label><br /><input type="password" name="password" /><br />
         <input type='submit' value='Log In' />
         </form>
         <div className="newUserLink">
