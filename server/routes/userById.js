@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 })
 
 router.get('/profile/:email', function (req, res) {
-  console.log(req.params)
   var email = req.params.email
   db.getUserByEmail(email)
   .then((result) => {

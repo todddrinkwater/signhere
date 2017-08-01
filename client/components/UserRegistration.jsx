@@ -88,17 +88,18 @@ class UserRegistration extends React.Component {
 }
 
 function registerNewUser(e){
+  var form = e.target.elements
   e.preventDefault(e)
   var userRegistrationForm = {
-    fName: e.target.elements.fName.value,
-    lName: e.target.elements.lName.value,
-    organisation: e.target.elements.organisation.value,
-    phone: e.target.elements.phone.value,
-    email: e.target.elements.email.value,
-    street_address: e.target.elements.street.value,
-    suburb: e.target.elements.suburb.value,
-    user_image_url: e.target.user_image_url.value,
-    password: e.target.password.value
+    fName: form.fName.value,
+    lName: form.lName.value,
+    organisation: form.organisation.value,
+    phone: form.phone.value,
+    email: form.email.value,
+    street_address: form.street.value,
+    suburb: form.suburb.value,
+    user_image_url: form.user_image_url.value,
+    password: form.password.value
   }
   addNewUser(userRegistrationForm, testCallback)
 }

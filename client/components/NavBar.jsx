@@ -11,7 +11,6 @@ class NavBar extends React.Component {
   render () {
     return (
       <div>
-
         <div className="navBar">
         <Router>
           <ul className="nav-ul">

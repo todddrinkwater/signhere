@@ -27915,7 +27915,6 @@
 	};
 	
 	var getUserContracts = exports.getUserContracts = function getUserContracts(userId, dispatch) {
-	  console.log(userId, "user Id");
 	  request.get('/user/contracts/' + userId).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
@@ -30723,10 +30722,7 @@
 	  function Login(props) {
 	    _classCallCheck(this, Login);
 	
-	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-	
-	    console.log(props);
-	    return _this;
+	    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	  }
 	
 	  _createClass(Login, [{
@@ -30851,6 +30847,7 @@
 	  _createClass(UserProfile, [{
 	    key: 'render',
 	    value: function render() {
+	      var userDetails = this.props.userDetails;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'userProfile' },
@@ -30859,13 +30856,13 @@
 	          null,
 	          'My Profile'
 	        ),
-	        _react2.default.createElement('img', { className: 'userProfile-img', src: this.props.userDetails.user_image_url }),
+	        _react2.default.createElement('img', { className: 'userProfile-img', src: userDetails.user_image_url }),
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          this.props.userDetails.fName,
+	          userDetails.fName,
 	          ' ',
-	          this.props.userDetails.lName
+	          userDetails.lName
 	        ),
 	        _react2.default.createElement(
 	          'ul',
@@ -30879,7 +30876,7 @@
 	              'Organisation:'
 	            ),
 	            ' ',
-	            this.props.userDetails.organisation
+	            userDetails.organisation
 	          ),
 	          _react2.default.createElement(
 	            'li',
@@ -30890,7 +30887,7 @@
 	              'Email:'
 	            ),
 	            ' ',
-	            this.props.userDetails.email
+	            userDetails.email
 	          ),
 	          _react2.default.createElement(
 	            'li',
@@ -30901,7 +30898,7 @@
 	              'Phone:'
 	            ),
 	            ' ',
-	            this.props.userDetails.phone
+	            userDetails.phone
 	          ),
 	          _react2.default.createElement(
 	            'li',
@@ -30912,7 +30909,7 @@
 	              'Street Address:'
 	            ),
 	            ' ',
-	            this.props.userDetails.street_address
+	            userDetails.street_address
 	          ),
 	          _react2.default.createElement(
 	            'li',
@@ -30923,7 +30920,7 @@
 	              'Suburb:'
 	            ),
 	            ' ',
-	            this.props.userDetails.suburb
+	            userDetails.suburb
 	          )
 	        )
 	      );
@@ -51063,17 +51060,18 @@
 	}(_react2.default.Component);
 	
 	function registerNewUser(e) {
+	  var form = e.target.elements;
 	  e.preventDefault(e);
 	  var userRegistrationForm = {
-	    fName: e.target.elements.fName.value,
-	    lName: e.target.elements.lName.value,
-	    organisation: e.target.elements.organisation.value,
-	    phone: e.target.elements.phone.value,
-	    email: e.target.elements.email.value,
-	    street_address: e.target.elements.street.value,
-	    suburb: e.target.elements.suburb.value,
-	    user_image_url: e.target.user_image_url.value,
-	    password: e.target.password.value
+	    fName: form.fName.value,
+	    lName: form.lName.value,
+	    organisation: form.organisation.value,
+	    phone: form.phone.value,
+	    email: form.email.value,
+	    street_address: form.street.value,
+	    suburb: form.suburb.value,
+	    user_image_url: form.user_image_url.value,
+	    password: form.password.value
 	  };
 	  (0, _index.addNewUser)(userRegistrationForm, testCallback);
 	}
