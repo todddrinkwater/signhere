@@ -27915,6 +27915,7 @@
 	};
 	
 	var getUserContracts = exports.getUserContracts = function getUserContracts(userId, dispatch) {
+	  console.log(userId, "user Id");
 	  request.get('/user/contracts/' + userId).end(function (err, res) {
 	    var userInfo = JSON.parse(res.text);
 	    if (err) {
@@ -27938,7 +27939,7 @@
 	      console.error('updateUserContract ' + err.message);
 	      return;
 	    }
-	    getUserContracts(contractData, dispatch);
+	    getUserContracts(contractData.id, dispatch);
 	  });
 	};
 	
@@ -27949,7 +27950,7 @@
 	    } else {
 	      callback(null, "Status: 200");
 	    }
-	    getUserContracts(contractData, dispatch);
+	    getUserContracts(contractData.id, dispatch);
 	  });
 	};
 	
@@ -30789,12 +30790,11 @@
 	  return Login;
 	}(_react2.default.Component);
 	
-	function LogInUser(e, dispatch, userId) {
-	  console.log(userId);
+	function LogInUser(e, dispatch) {
 	  e.preventDefault(e);
 	  var userLogin = {
 	    email: e.target.elements.email.value,
-	    password: e.target.password.value
+	    password: e.target.elements.password.value
 	  };
 	  (0, _index.loggedInUser)(userLogin, dispatch);
 	}
@@ -31036,16 +31036,17 @@
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var contractDetails = this.props.contractDetails;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'contract' },
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          this.props.contractDetails.contract_header
+	          contractDetails.contract_header
 	        ),
-	        Parser(this.props.contractDetails.contract_desc),
-	        this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null ? _react2.default.createElement(
+	        Parser(contractDetails.contract_desc),
+	        contractDetails.signature_url == '' || contractDetails.signature_url == null ? _react2.default.createElement(
 	          'div',
 	          { id: 'signature-pad', className: 'm-signature-pad' },
 	          _react2.default.createElement(
@@ -31075,7 +31076,7 @@
 	              )
 	            )
 	          )
-	        ) : _react2.default.createElement('img', { src: this.props.contractDetails.signature_url })
+	        ) : _react2.default.createElement('img', { src: contractDetails.signature_url })
 	      );
 	    }
 	  }]);

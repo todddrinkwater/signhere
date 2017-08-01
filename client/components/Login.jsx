@@ -8,7 +8,6 @@ import { getUserContracts } from '../actions/index'
 class Login extends React.Component {
   constructor (props) {
     super(props)
-    console.log(props)
   }
 
   render () {
@@ -34,12 +33,11 @@ class Login extends React.Component {
   }
 }
 
-function LogInUser(e, dispatch, userId){
-  console.log(userId)
+function LogInUser(e, dispatch){
   e.preventDefault(e)
   var userLogin = {
     email: e.target.elements.email.value,
-    password: e.target.password.value
+    password: e.target.elements.password.value
   }
   loggedInUser(userLogin, dispatch)
 }

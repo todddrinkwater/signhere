@@ -48,6 +48,7 @@ export const getUserContracts = (userId, dispatch) => {
     })
 }
 
+
 export const updateContract = contractData => {
   return {
     type: 'UPDATE_USER_CONTRACTS',
@@ -65,7 +66,7 @@ export const updateUserContract = (callback, id, contractData, dispatch) => {
         console.error('updateUserContract ' + err.message)
         return
        }
-      getUserContracts(contractData, dispatch)
+      getUserContracts(contractData.id, dispatch)
     })
 }
 
@@ -81,7 +82,7 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       } else {
         callback(null, "Status: 200")
       }
-      getUserContracts(contractData, dispatch)
+      getUserContracts(contractData.id, dispatch)
     })
   }
 

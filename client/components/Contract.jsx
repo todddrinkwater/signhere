@@ -54,11 +54,12 @@ class Contract extends React.Component {
 }
 
   render() {
+    var contractDetails = this.props.contractDetails
     return (
       <div className="contract">
-        <h1>{this.props.contractDetails.contract_header}</h1>
-        {Parser(this.props.contractDetails.contract_desc)}
-        { this.props.contractDetails.signature_url == '' || this.props.contractDetails.signature_url == null  ?
+        <h1>{contractDetails.contract_header}</h1>
+        {Parser(contractDetails.contract_desc)}
+        { contractDetails.signature_url == '' || contractDetails.signature_url == null  ?
         (
            <div id="signature-pad" className="m-signature-pad">
              <div className="m-signature-pad--body">
@@ -72,7 +73,7 @@ class Contract extends React.Component {
            </div>
          )
          :
-         ( <img src={this.props.contractDetails.signature_url} /> )}
+         ( <img src={contractDetails.signature_url} /> )}
       </div>
     )}
 }
