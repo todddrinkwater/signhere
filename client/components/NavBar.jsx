@@ -9,23 +9,22 @@ class NavBar extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <div>
+      { this.props.user == null ? " " : (
         <div className="navBar">
         <Router>
           <ul className="nav-ul">
             <li className="nav-left-button"><Link to='/myContracts'>My Contracts</Link></li>
             <li className="nav-left-button"><Link to='/newContract'>Create A Contract</Link></li>
             <li className="nav-left-button"><Link to='/userprofile'>Profile</Link></li>
-            { this.props.user == null ? (
-            <li className="nav-login"><Link to='/'>Login</Link></li>
-          ) :
-          (
             <li className="welcome-img"><img className="nav-profile-img" src={this.props.user.user_image_url} /></li>
-          ) }
           </ul>
-          </Router>
+        </Router>
         </div>
+        )}
+
 
           <div className="dropdown">
             <div className="dropbtn"><i className="fa fa-bars fa-2x" aria-hidden="true"></i></div>
