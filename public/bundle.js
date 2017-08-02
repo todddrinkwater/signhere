@@ -39770,7 +39770,7 @@
 	          'form',
 	          { className: 'loginForm', onSubmit: function onSubmit(e) {
 	              LogInUser(e, _this2.props.dispatch);
-	            } },
+	            }, action: '/myContracts' },
 	          _react2.default.createElement(
 	            'label',
 	            null,

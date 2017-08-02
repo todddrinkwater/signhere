@@ -279,7 +279,7 @@ body {
   margin: auto;
 }
 
-.login input[type=text] {
+.login input[type=text], .login input[type=password] {
   width: 25%;
   padding: 12px 20px;
   margin: 3% 5%;

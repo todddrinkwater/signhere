@@ -14,12 +14,13 @@ class Login extends React.Component {
     return (
       <div className="login">
       <div className="logo">signhere</div>
-        <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
+        <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } } action="/myContracts">
             <label>Email:</label><br /><input type="text" name="email" /><br />
             <label>Password:</label><br /><input type="password" name="password" /><br />
             { this.props.passwordFailure.passwordFailure === false ? ( <p>Incorrect Password</p> ) : "" }
-        <input type='submit' value='Log In' />
+            <input type='submit' value='Log In' />
         </form>
+
         <div className="newUserLink">
           <Router>
             <Link to="/userRegistration">New user? Sign up here!</Link>
