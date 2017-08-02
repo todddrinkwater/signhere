@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import { logOutUser } from '../actions/index'
+
 class NavBar extends React.Component {
   constructor(props){
     super(props)
@@ -20,6 +22,7 @@ class NavBar extends React.Component {
             <li className="nav-left-button"><Link to='/newContract'>Create A Contract</Link></li>
             <li className="nav-left-button"><Link to='/userprofile'>Profile</Link></li>
             <li className="welcome-img"><img className="nav-profile-img" src={this.props.user.user_image_url} /></li>
+            <li className="logout"><Link to='/' onClick={ () => { logout(this.props.dispatch) } }>Logout</Link></li>
           </ul>
         </Router>
         </div>
@@ -34,11 +37,6 @@ class NavBar extends React.Component {
                   <Link to='/myContracts'>My Contracts</Link>
                   <Link to='/newContract'>Create a Contract</Link>
                   <Link to='/userprofile'>Profile</Link>
-                  { this.props.user == null ? (
-                    <Link to='/'>Login</Link>
-                  ) : (
-                    <p></p>
-                    ) }
                 </div>
               </Router>
             </div>
@@ -52,10 +50,19 @@ NavBar.propTypes = {
   user: PropTypes.object,
 }
 
+function logout(dispatch){
+  dispatch(logOutUser())
+}
 
 function mapStateToProps(state){
   return {
     user: state.user
+  }
+}
+
+function mapDispatchToProps(state){
+  return {
+    dispatch: state.dispatch
   }
 }
 

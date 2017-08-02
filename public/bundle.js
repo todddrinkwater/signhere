@@ -23837,14 +23837,35 @@
 	
 	var _incorrectPassword2 = _interopRequireDefault(_incorrectPassword);
 	
+	var _logout = __webpack_require__(475);
+	
+	var _logout2 = _interopRequireDefault(_logout);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = (0, _redux.combineReducers)({
+	// export default combineReducers({
+	//   user,
+	//   contracts,
+	//   contract,
+	//   incorrectPassword,
+	//   logout
+	// })
+	
+	var appReducer = (0, _redux.combineReducers)({
 	  user: _user2.default,
 	  contracts: _contracts2.default,
 	  contract: _contract2.default,
 	  incorrectPassword: _incorrectPassword2.default
 	});
+	
+	var rootReducer = function rootReducer(state, action) {
+	  if (action.type === 'LOG_OUT') {
+	    state = undefined;
+	  }
+	  return appReducer(state, action);
+	};
+	
+	exports.default = rootReducer;
 
 /***/ }),
 /* 216 */
@@ -27584,6 +27605,8 @@
 	
 	var _reactRedux = __webpack_require__(182);
 	
+	var _index = __webpack_require__(260);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27604,6 +27627,8 @@
 	  _createClass(NavBar, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
@@ -27648,6 +27673,17 @@
 	                'li',
 	                { className: 'welcome-img' },
 	                _react2.default.createElement('img', { className: 'nav-profile-img', src: this.props.user.user_image_url })
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'logout' },
+	                _react2.default.createElement(
+	                  _reactRouterDom.Link,
+	                  { to: '/', onClick: function onClick() {
+	                      logout(_this2.props.dispatch);
+	                    } },
+	                  'Logout'
+	                )
 	              )
 	            )
 	          )
@@ -27683,12 +27719,7 @@
 	                  _reactRouterDom.Link,
 	                  { to: '/userprofile' },
 	                  'Profile'
-	                ),
-	                this.props.user == null ? _react2.default.createElement(
-	                  _reactRouterDom.Link,
-	                  { to: '/' },
-	                  'Login'
-	                ) : _react2.default.createElement('p', null)
+	                )
 	              )
 	            )
 	          )
@@ -27704,9 +27735,19 @@
 	  user: _propTypes2.default.object
 	};
 	
+	function logout(dispatch) {
+	  dispatch((0, _index.logOutUser)());
+	}
+	
 	function mapStateToProps(state) {
 	  return {
 	    user: state.user
+	  };
+	}
+	
+	function mapDispatchToProps(state) {
+	  return {
+	    dispatch: state.dispatch
 	  };
 	}
 	
@@ -27919,6 +27960,12 @@
 	  return {
 	    type: 'INCORRECT_PASSWORD',
 	    incorrectPasswordMessage: incorrectPasswordMessage
+	  };
+	};
+	
+	var logOutUser = exports.logOutUser = function logOutUser() {
+	  return {
+	    type: 'LOG_OUT'
 	  };
 	};
 	
@@ -59259,6 +59306,24 @@
 	/******/;
 	//# sourceMappingURL=index.js.map
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(205)(module)))
+
+/***/ }),
+/* 475 */
+/***/ (function(module, exports) {
+
+	// const logout = (state, action) => {
+	//   switch (action.type) {
+	//     case 'LOG_OUT':
+	//         return state = undefined;
+	//
+	//     default:
+	//       return state
+	//   }
+	// }
+	//
+	// export default logout
+	// //
+	"use strict";
 
 /***/ })
 /******/ ]);

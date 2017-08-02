@@ -16,6 +16,12 @@ export const passwordFail = incorrectPasswordMessage => {
   }
 }
 
+export const logOutUser = () => {
+  return {
+    type: 'LOG_OUT'
+  }
+}
+
 
 export const loggedInUser = (user, dispatch) => {
   request
