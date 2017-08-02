@@ -17,6 +17,7 @@ class Login extends React.Component {
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
             <label>Email:</label><br /><input type="text" name="email" /><br />
             <label>Password:</label><br /><input type="password" name="password" /><br />
+            { this.props.passwordFailure.passwordFailure === false ? ( <p>Incorrect Password</p> ) : "" }
         <input type='submit' value='Log In' />
         </form>
         <div className="newUserLink">
@@ -43,10 +44,10 @@ function LogInUser(e, dispatch){
 }
 
 function mapStateToProps(state){
-  console.log(state)
   return {
     dispatch: state.dispatch,
-    user: state.user
+    user: state.user,
+    passwordFailure: state.incorrectPassword
   }
 }
 

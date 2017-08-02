@@ -14,7 +14,6 @@ test('test basic get request', t => {
 test('test that we can get the correct response object from the /profile route', t => {
   let expected = {id: 1, fName: 'Todd', lName: 'Drinkwater', organisation: 'Company', email: 'todd@drinkwater.com', street_address: '70 King St', 'suburb': 'Kelburn', phone: 027027027, 'user_image_url': 'http://res.cloudinary.com/hpyyiawap/image/upload/c_crop,h_2055,w_2607/v1500794318/IMG_8175_r8qioz.jpg', password: ''}
 
-
   request(app)
   .get('/user/profile/todd@drinkwater.com')
   .expect('Content-Type', /json/)
@@ -54,8 +53,6 @@ test('test that we can post data to the database to create a new contract', t =>
       t.equal(res.status, 200, 'server responds with 200')
       t.end()
     })
-
-
 })
 
 test('test that post has inserted the correct data', t => {

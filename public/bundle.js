@@ -23833,12 +23833,17 @@
 	
 	var _contract2 = _interopRequireDefault(_contract);
 	
+	var _incorrectPassword = __webpack_require__(474);
+	
+	var _incorrectPassword2 = _interopRequireDefault(_incorrectPassword);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = (0, _redux.combineReducers)({
 	  user: _user2.default,
 	  contracts: _contracts2.default,
-	  contract: _contract2.default
+	  contract: _contract2.default,
+	  incorrectPassword: _incorrectPassword2.default
 	});
 
 /***/ }),
@@ -27889,6 +27894,13 @@
 	  };
 	};
 	
+	var passwordFail = exports.passwordFail = function passwordFail(incorrectPasswordMessage) {
+	  return {
+	    type: 'INCORRECT_PASSWORD',
+	    incorrectPasswordMessage: incorrectPasswordMessage
+	  };
+	};
+	
 	var loggedInUser = exports.loggedInUser = function loggedInUser(user, dispatch) {
 	  request.get('/user/profile/' + user.email).end(function (err, res) {
 	    var userInfo = res.body;
@@ -27899,11 +27911,12 @@
 	    }
 	
 	    bcrypt.compare(user.password, userInfo.password, function (err, res) {
-	      if (res == false) {
-	        alert("Incorrect password, please try again.");
+	      if (res === false) {
+	        dispatch(passwordFail({ passwordFailure: false }));
 	      } else {
 	        dispatch(getUserDetails(userInfo));
 	        getUserContracts(userInfo.id, dispatch);
+	        dispatch(passwordFail({ passwordFailure: true }));
 	      }
 	    });
 	  });
@@ -39718,6 +39731,11 @@
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('input', { type: 'password', name: 'password' }),
 	          _react2.default.createElement('br', null),
+	          this.props.passwordFailure.passwordFailure === false ? _react2.default.createElement(
+	            'p',
+	            null,
+	            'Incorrect Password'
+	          ) : "",
 	          _react2.default.createElement('input', { type: 'submit', value: 'Log In' })
 	        ),
 	        _react2.default.createElement(
@@ -39755,10 +39773,10 @@
 	}
 	
 	function mapStateToProps(state) {
-	  console.log(state);
 	  return {
 	    dispatch: state.dispatch,
-	    user: state.user
+	    user: state.user,
+	    passwordFailure: state.incorrectPassword
 	  };
 	}
 	
@@ -59220,6 +59238,34 @@
 	/******/;
 	//# sourceMappingURL=index.js.map
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(205)(module)))
+
+/***/ }),
+/* 474 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var incorrectPassword = function incorrectPassword() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'INCORRECT_PASSWORD':
+	            return action.incorrectPasswordMessage;
+	            break;
+	        case 'CORRECT_PASSWORD':
+	            return action.incorrectPasswordMessage;
+	            break;
+	
+	        default:
+	            return state;
+	    }
+	};
+	
+	exports.default = incorrectPassword;
 
 /***/ })
 /******/ ]);

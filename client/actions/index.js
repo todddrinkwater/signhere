@@ -9,6 +9,14 @@ export const getUserDetails = loggedInUserDetails => {
   }
 }
 
+export const passwordFail = incorrectPasswordMessage => {
+  return {
+    type: 'INCORRECT_PASSWORD',
+    incorrectPasswordMessage
+  }
+}
+
+
 export const loggedInUser = (user, dispatch) => {
   request
   .get('/user/profile/' + user.email)
@@ -21,10 +29,13 @@ export const loggedInUser = (user, dispatch) => {
     }
 
     bcrypt.compare(user.password, userInfo.password, function(err, res) {
-        if (res == false ) { alert("Incorrect password, please try again.") }
+        if (res === false ) {
+          dispatch(passwordFail({ passwordFailure: false}))
+        }
         else {
           dispatch(getUserDetails(userInfo))
           getUserContracts(userInfo.id, dispatch)
+          dispatch(passwordFail({ passwordFailure: true}))
           }
         })
   })
