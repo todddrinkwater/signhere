@@ -27618,7 +27618,6 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -39875,7 +39874,10 @@
 	  function UserProfile(props) {
 	    _classCallCheck(this, UserProfile);
 	
-	    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
+	
+	    console.log(_this.props);
+	    return _this;
 	  }
 	
 	  _createClass(UserProfile, [{
@@ -39955,6 +39957,28 @@
 	            ),
 	            ' ',
 	            userDetails.suburb
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'City:'
+	            ),
+	            ' ',
+	            userDetails.city
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Country:'
+	            ),
+	            ' ',
+	            userDetails.country
 	          )
 	        )
 	      );

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 class UserProfile extends React.Component {
   constructor (props) {
     super(props)
+    console.log(this.props)
   }
 
   render () {
@@ -20,6 +21,8 @@ class UserProfile extends React.Component {
           <li><strong>Phone:</strong> {userDetails.phone}</li>
           <li><strong>Street Address:</strong> {userDetails.street_address}</li>
           <li><strong>Suburb:</strong> {userDetails.suburb}</li>
+          <li><strong>City:</strong> {userDetails.city}</li>
+          <li><strong>Country:</strong> {userDetails.country}</li>
         </ul>
       </div>
     )
