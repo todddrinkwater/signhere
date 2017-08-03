@@ -61,6 +61,8 @@ class UserRegistration extends React.Component {
           <label>Password:</label><br /><input className="userRegField" type="password" name="password"></input><br />
           <label>Street Address:</label><br /><input className="userRegField" type="text" name="street"></input><br />
           <label>Suburb:</label><br /><input className="userRegField" type="text" name="suburb"></input><br />
+          <label>City:</label><br /><input className="userRegField" type="text" name="city"></input><br />
+          <label>Country:</label><br /><input className="userRegField" type="text" name="country"></input><br />
           <label>Profile Picture URL:</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
           <div className='imageButtonAndDisplay'>
               <Dropzone className='dropzone'
@@ -98,6 +100,8 @@ function registerNewUser(e){
     email: form.email.value,
     street_address: form.street.value,
     suburb: form.suburb.value,
+    city: form.city.value,
+    country: form.country.value,
     user_image_url: form.user_image_url.value,
     password: form.password.value
   }

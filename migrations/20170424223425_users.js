@@ -10,6 +10,8 @@ exports.up = function(knex, Promise) {
     table.string('suburb')
     table.string('organisation')
     table.string('user_image_url')
+    table.string('city')
+    table.string('country')
 })
 };
 

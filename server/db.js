@@ -39,6 +39,8 @@ function newUser(newUserDetails, hash){
     email: newUserDetails.email,
     street_address: newUserDetails.street_address,
     suburb: newUserDetails.suburb,
+    city: newUserDetails.city,
+    country: newUserDetails.country,
     user_image_url: newUserDetails.user_image_url,
     password: hash
   })

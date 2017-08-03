@@ -24005,6 +24005,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function App(props) {
+	  console.log(props);
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'app-container' },
@@ -39770,7 +39771,7 @@
 	          'form',
 	          { className: 'loginForm', onSubmit: function onSubmit(e) {
 	              LogInUser(e, _this2.props.dispatch);
-	            }, action: '/myContracts' },
+	            } },
 	          _react2.default.createElement(
 	            'label',
 	            null,
@@ -39810,7 +39811,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'note' },
-	          'WORK IN PROGRESS: To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.'
+	          'WORK IN PROGRESS: To use this demo, type in guest@signhere.co.nz as your username and guest as the password, and click on the login button. Then feel free to explore!'
 	        )
 	      );
 	    }
@@ -58085,6 +58086,22 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
+	            'City:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'city' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Country:'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { className: 'userRegField', type: 'text', name: 'country' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            null,
 	            'Profile Picture URL:'
 	          ),
 	          _react2.default.createElement('input', { type: 'text', name: 'user_image_url', readOnly: 'readonly', value: this.state.uploadedFileCloudinaryUrl }),
@@ -58138,6 +58155,8 @@
 	    email: form.email.value,
 	    street_address: form.street.value,
 	    suburb: form.suburb.value,
+	    city: form.city.value,
+	    country: form.country.value,
 	    user_image_url: form.user_image_url.value,
 	    password: form.password.value
 	  };
