@@ -15,10 +15,12 @@ class Login extends React.Component {
       <div className="login">
       <div className="logo">signhere</div>
         <form className="loginForm" onSubmit={ (e) => { LogInUser(e, this.props.dispatch) } }>
-            <label>ID:</label><br /><input type="text" name="id" /><br />
-            <label>Password:</label><br /><input type="text" name="password" /><br />
-        <input type='submit' value='Log In' />
+            <label>Email:</label><br /><input type="text" name="email" /><br />
+            <label>Password:</label><br /><input type="password" name="password" /><br />
+            { this.props.passwordFailure.passwordFailure === false ? ( <p>Incorrect Password</p> ) : "" }
+            <input type='submit' value='Log In' />
         </form>
+
         <div className="newUserLink">
           <Router>
             <Link to="/userRegistration">New user? Sign up here!</Link>
@@ -26,7 +28,7 @@ class Login extends React.Component {
         </div>
         <div className="note">
             WORK IN PROGRESS:
-            To use this demo, type in ID number as 1, and click on the login button. You can then go to the contracts page to view all contracts associated with this account or go the profile page to view user information.
+            To use this demo, type in guest@signhere.co.nz as your username and guest as the password, and click on the login button. Then feel free to explore!
         </div>
       </div>
     )
@@ -36,15 +38,17 @@ class Login extends React.Component {
 function LogInUser(e, dispatch){
   e.preventDefault(e)
   var userLogin = {
-    id: e.target.elements.id.value
+    email: e.target.elements.email.value,
+    password: e.target.elements.password.value
   }
   loggedInUser(userLogin, dispatch)
-  getUserContracts(userLogin, dispatch)
 }
 
 function mapStateToProps(state){
   return {
-    dispatch: state.dispatch
+    dispatch: state.dispatch,
+    user: state.user,
+    passwordFailure: state.incorrectPassword
   }
 }
 

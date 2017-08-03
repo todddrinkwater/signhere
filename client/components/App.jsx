@@ -13,6 +13,7 @@ import WriteContract from './WriteContract'
 import UserRegistration from './UserRegistration'
 
 function App (props) {
+  console.log(props)
   return (
     <div className='app-container'>
       <NavBar />

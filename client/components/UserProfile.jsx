@@ -8,17 +8,18 @@ class UserProfile extends React.Component {
   }
 
   render () {
+    var userDetails = this.props.userDetails
     return (
       <div className="userProfile">
         <h1>My Profile</h1>
-        <img className="userProfile-img" src={this.props.userDetails.user_image_url} />
-        <h1>{this.props.userDetails.fName} {this.props.userDetails.lName}</h1>
+        <img className="userProfile-img" src={userDetails.user_image_url} />
+        <h1>{userDetails.fName} {userDetails.lName}</h1>
         <ul>
-          <li><strong>Organisation:</strong> {this.props.userDetails.organisation}</li>
-          <li><strong>Email:</strong> {this.props.userDetails.email}</li>
-          <li><strong>Phone:</strong> {this.props.userDetails.phone}</li>
-          <li><strong>Street Address:</strong> {this.props.userDetails.street_address}</li>
-          <li><strong>Suburb:</strong> {this.props.userDetails.suburb}</li>
+          <li><strong>Organisation:</strong> {userDetails.organisation}</li>
+          <li><strong>Email:</strong> {userDetails.email}</li>
+          <li><strong>Phone:</strong> {userDetails.phone}</li>
+          <li><strong>Street Address:</strong> {userDetails.street_address}</li>
+          <li><strong>Suburb:</strong> {userDetails.suburb}</li>
         </ul>
       </div>
     )

@@ -1,4 +1,6 @@
 var request = require('superagent')
+var bcrypt = require('bcryptjs');
+
 
 export const getUserDetails = loggedInUserDetails => {
   return {
@@ -7,17 +9,42 @@ export const getUserDetails = loggedInUserDetails => {
   }
 }
 
+export const passwordFail = incorrectPasswordMessage => {
+  return {
+    type: 'INCORRECT_PASSWORD',
+    incorrectPasswordMessage
+  }
+}
+
+export const logOutUser = () => {
+  return {
+    type: 'LOG_OUT'
+  }
+}
+
+
 export const loggedInUser = (user, dispatch) => {
   request
-  .get('/user/profile/' + user.id)
+  .get('/user/profile/' + user.email)
   .end((err, res) => {
     var userInfo = res.body
+
     if (err) {
       console.error('loggedInUser ' + err.message)
       return
     }
-    dispatch(getUserDetails(userInfo))
-    })
+
+    bcrypt.compare(user.password, userInfo.password, function(err, res) {
+        if (res === false ) {
+          dispatch(passwordFail({ passwordFailure: false}))
+        }
+        else {
+          dispatch(getUserDetails(userInfo))
+          getUserContracts(userInfo.id, dispatch)
+          dispatch(passwordFail({ passwordFailure: true}))
+          }
+        })
+  })
 }
 
 export const getContract = singleContractDetails => {
@@ -34,9 +61,9 @@ export const getContracts = contractDetails => {
   }
 }
 
-export const getUserContracts = (user, dispatch) => {
+export const getUserContracts = (userId, dispatch) => {
   request
-  .get('/user/contracts/' + user.id)
+  .get('/user/contracts/' + userId)
   .end((err, res) => {
     var userInfo = JSON.parse(res.text)
     if (err) {
@@ -46,6 +73,7 @@ export const getUserContracts = (user, dispatch) => {
     dispatch(getContracts(userInfo))
     })
 }
+
 
 export const updateContract = contractData => {
   return {
@@ -64,7 +92,7 @@ export const updateUserContract = (callback, id, contractData, dispatch) => {
         console.error('updateUserContract ' + err.message)
         return
        }
-      getUserContracts(contractData, dispatch)
+      getUserContracts(contractData.id, dispatch)
     })
 }
 
@@ -80,7 +108,7 @@ export const writeNewContract = (contractData, dispatch, id, callback) => {
       } else {
         callback(null, "Status: 200")
       }
-      getUserContracts(contractData, dispatch)
+      getUserContracts(contractData.id, dispatch)
     })
   }
 

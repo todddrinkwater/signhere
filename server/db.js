@@ -3,9 +3,9 @@ var config = require('../knexfile')[environment]
 var knex = require('knex')(config)
 
 
-function getUserById(id){
+function getUserByEmail(email){
   return knex('users')
-    .where('id', Number(id))
+    .where('email', email)
     .first()
 }
 
@@ -29,7 +29,7 @@ function newContract (id, contractDetails) {
   })
 }
 
-function newUser(newUserDetails){
+function newUser(newUserDetails, hash){
   return knex('users')
   .insert({
     fName: newUserDetails.fName,
@@ -39,9 +39,12 @@ function newUser(newUserDetails){
     email: newUserDetails.email,
     street_address: newUserDetails.street_address,
     suburb: newUserDetails.suburb,
-    user_image_url: newUserDetails.user_image_url
+    city: newUserDetails.city,
+    country: newUserDetails.country,
+    user_image_url: newUserDetails.user_image_url,
+    password: hash
   })
 }
 
 
-module.exports = { getUserById, getUserContracts, signContract, newContract, newUser }
+module.exports = { getUserByEmail, getUserContracts, signContract, newContract, newUser }

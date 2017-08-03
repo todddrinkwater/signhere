@@ -58,8 +58,11 @@ class UserRegistration extends React.Component {
           <label>Organisation:</label><br /><input className="userRegField" type="text" name="organisation"></input><br />
           <label>Phone Number:</label><br /><input className="userRegField" type="text" name="phone"></input><br />
           <label>Email:</label><br /><input className="userRegField" type="text" name="email"></input><br />
+          <label>Password:</label><br /><input className="userRegField" type="password" name="password"></input><br />
           <label>Street Address:</label><br /><input className="userRegField" type="text" name="street"></input><br />
           <label>Suburb:</label><br /><input className="userRegField" type="text" name="suburb"></input><br />
+          <label>City:</label><br /><input className="userRegField" type="text" name="city"></input><br />
+          <label>Country:</label><br /><input className="userRegField" type="text" name="country"></input><br />
           <label>Profile Picture URL:</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
           <div className='imageButtonAndDisplay'>
               <Dropzone className='dropzone'
@@ -87,17 +90,20 @@ class UserRegistration extends React.Component {
 }
 
 function registerNewUser(e){
+  var form = e.target.elements
   e.preventDefault(e)
   var userRegistrationForm = {
-    fName: e.target.elements.fName.value,
-    lName: e.target.elements.lName.value,
-    organisation: e.target.elements.organisation.value,
-    phone: e.target.elements.phone.value,
-    email: e.target.elements.email.value,
-    street_address: e.target.elements.street.value,
-    suburb: e.target.elements.suburb.value,
-    user_image_url: e.target.user_image_url.value
-
+    fName: form.fName.value,
+    lName: form.lName.value,
+    organisation: form.organisation.value,
+    phone: form.phone.value,
+    email: form.email.value,
+    street_address: form.street.value,
+    suburb: form.suburb.value,
+    city: form.city.value,
+    country: form.country.value,
+    user_image_url: form.user_image_url.value,
+    password: form.password.value
   }
   addNewUser(userRegistrationForm, testCallback)
 }
